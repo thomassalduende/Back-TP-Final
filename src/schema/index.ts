@@ -4,6 +4,9 @@ import { getUserID } from "./Querys/getUserID";
 import { CreateUser } from "./Mutations/User/createUser";
 import { DeleteUser } from "./Mutations/User/deleteUser";
 import { UpdateUser } from "./Mutations/User/updateUser";
+import { CreateBook } from "./Mutations/Book/createBook";
+import { DeleteBook } from "./Mutations/Book/deleteBook";
+import { UpdateBook } from "./Mutations/Book/updateBook";
 
 const RootQuery =  new GraphQLObjectType({
     name: 'query',
@@ -18,6 +21,11 @@ const Mutations = new GraphQLObjectType({
     fields:{
         CreateUser: CreateUser,
         DeleteUser: DeleteUser,
+        UpdateUser: UpdateUser,
+
+        CreateBook: CreateBook,
+        DeleteBook: DeleteBook,
+        UpdateBook: UpdateBook,
     }
 })
 
