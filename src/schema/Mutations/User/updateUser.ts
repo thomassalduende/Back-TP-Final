@@ -18,7 +18,7 @@ export const UpdateUser = {
     },
     async resolve(_:any, args: any) {
         // const result = await updateUser(args.dni, args.nombre, args.apellido, args.email, args.telefono, args.direccion, args.password, args.es_admin);
-        const userFound = await Users.findOneBy(args.dni);
+        const userFound = await Users.findOneBy({dni: args.dni});
         if (!userFound)
             return {
                 success:false,
@@ -26,16 +26,27 @@ export const UpdateUser = {
             }
 
         // Compara la contraseña vieja con la nueva
-        const isMatch = await comparePassword(args.password, userFound.password)
+        // const isMatch = await comparePassword(args.password, userFound.password)
+        // const isMatch = await comparePassword(userFound?.password, args.password)
 
-        if(!isMatch) return{
-                success: false,
-                message: "Password is incorrect"
-        }
+        // console.log(!isMatch)
+
+        // if(!isMatch) return{
+        //         success: false,
+        //         message: "Password is incorrect"
+        // }
         
      
 
-        const response = await Users.update((args.dni), (args.nombre, args.apellido, args.email, args.telefono, args.direccion, args.password, args.es_admin));
+        const response = await Users.update({dni: args.dni}, 
+            { nombre: args.nombre, 
+            apellido: args.apellido, 
+            email: args.email, 
+            telefono: args.telefono, 
+            direccion: args.direccion, 
+            password: args.password, 
+            es_admin: args.es_admin,
+        });
 
         if (response.affected === 0) return {message: "User not found"};
 

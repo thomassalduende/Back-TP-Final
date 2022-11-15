@@ -9,7 +9,7 @@ export const getUserID = {
     },
     async resolve(_: any, args: any){
         // const result = await GetUserID(args.dni)
-        const result = await Users.findOneBy(args.dni);
+        const result = await Users.findOneBy({dni: args.dni});
 
         return result;
     }

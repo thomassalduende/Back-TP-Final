@@ -21,14 +21,24 @@ export const UpdateBook = {
     },
     async resolve(_:any, args: any) {
 
-        const bookFound = await Books.findOneBy(args.isbn)
+        const bookFound = await Books.findOneBy({isbn: args.isbn})
 
         if (!bookFound) return {
             success: false,
             message: "Book not found"
         }
 
-        const response = await Books.update((args.isbn), (args.nombre, args.precio, args.stock, args.stock_min, args.id_valoracion, args.id_genero, args.id_oferta, args.dni_autor, args.id_editorial, args.id_linea_carrito))
+        const response = await Books.update({isbn: args.isbn}, 
+            {nombre: args.nombre, 
+            precio: args.precio, 
+            stock: args.stock, 
+            stock_min: args.stock_min, 
+            id_valoracion : args.id_valoracion, 
+            id_genero: args.id_genero, 
+            id_oferta: args.id_oferta, 
+            dni_autor: args.dni_autor, 
+            id_editorial: args.id_editorial, 
+            id_linea_carrito: args.id_linea_carrito})
 
         if(response.affected === 0) return{message: "Book not found"}; 
         
