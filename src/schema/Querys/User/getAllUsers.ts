@@ -1,7 +1,7 @@
 // query que obtiene todos los usuarios
-import { Users } from "../../Entities/Users"
+import { Users } from "../../../Entities/Users"
 import { GraphQLList } from "graphql";
-import { User } from "../TypeDefs/User";
+import { User } from "../../TypeDefs/User";
 
 
 export const getAllUsers = {

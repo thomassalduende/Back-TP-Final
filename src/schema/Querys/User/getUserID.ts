@@ -1,6 +1,6 @@
-import { Users } from "../../Entities/Users"
+import { Users } from "../../../Entities/Users"
 import { GraphQLID, GraphQLNonNull } from "graphql";
-import { User } from "../TypeDefs/User";
+import { User } from "../../TypeDefs/User";
 
 export const getUserID = {
     type: User,
