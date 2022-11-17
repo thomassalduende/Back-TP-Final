@@ -2,7 +2,7 @@ import { Books } from "../../../Entities/Books"
 import { GraphQLID, GraphQLNonNull } from "graphql";
 import { Book } from "../../TypeDefs/Book";
 
-export const getUserID = {
+export const getBookNombre = {
     type: Book,
     args:{
         nombre: {type: new GraphQLNonNull(GraphQLID)}

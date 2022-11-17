@@ -7,12 +7,19 @@ import { UpdateUser } from "./Mutations/User/updateUser";
 import { CreateBook } from "./Mutations/Book/createBook";
 import { DeleteBook } from "./Mutations/Book/deleteBook";
 import { UpdateBook } from "./Mutations/Book/updateBook";
+import { getAllBook } from "./Querys/Book/getAllBook";
+import { getBookISBN } from "./Querys/Book/getBookISBN";
+import { getBookNombre } from "./Querys/Book/getBookNombre";
 
 const RootQuery =  new GraphQLObjectType({
     name: 'query',
     fields: {
         getAllUsers: getAllUsers,
-        getUserID: getUserID
+        getUserID: getUserID,
+
+        getAllBook: getAllBook,
+        getBookISBN: getBookISBN, 
+        getBookNombre: getBookNombre
     }
 })
 

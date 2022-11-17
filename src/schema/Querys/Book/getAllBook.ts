@@ -3,7 +3,7 @@ import { GraphQLList } from "graphql";
 import { Book } from "../../TypeDefs/Book";
 
 
-export const getAllUsers = {
+export const getAllBook = {
     type: new GraphQLList(Book),
     async resolve(){
         // const result = await GetAllUsers()
