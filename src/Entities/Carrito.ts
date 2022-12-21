@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Users } from "./Users";
 
 @Entity()
 export class Carrito extends BaseEntity{
@@ -8,4 +9,7 @@ export class Carrito extends BaseEntity{
 
     @Column()
     dni: number;
+
+    @OneToOne(() => Users, (users) => users.carrito)
+    users: Users;
 }

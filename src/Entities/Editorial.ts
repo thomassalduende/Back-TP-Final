@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryColumn, OneToOne } from "typeorm";
+import { Books } from "./Books";
 
 @Entity()
 export class Editorial extends BaseEntity{
@@ -8,4 +9,7 @@ export class Editorial extends BaseEntity{
 
     @Column()
     nombre: string;
+
+    @OneToOne(() => Books, (books) => books.editorial)
+    books: Books;
 }
