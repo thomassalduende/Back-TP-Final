@@ -1,22 +1,24 @@
 
-import { Entity ,BaseEntity, PrimaryColumn, Column} from "typeorm";
+import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany} from "typeorm";
+import { Genero } from "./Genero";
+import { Valoracion } from "./Valoracion";
 
 @Entity()
 export class Books extends BaseEntity {
     @PrimaryColumn()
-    isbn: number;
+    isbn!: number;
 
     @Column()
-    nombre:string;
+    nombre!:string;
 
     @Column()
-    precio: number;
+    precio!: number;
 
     @Column()
-    stock:number;
+    stock!:number;
 
     @Column()
-    stock_min:number;
+    stock_min!:number;
 
     @Column()
     id_valoracion:number;
@@ -35,4 +37,10 @@ export class Books extends BaseEntity {
 
     @Column()
     id_linea_carrito:number;
+
+    @OneToMany(() => Genero, (genero) => genero.books)
+    genero: Genero;
+
+    @OneToOne(() => Valoracion, (valoracion) => valoracion.books)
+    valoracion: Valoracion;
 }

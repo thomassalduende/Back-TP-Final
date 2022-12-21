@@ -1,13 +1,13 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Autor extends BaseEntity {
-    @Column()
-    id_autor: number;
+    @PrimaryColumn()
+    dni_autor!: number;
 
     @Column()
-    nombre: string;
+    nombre!: string;
     
     @Column()
-    apellido: string;
+    apellido!: string;
 }

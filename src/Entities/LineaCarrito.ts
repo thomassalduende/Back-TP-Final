@@ -1,9 +1,9 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class LineaCarrito extends BaseEntity{
 
-    @Column()
+    @PrimaryColumn()
     id_venta: number;
 
     @Column()

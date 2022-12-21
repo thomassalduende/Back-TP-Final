@@ -1,11 +1,11 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Carrito extends BaseEntity{
 
-    @Column()
+    @PrimaryGeneratedColumn()
     id_carrito: number;
 
     @Column()
-    id_usuario: number;
+    dni: number;
 }

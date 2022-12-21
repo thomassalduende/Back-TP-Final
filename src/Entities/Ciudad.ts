@@ -1,11 +1,26 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import { Entity, BaseEntity, Column, OneToMany, PrimaryColumn, JoinColumn } from "typeorm";
+import { Users } from "./Users";
+import { Provincia } from "./Provincia";
 
 @Entity()
-export class Cuidad extends BaseEntity{
+export class Ciudad extends BaseEntity{
     
-    @Column()
-    cod_postal: number;
+    @PrimaryColumn()
+    cod_postal!: number;
 
     @Column()
-    nombre: string;
+    nombre!: string;
+
+    @Column()
+    id_provincia!: number;
+
+    @OneToMany(() => Users, (users)=> users.ciudad)
+    users: Users[];
+
+    @OneToMany(() => Provincia, (provincia) => provincia.ciudad)
+    provincia: Provincia[];
+    
+    @JoinColumn({name: 'id_provincia'})
+    id_provicia: Ciudad
+    
 }

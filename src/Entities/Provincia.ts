@@ -1,11 +1,15 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Ciudad } from "./Ciudad";
 
 @Entity()
 export class Provincia extends BaseEntity{
 
-    @Column()
+    @PrimaryGeneratedColumn()
     id_provicia: number;
 
     @Column()
-    nombre: string;
+    nombre!: string;
+
+    @OneToOne(() => Ciudad, (ciudad) => ciudad.provincia)
+    ciudad: Ciudad;
 }

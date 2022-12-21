@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
-import { Books } from "./Entities/Books";
+// import { Books } from "./Entities/Books";
 import { Users } from "./Entities/Users";
+import { Ciudad } from "./Entities/Ciudad";
 
 
 import { DB_USERNAME,DB_PASSWORD, DB_DATABASE, DB_HOST, DB_PORT } from "./config";
@@ -12,6 +13,6 @@ export const ConnectionBD = new DataSource({
     host: DB_HOST,
     port:Number(DB_PORT),
     database: DB_DATABASE,
-    entities: [Books, Users],
+    entities: [Ciudad, Users],
     synchronize: true
 })

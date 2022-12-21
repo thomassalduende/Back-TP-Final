@@ -1,30 +1,47 @@
 
-import { Entity ,BaseEntity, PrimaryColumn, Column} from "typeorm";
+import { Entity ,BaseEntity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToOne} from "typeorm";
+import { Ciudad } from "./Ciudad";
+import { Valoracion } from "./Valoracion";
+
 
 @Entity()
 export class Users extends BaseEntity{
     @PrimaryColumn()
-    dni:number;
+    dni!:number;
 
     @Column()
-    nombre: string;
+    nombre!: string;
 
     @Column()
-    apellido: string;
+    apellido!: string;
 
     @Column()
-    email: string;
+    email!: string;
 
     @Column()
-    telefono: number;
+    telefono!: number;
 
     @Column()
-    direccion: string;
+    direccion!: string;
 
     @Column()
-    password: string;
+    password!: string;
 
     @Column()
-    es_admin:boolean;
+    es_admin!:boolean;
+
+    @Column()
+    cod_postal!: number;
+
+    @ManyToOne(() => Ciudad, (ciudad)=> ciudad.users, {
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
+    })
+    
+    @JoinColumn({name:'cod_postal'})
+    ciudad : Ciudad;
+
+    @OneToOne(() => Valoracion, (valoracion) => valoracion.users)
+    valoracion: Valoracion;
 }
 
