@@ -1,47 +1,52 @@
-
 import { Entity ,BaseEntity, PrimaryColumn, Column, JoinColumn, OneToOne, OneToMany} from "typeorm";
+import { ObjectType, Field, ID, Int } from "type-graphql";
 import { Carrito } from "./Carrito";
 import { Ciudad } from "./Ciudad";
 import { Valoracion } from "./Valoracion";
 
-
+@ObjectType()
 @Entity()
 export class Users extends BaseEntity{
+
+    @Field(type => ID)
     @PrimaryColumn()
     dni!:number;
 
+    @Field()
     @Column()
     nombre!: string;
 
+    @Field()
     @Column()
     apellido!: string;
 
-    @Column()
+    @Field()
+    @Column({unique: true})
     email!: string;
 
+    @Field(type => Int)
     @Column()
     telefono!: number;
 
+    @Field()
     @Column()
     direccion!: string;
 
+    @Field()
     @Column()
     password!: string;
 
-    @Column()
+    @Field()
+    @Column({default: false})
     es_admin!:boolean;
 
-    @Column()
-    cod_postal!: number;
 
     @OneToMany(() => Ciudad, (ciudad)=> ciudad.users, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })
-    ciudad: Ciudad;
-    
-    // @JoinColumn({name:'cod_postal'})
-    // ciudad : Ciudad;
+    @JoinColumn({name:'cod_postal'})
+    ciudad : Ciudad;
 
     @OneToOne(() => Valoracion, (valoracion) => valoracion.users)
     valoracion: Valoracion;

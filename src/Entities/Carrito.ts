@@ -1,15 +1,22 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { ObjectType, Field, } from "type-graphql";
 import { Users } from "./Users";
 
+@ObjectType()
 @Entity()
 export class Carrito extends BaseEntity{
 
+    @Field({nullable: true})
     @PrimaryGeneratedColumn()
-    id_carrito: number;
+    id_carrito!: number;
 
-    @Column()
-    dni: number;
+    @Field(type => Users, {nullable: true})
+    @Column({unique: true})
+    dni!: number;
 
-    @OneToOne(() => Users, (users) => users.carrito)
+    @OneToOne(() => Users, (users) => users.carrito,{
+        onUpdate: 'CASCADE'
+    })
+    @JoinColumn({name: 'dni'})
     users: Users;
 }

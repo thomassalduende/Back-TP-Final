@@ -1,57 +1,66 @@
 
-import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany} from "typeorm";
+import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn} from "typeorm";
+import { ObjectType, Int, ID, Field, Float } from "type-graphql";
 import { Editorial } from "./Editorial";
 import { Genero } from "./Genero";
 import { IdAutor } from "./IdAutor";
 import { Oferta } from "./Oferta";
 import { Valoracion } from "./Valoracion";
+import { off } from "process";
 
+@ObjectType()
 @Entity()
 export class Books extends BaseEntity {
+    @Field(type => ID, {nullable: true})
     @PrimaryColumn()
     isbn!: number;
 
+    @Field({nullable: true})
     @Column()
     nombre!:string;
 
-    @Column()
+    @Field(type => Float, {nullable: true})
+    @Column({
+        type: 'decimal',
+        precision: 10,
+        scale: 2
+    })
     precio!: number;
 
+    @Field(type => Int, {nullable: true})
     @Column()
     stock!:number;
 
+    @Field(type => Int, {nullable: true})
     @Column()
     stock_min!:number;
 
-    @Column()
-    id_valoracion:number;
-
-    @Column()
-    id_genero:string;
-
-    @Column()
-    id_oferta:number;
-
-    @Column()
-    dni_autor:number;
-
-    @Column()
-    id_editorial:number;
-
-    @Column()
-    id_linea_carrito:number;
-
-    @OneToMany(() => Genero, (genero) => genero.books)
-    genero: Genero;
+    @Field(type => Genero, {nullable: true})
+    @OneToMany(() => Genero, (genero) => genero.books, {
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
+    })
+    @JoinColumn({name: 'id_genero'})
+    genero!: Genero;
 
     @OneToOne(() => Valoracion, (valoracion) => valoracion.books)
-    valoracion: Valoracion;
+    valoracion!: Valoracion;
 
-    @OneToOne(() => Oferta, (oferta) => oferta.books)
-    oferta: Oferta;
+    @Field(type => Oferta, {nullable: true})
+    @OneToOne(() => Oferta, (oferta) => oferta.books, {
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
+    })
+    @JoinColumn({name: 'id_oferta'})
+    oferta!: Oferta;
 
-    @OneToOne(() => Editorial, (editorial) => editorial.books)
-    editorial: Editorial;
+    @Field(type => Editorial, {nullable: true})
+    @OneToOne(() => Editorial, (editorial) => editorial.books, {
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
+    })
+    @JoinColumn({name: 'id_editoral'})
+    editorial!: Editorial;
 
     @OneToMany(() => IdAutor, (id_autor) => id_autor.books)
     id_autor: IdAutor[];
