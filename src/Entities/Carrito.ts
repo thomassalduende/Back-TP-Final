@@ -1,6 +1,7 @@
 import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
 import { ObjectType, Field, } from "type-graphql";
 import { Users } from "./Users";
+import { LineaCarrito } from "./LineaCarrito";
 
 @ObjectType()
 @Entity()
@@ -19,4 +20,9 @@ export class Carrito extends BaseEntity{
     })
     @JoinColumn({name: 'dni'})
     users: Users;
+
+    @OneToOne(() => LineaCarrito, (carrito) => carrito.id_carrito,{
+        onUpdate: 'CASCADE'
+    })
+    carrito!: LineaCarrito;
 }

@@ -1,5 +1,5 @@
 
-import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn} from "typeorm";
+import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn, ManyToMany, JoinTable} from "typeorm";
 import { ObjectType, Int, ID, Field, Float } from "type-graphql";
 import { Editorial } from "./Editorial";
 import { Genero } from "./Genero";
@@ -7,6 +7,7 @@ import { IdAutor } from "./IdAutor";
 import { Oferta } from "./Oferta";
 import { Valoracion } from "./Valoracion";
 import { off } from "process";
+import { LineaCarrito } from "./LineaCarrito";
 
 @ObjectType()
 @Entity()
@@ -64,4 +65,8 @@ export class Books extends BaseEntity {
 
     @OneToMany(() => IdAutor, (id_autor) => id_autor.books)
     id_autor: IdAutor[];
+
+    @ManyToMany(() => LineaCarrito)
+    @JoinTable()
+    books!: Books[];
 }

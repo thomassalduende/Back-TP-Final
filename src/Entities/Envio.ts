@@ -1,21 +1,38 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, Generated, ManyToOne, OneToOne, JoinColumn } from "typeorm";
+import { ObjectType, Field, ID} from "type-graphql";
+import { Carrito } from "./Carrito";
+import { Ciudad } from "./Ciudad";
 
+@ObjectType()
 @Entity()
 export class Envio extends BaseEntity{
 
+    @Field(type => ID)
     @PrimaryGeneratedColumn()
-    id_envio: number;
+    id_envio!: number;
 
+    @Field()
     @Column()
     direccion!: string;
 
-    @Column()
+    @Field()
+    @Column(Generated)
     nro_pedido!: number;
 
+    @Field(type => Ciudad)
     @Column()
-    cod_postal!: number;
+    @ManyToOne(() => Ciudad, (ciudad) => ciudad.cod_postal, {
+        onUpdate: 'CASCADE'
+    })
+    @JoinColumn({name: 'cod_postal'})
+    cod_postal!: Ciudad;
 
+    @Field(type => Carrito)
     @Column()
-    id_carrito: number;
+    @OneToOne(() => Carrito, (carrito) => carrito.id_carrito, {
+        onUpdate: 'CASCADE'
+    })
+    @JoinColumn({name: 'id_carrito'})
+    id_carrito: Carrito;
 
 }
