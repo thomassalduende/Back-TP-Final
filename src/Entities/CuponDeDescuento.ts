@@ -1,7 +1,7 @@
 import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToMany, JoinTable } from "typeorm";
 import { ObjectType, Field, ID, Float } from "type-graphql";
 import { Factura } from "./Factura";
-import { type } from "os";
+
 
 @ObjectType()
 @Entity()
@@ -20,8 +20,7 @@ export class CuponDeDescuento extends BaseEntity{
     cantidad_descuento!: number;
 
     @Field(type => Factura)
-    @Column()
-    @OneToMany(() => Factura, (id_factura) => id_factura.cupon, {
+    @OneToMany((type) => Factura, (id_factura) => id_factura.cupon, {
         onUpdate: 'CASCADE'
     })
     @JoinTable({name: 'id_factura'})

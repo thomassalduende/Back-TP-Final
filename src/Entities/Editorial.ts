@@ -14,6 +14,6 @@ export class Editorial extends BaseEntity{
     @Column({unique: true})
     nombre!: string;
 
-    @OneToOne(() => Books, (books) => books.editorial)
-    books: Books;
+    @OneToOne((type) => Books, (books) => books.editorial)
+    books!: Books;
 }

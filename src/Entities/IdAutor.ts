@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
-import { Entity, BaseEntity, PrimaryColumn, ManyToMany, JoinColumn, ManyToOne } from "typeorm";
+import { Entity, BaseEntity, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
 import { Autor } from "./Autor";
 import { Books } from "./Books";
 
@@ -9,6 +9,13 @@ export class IdAutor extends BaseEntity{
 
     @Field()
     @PrimaryColumn()
+    dni_autor!: number;
+
+    @Field()
+    @PrimaryColumn()
+    isbn!: number;
+
+    @Field(type => Autor)
     @ManyToOne((type) => Autor, (autor) => autor.dni_autor, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
@@ -16,8 +23,7 @@ export class IdAutor extends BaseEntity{
     @JoinColumn({name: 'dni_autor'})
     autor!: Autor;
 
-    @Field()
-    @PrimaryColumn()
+    @Field(type => Books)
     @ManyToOne((type) => Books, (books) => books.isbn, {
     onUpdate: 'CASCADE',
     onDelete: 'RESTRICT'

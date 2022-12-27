@@ -17,7 +17,6 @@ export class LineaCarrito extends BaseEntity{
     cantidad!: number;
 
     @Field(type => Carrito)
-    @Column()
     @ManyToOne(() => Carrito, (id_carrito) => id_carrito.carrito, {
         onUpdate: 'CASCADE'
     })
@@ -25,7 +24,6 @@ export class LineaCarrito extends BaseEntity{
     id_carrito: Carrito;
 
     @Field(type => Books)
-    @Column()
     @OneToMany(() => Books, (isbn) => isbn.books,{
         onUpdate: 'CASCADE'
     })

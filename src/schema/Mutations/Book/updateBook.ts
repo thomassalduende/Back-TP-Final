@@ -12,12 +12,12 @@ export const UpdateBook = {
         precio: {type: new GraphQLNonNull(GraphQLInt)},
         stock: {type: new GraphQLNonNull(GraphQLInt)},
         stock_min: {type: new GraphQLNonNull(GraphQLInt)},
-        id_valoracion: {type: new GraphQLNonNull (GraphQLInt)},
-        id_genero: {type: new GraphQLNonNull (GraphQLString)},
-        id_oferta: {type: new GraphQLNonNull (GraphQLFloat)},
-        dni_autor: {type: new GraphQLNonNull (GraphQLInt)},
-        id_editorial: {type: new GraphQLNonNull (GraphQLInt)},
-        id_linea_carrito: {type: new GraphQLNonNull (GraphQLInt)}
+        // id_valoracion: {type: new GraphQLNonNull (GraphQLInt)},
+        // id_genero: {type: new GraphQLNonNull (GraphQLString)},
+        // id_oferta: {type: new GraphQLNonNull (GraphQLFloat)},
+        // dni_autor: {type: new GraphQLNonNull (GraphQLInt)},
+        // id_editorial: {type: new GraphQLNonNull (GraphQLInt)},
+        // id_linea_carrito: {type: new GraphQLNonNull (GraphQLInt)}
     },
     async resolve(_:any, args: any) {
 
@@ -33,12 +33,13 @@ export const UpdateBook = {
             precio: args.precio, 
             stock: args.stock, 
             stock_min: args.stock_min, 
-            id_valoracion : args.id_valoracion, 
-            id_genero: args.id_genero, 
-            id_oferta: args.id_oferta, 
-            dni_autor: args.dni_autor, 
-            id_editorial: args.id_editorial, 
-            id_linea_carrito: args.id_linea_carrito})
+            // id_valoracion : args.id_valoracion, 
+            // id_genero: args.id_genero, 
+            // id_oferta: args.id_oferta, 
+            // dni_autor: args.dni_autor, 
+            // id_editorial: args.id_editorial, 
+            // id_linea_carrito: args.id_linea_carrito
+        })
 
         if(response.affected === 0) return{message: "Book not found"}; 
         

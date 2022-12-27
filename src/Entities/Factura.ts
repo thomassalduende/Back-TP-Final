@@ -27,12 +27,12 @@ export class Factura extends BaseEntity{
     @Column({type: 'varchar'})
     modo_pago: string;
 
-    @OneToOne(() => CuponDeDescuento, (cupon) => cupon.id_factura, {
+    @OneToOne((type) => CuponDeDescuento, (cupon) => cupon.id_factura, {
         onUpdate: 'CASCADE'
     })
     cupon!: CuponDeDescuento;
 
-    @OneToOne(() => Envio, (envio) => envio.cod_postal, {
+    @OneToOne((type) => Envio, (envio) => envio.cod_postal, {
         onUpdate: 'CASCADE'
     })
     envio!: Envio;
