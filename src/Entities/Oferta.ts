@@ -19,6 +19,6 @@ export class Oferta extends BaseEntity{
     })
     descuento!: number;
 
-    @OneToOne(() => Books, (books) => books.oferta)
+    @OneToOne((type) => Books, (books) => books.oferta)
     books: Books;
 }

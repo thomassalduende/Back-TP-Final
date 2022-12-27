@@ -46,12 +46,12 @@ export class Users extends BaseEntity{
         onDelete: 'RESTRICT'
     })
     @JoinColumn({name:'cod_postal'})
-    ciudad : Ciudad;
+    ciudad!: Ciudad;
 
-    @OneToOne(() => Valoracion, (valoracion) => valoracion.users)
-    valoracion: Valoracion;
+    @OneToOne((type) => Valoracion, (valoracion) => valoracion.users)
+    valoracion!: Valoracion;
 
-    @OneToOne(() => Carrito, (carrito) => carrito.users)
-    carrito: Carrito;
+    @OneToOne((type) => Carrito, (carrito) => carrito.users)
+    carrito!: Carrito;
 }
 

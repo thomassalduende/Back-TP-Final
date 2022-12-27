@@ -1,33 +1,27 @@
+import { Field, ObjectType } from "type-graphql";
 import { Entity, BaseEntity, PrimaryColumn, ManyToMany, JoinColumn, ManyToOne } from "typeorm";
 import { Autor } from "./Autor";
 import { Books } from "./Books";
 
+@ObjectType()
 @Entity()
 export class IdAutor extends BaseEntity{
 
+    @Field()
     @PrimaryColumn()
-    id_autor: number;
-
-    @PrimaryColumn()
-    isbn: number;
-
-    @ManyToMany(type => Autor, {
+    @ManyToOne((type) => Autor, (autor) => autor.dni_autor, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })
     @JoinColumn({name: 'dni_autor'})
-    dni_autor: Autor[]
+    autor!: Autor;
 
-    @ManyToMany(type => Books, {
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
-    })
+    @Field()
+    @PrimaryColumn()
+    @ManyToOne((type) => Books, (books) => books.isbn, {
+    onUpdate: 'CASCADE',
+    onDelete: 'RESTRICT'
+   })
     @JoinColumn({name: 'isbn'})
-    isbn_book: Books[]
-
-    @ManyToOne(() => Autor, (autor) => autor.id_autor)
-    autor: Autor;
-
-    @ManyToOne(() => Books, (books) => books.id_autor)
-    books: Books;
+    books!: Books;
 }

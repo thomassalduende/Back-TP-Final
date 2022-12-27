@@ -18,6 +18,7 @@ export class Autor extends BaseEntity {
     @Column()
     apellido!: string;
 
-    @OneToMany(() => IdAutor, (id_autor) => id_autor.autor)
+    @OneToMany((type) => IdAutor, (id_autor) => id_autor.autor)
     id_autor: IdAutor[];
+
 }

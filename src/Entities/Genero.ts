@@ -15,6 +15,6 @@ export class Genero extends BaseEntity{
     @Column({unique: true})
     nombre!: string;
 
-    @OneToOne(() => Books, (books) => books.genero)
+    @OneToOne((type) => Books, (books) => books.genero)
     books: Books;
 }

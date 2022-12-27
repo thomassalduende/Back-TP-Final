@@ -21,15 +21,14 @@ export class Envio extends BaseEntity{
 
     @Field(type => Ciudad)
     @Column()
-    @ManyToOne(() => Ciudad, (ciudad) => ciudad.cod_postal, {
+    @ManyToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
     cod_postal!: Ciudad;
 
     @Field(type => Carrito)
-    @Column()
-    @OneToOne(() => Carrito, (carrito) => carrito.id_carrito, {
+    @OneToOne((type) => Carrito, (carrito) => carrito.id_carrito, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'id_carrito'})
