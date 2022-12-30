@@ -12,12 +12,12 @@ export const CreateBook = {
         precio: {type: new GraphQLNonNull(GraphQLInt)},
         stock: {type: new GraphQLNonNull(GraphQLInt)},
         stock_min: {type: new GraphQLNonNull(GraphQLInt)},
-        // id_valoracion: {type: new GraphQLNonNull (GraphQLInt)},
-        // id_genero: {type: new GraphQLNonNull (GraphQLString)},
-        // id_oferta: {type: new GraphQLNonNull (GraphQLFloat)},
-        // dni_autor: {type: new GraphQLNonNull (GraphQLInt)},
-        // id_editorial: {type: new GraphQLNonNull (GraphQLInt)},
-        // id_linea_carrito: {type: new GraphQLNonNull (GraphQLInt)}
+        id_valoracion: {type: new GraphQLNonNull (GraphQLInt)},
+        id_genero: {type: new GraphQLNonNull (GraphQLString)},
+        id_oferta: {type: new GraphQLNonNull (GraphQLFloat)},
+        dni_autor: {type: new GraphQLNonNull (GraphQLInt)},
+        id_editorial: {type: new GraphQLNonNull (GraphQLInt)},
+        id_linea_carrito: {type: new GraphQLNonNull (GraphQLInt)}
     },
     async resolve(_:any, args: any) {
         // const result = await InsertUser(args.dni, args.nombre, args.apellido, args.email, args.telefono, args.direccion, args.password, args.es_admin);

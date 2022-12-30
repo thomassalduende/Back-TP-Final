@@ -14,7 +14,5 @@ export const Book = new GraphQLObjectType({
         dni_autor: {type: GraphQLInt},
         id_editorial: {type: GraphQLInt},
         id_linea_carrito: {type: GraphQLInt}
-
-
     }
 });

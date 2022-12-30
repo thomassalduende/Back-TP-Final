@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToMany, JoinTable } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany, JoinTable } from "typeorm";
 import { ObjectType, Field, ID, Float } from "type-graphql";
 import { Factura } from "./Factura";
 
@@ -7,8 +7,8 @@ import { Factura } from "./Factura";
 @Entity()
 export class CuponDeDescuento extends BaseEntity{
 
-    @Field()
-    @PrimaryGeneratedColumn()
+    @Field(type => ID)
+    @PrimaryColumn()
     codigo!: number; 
 
     @Field(type => Float)
