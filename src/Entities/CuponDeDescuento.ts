@@ -9,7 +9,7 @@ export class CuponDeDescuento extends BaseEntity{
 
     @Field(type => ID)
     @PrimaryColumn()
-    codigo!: number; 
+    codigo!: string; 
 
     @Field(type => Float)
     @Column({

@@ -3,10 +3,8 @@ import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany, JoinCol
 import { ObjectType, Int, ID, Field, Float } from "type-graphql";
 import { Editorial } from "./Editorial";
 import { Genero } from "./Genero";
-import { IdAutor } from "./IdAutor";
-import { Oferta } from "./Oferta";
+import { Autor } from "./Autor";
 import { Valoracion } from "./Valoracion";
-import { off } from "process";
 import { LineaCarrito } from "./LineaCarrito";
 
 @ObjectType()
@@ -14,7 +12,11 @@ import { LineaCarrito } from "./LineaCarrito";
 export class Books extends BaseEntity {
     @Field(type => ID, {nullable: true})
     @PrimaryColumn()
-    isbn!: number;
+    isbn!: string;
+
+    @Field({nullable: true})
+    @Column('text')
+    url_imagen!: string;
 
     @Field({nullable: true})
     @Column()
@@ -32,11 +34,24 @@ export class Books extends BaseEntity {
     @Column()
     stock!:number;
 
-    @Field(type => Int, {nullable: true})
+    @Field(type => String)
     @Column()
-    stock_min!:number;
+    descripcion!: string;
 
-    @Field(type => Genero, {nullable: true})
+    @Field(type => String, {nullable: true})
+    @Column({nullable: true})
+    fecha_ingreso: string;
+
+    @Field(type => Float)
+    @Column({
+        type: 'decimal',
+        precision: 4, 
+        scale: 2,
+    })
+    descuento!: number;
+
+
+    @Field(type => Genero)
     @OneToMany(() => Genero, (genero) => genero.books, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
@@ -47,14 +62,7 @@ export class Books extends BaseEntity {
     @OneToOne(() => Valoracion, (valoracion) => valoracion.books)
     valoracion!: Valoracion;
 
-    @Field(type => Oferta, {nullable: true})
-    @OneToOne(() => Oferta, (oferta) => oferta.books, {
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
-    })
-    @JoinColumn({name: 'id_oferta'})
-    oferta!: Oferta;
-
+    
     @Field(type => Editorial, {nullable: true})
     @OneToOne(() => Editorial, (editorial) => editorial.books, {
         onUpdate: 'CASCADE',
@@ -63,8 +71,10 @@ export class Books extends BaseEntity {
     @JoinColumn({name: 'id_editoral'})
     editorial!: Editorial;
 
-    @OneToMany(() => IdAutor, (id_autor) => id_autor.books)
-    id_autor: IdAutor[];
+    @ManyToMany((type) => Autor)
+    @Field(type => [Autor], {nullable: true})
+    @JoinColumn({name: 'dni_autor'})
+    autor!: Autor[];
 
     @ManyToMany(() => LineaCarrito)
     @JoinTable()
