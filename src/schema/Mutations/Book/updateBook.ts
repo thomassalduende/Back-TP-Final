@@ -32,7 +32,7 @@ export const UpdateBook = {
             {nombre: args.nombre, 
             precio: args.precio, 
             stock: args.stock, 
-            stock_min: args.stock_min, 
+
             // id_valoracion : args.id_valoracion, 
             // id_genero: args.id_genero, 
             // id_oferta: args.id_oferta, 

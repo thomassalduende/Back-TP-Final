@@ -15,6 +15,10 @@ export class Genero extends BaseEntity{
     @Column({unique: true})
     nombre!: string;
 
+    @Field({nullable: true})
+    @Column('text')
+    url_imagen!: string;
+
     @OneToOne((type) => Books, (books) => books.genero)
     books: Books;
 }

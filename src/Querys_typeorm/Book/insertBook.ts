@@ -7,7 +7,7 @@ import { formatoFecha } from "../Utilities/formatoFecha";
 
 
 
-export async function insertBook(isbn: number, 
+export async function insertBook(isbn: string, 
                                     imagen: string,
                                     nombre: string,
                                     precio: number,
@@ -32,7 +32,7 @@ export async function insertBook(isbn: number,
     if (fecha_ingreso != 'null'){
         book.fecha_ingreso = fecha_ingreso
     } else {
-        book.fecha_ingreso = formatoFecha(new Date())
+        book.fecha_ingreso = (formatoFecha(new Date())).toString()
     }
 
     if (descuento > 0) {
