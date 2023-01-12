@@ -1,8 +1,9 @@
+import { Genero } from "../../Entities/Genero";
 import { insertAutor } from "../Autor/insertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
-import { insertGenero } from "../Genero/insertGenero";
 
 import { formatoFecha } from "../Utilities/formatoFecha";
+import { getElementByNombre } from "../Utilities/getElementByNombre";
 import { existsBook } from "./existsLibro";
 import { getBookIsbn } from "./getBookIsbn";
 
@@ -16,8 +17,8 @@ export async function updateBook(   isbn_orig: string,
                                     fecha_ingreso: string,
                                     editorial: string,
                                     descuento: number = 0,
-                                    genero: string,
-                                    autor: string) 
+                                    generos: Array<string>,
+                                    autors: Array<any>) 
 {
 
    const existBook = await existsBook(isbn_orig) 
@@ -55,9 +56,26 @@ export async function updateBook(   isbn_orig: string,
         exsBook.descuento = descuento;
     }
 
-    exsBook.genero = await insertGenero(genero)
     exsBook.editorial = await insertEditorial(editorial)
-    exsBook.autor = await insertAutor(autor)
+
+    if (autors.length > 0){
+        exsBook.autor = []
+
+        for (const autor of autors){
+            exsBook.autor.push(await insertAutor(autor))
+        }
+    }
+
+    if (generos.length > 0){
+        exsBook.genero = []
+
+        for (const genero of generos){
+            exsBook.genero.push(await getElementByNombre(genero, Genero))
+        }
+    }else{
+        throw `El libro debe contener al menos un genero`
+    }
+
 
     await exsBook.save();
 

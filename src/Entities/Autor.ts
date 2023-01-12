@@ -8,7 +8,7 @@ export class Autor extends BaseEntity {
 
     @Field(type => Int, {nullable:true})
     @PrimaryColumn({unique: true})
-    dni_autor!: number;
+    id_autor!: number;
 
     @Field()
     @Column()

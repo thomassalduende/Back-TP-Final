@@ -9,10 +9,8 @@ import { Editorial } from "./Entities/Editorial";
 import { Envio } from "./Entities/Envio";
 import { Factura } from "./Entities/Factura";
 import { Genero } from "./Entities/Genero";
-import { IdAutor } from "./Entities/IdAutor";
 import { LineaCarrito } from "./Entities/LineaCarrito";
 import { LineaFactura } from "./Entities/LineaFactura";
-import { Oferta } from "./Entities/Oferta";
 import { Provincia } from "./Entities/Provincia";
 import { Valoracion } from "./Entities/Valoracion";
 
@@ -27,8 +25,8 @@ export const ConnectionBD = new DataSource({
     database: DB_DATABASE,
     entities: [Autor, Books, Carrito,
          Ciudad, CuponDeDescuento, Editorial, 
-         Envio, Factura, Genero, IdAutor, 
-         LineaCarrito, LineaFactura, Oferta, 
+         Envio, Factura, Genero, 
+         LineaCarrito, LineaFactura, 
          Provincia, Users, Valoracion],
     synchronize: true,
     logging: true

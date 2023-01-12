@@ -1,10 +1,10 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import { getAllUsers } from "./Querys/User/getAllUsers";
 import { getUserID } from "./Querys/User/getUserID";
-import { CreateUser } from "./Mutations/User/createUser";
+
 import { DeleteUser } from "./Mutations/User/deleteUser";
 import { UpdateUser } from "./Mutations/User/updateUser";
-import { CreateBook } from "./Mutations/Book/createBook";
+
 import { DeleteBook } from "./Mutations/Book/deleteBook";
 import { UpdateBook } from "./Mutations/Book/updateBook";
 import { getAllBook } from "./Querys/Book/getAllBook";
@@ -30,7 +30,7 @@ const Mutations = new GraphQLObjectType({
         DeleteUser: DeleteUser,
         UpdateUser: UpdateUser,
 
-        CreateBook: CreateBook,
+        
         DeleteBook: DeleteBook,
         UpdateBook: UpdateBook,
     }

@@ -1,7 +1,9 @@
 import { Books } from "../../Entities/Books";
+import { Genero } from "../../Entities/Genero";
 import { insertAutor } from "../Autor/insertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
-import { insertGenero } from "../Genero/insertGenero";
+import { getElementByNombre } from "../Utilities/getElementByNombre";
+
 
 import { formatoFecha } from "../Utilities/formatoFecha";
 
@@ -16,8 +18,8 @@ export async function insertBook(isbn: string,
                                     fecha_ingreso: string,
                                     editorial: string,
                                     descuento: number = 0,
-                                    genero: string,
-                                    autor: string) 
+                                    generos: Array<string>,
+                                    autors: Array<any>) 
 {
     const book = new Books();
 
@@ -39,9 +41,25 @@ export async function insertBook(isbn: string,
         book.descuento = descuento;
     }
 
-    book.genero = await insertGenero(genero)
     book.editorial = await insertEditorial(editorial)
-    book.autor = await insertAutor(autor)
+
+    if (autors.length > 0){
+        book.autor = []
+
+        for (const autor of autors){
+            book.autor.push(await insertAutor(autor))
+        }
+    }
+
+    if (generos.length > 0){
+        book.genero = []
+
+        for (const genero of generos){
+            book.genero.push(await getElementByNombre(genero, Genero))
+        }
+    }else{
+        throw `El libro debe contener al menos un genero`
+    }
 
     await book.save();
 

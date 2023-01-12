@@ -57,7 +57,7 @@ export class Books extends BaseEntity {
         onDelete: 'RESTRICT'
     })
     @JoinColumn({name: 'id_genero'})
-    genero!: Genero;
+    genero!: Genero[];
 
     @OneToOne(() => Valoracion, (valoracion) => valoracion.books)
     valoracion!: Valoracion;
@@ -73,7 +73,7 @@ export class Books extends BaseEntity {
 
     @ManyToMany((type) => Autor)
     @Field(type => [Autor], {nullable: true})
-    @JoinColumn({name: 'dni_autor'})
+    @JoinColumn({name: 'id_autor'})
     autor!: Autor[];
 
     @ManyToMany(() => LineaCarrito)

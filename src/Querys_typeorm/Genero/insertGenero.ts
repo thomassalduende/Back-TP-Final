@@ -1,7 +1,8 @@
 import { existsNombre } from "../Utilities/Exists";
 import { Genero } from "../../Entities/Genero";
+import { getElementByNombre } from "../Utilities/getElementByNombre";
 
-export async function insertGenero(nombreGenero: string, url_imagen: string) {
+export async function insertGenero(nombreGenero: string, url_imagen: string) : Promise<Genero>{
 
     const existeGenero = existsNombre(nombreGenero, Genero)
 
@@ -12,5 +13,7 @@ export async function insertGenero(nombreGenero: string, url_imagen: string) {
 
         await genero.save()
     }
+
+    return getElementByNombre(nombreGenero, Genero)
 
 }
