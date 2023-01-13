@@ -1,4 +1,4 @@
-import { insertCiudad } from "../../../Querys_typeorm/Ciudad/insertCiudad";
+import { insertCiudad } from "../../../TypeOrm/Mutations/Ciudad/insertCiudad";
 import { Send } from "../../../TypesDefs/Send";
 
 

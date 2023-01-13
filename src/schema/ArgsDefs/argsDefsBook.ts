@@ -1,4 +1,4 @@
-import { ArgsType, Field, Float, Int } from "type-graphql";
+import { ArgsType, Field, Float} from "type-graphql";
 
 @ArgsType()
 export class ArgsGetBook {

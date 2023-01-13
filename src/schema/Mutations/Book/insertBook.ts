@@ -1,4 +1,4 @@
-import { insertBook } from "../../../Querys_typeorm/Book/insertBook";
+import { insertBook } from "../../../TypeOrm/Mutations/Book/insertBook";
 import { SendBook } from "../../../TypesDefs/SendBook";
 
 export async function InsertBook(isbn: string, 

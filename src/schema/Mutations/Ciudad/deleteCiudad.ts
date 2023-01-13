@@ -1,4 +1,4 @@
-import { deleteCiudad } from "../../../Querys_typeorm/Ciudad/deleteCiudad";
+import { deleteCiudad } from "../../../TypeOrm/Mutations/Ciudad/deleteCiudad";
 import { Send } from "../../../TypesDefs/Send";
 
 export async function DeleteCiudad(nombre: string) {

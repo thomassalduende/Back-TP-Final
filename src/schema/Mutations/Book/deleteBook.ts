@@ -1,19 +1,24 @@
-import {GraphQLString, GraphQLNonNull, GraphQLID} from 'graphql';
-import { Books } from '../../../Entities/Books';
+import { measureMemory } from "vm";
+import { deleteBook } from "../../../TypeOrm/Mutations/Book/deleteBook";
+import { Send } from "../../../TypesDefs/Send";
 
 
-export const DeleteBook = {
-    type: GraphQLString,
-    args: {
-        isbn: {type: new GraphQLNonNull(GraphQLID)},
-    },
-    async resolve(_:any, args: any) {
-        // const result = await deleteUser(args.dni);
-        const result = await Books.delete(args.isbn);
-        if (result.affected === 1) 
-        return `LIBRO CON ISBN: ${args.isbn}, ELIMINADO`;
+export async function DeleteBook(isbn: string) {
 
-        console.log(result)
-        return `LIBRO CON ISBN: ${args.isbn}, NO ENCONTRADO`;
+    const message = new Send()
+
+    try{
+        await deleteBook(isbn)
+
+        message.message = 'EL LIBRO FUE ELIMINADO CON EXITO';
+        message.success = true;
+
+        return message;
+    }catch(error: any){
+        message.message = error;
+        message.success = false;
+
+        return message;
     }
+    
 }
