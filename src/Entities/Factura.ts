@@ -1,7 +1,8 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, JoinColumn } from "typeorm";
 import { ObjectType, Field, ID, Float } from "type-graphql";
 import { CuponDeDescuento } from "./CuponDeDescuento";
 import { Envio } from "./Envio";
+import { Users } from "./Users";
 
 @ObjectType()
 @Entity()
@@ -36,4 +37,10 @@ export class Factura extends BaseEntity{
         onUpdate: 'CASCADE'
     })
     envio!: Envio;
+
+    @ManyToOne((type) => Users, {
+        onUpdate: 'CASCADE'
+    })
+    @JoinColumn({name: 'dni'})
+    users!: Users;
 }
