@@ -2,6 +2,8 @@ import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, JoinColum
 import { ObjectType, Field, } from "type-graphql";
 import { Users } from "./Users";
 import { LineaCarrito } from "./LineaCarrito";
+import { CuponDeDescuento } from "./CuponDeDescuento";
+
 
 @ObjectType()
 @Entity()
@@ -10,10 +12,6 @@ export class Carrito extends BaseEntity{
     @Field({nullable: true})
     @PrimaryGeneratedColumn()
     id_carrito!: number;
-
-    @Field(type => Users, {nullable: true})
-    @Column({unique: true})
-    dni!: number;
 
     @OneToOne(() => Users, (users) => users.carrito,{
         onUpdate: 'CASCADE'
@@ -25,4 +23,12 @@ export class Carrito extends BaseEntity{
         onUpdate: 'CASCADE'
     })
     carrito!: LineaCarrito;
+
+    @Field(type => CuponDeDescuento)
+    @OneToOne((type) => CuponDeDescuento, (cupon) => cupon.codigo, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
+    @JoinColumn({name: 'codigo'})
+    cupon: CuponDeDescuento;
 }
