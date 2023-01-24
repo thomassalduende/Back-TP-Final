@@ -36,7 +36,6 @@ export class Users extends BaseEntity{
     @Column({default: false})
     es_admin!:boolean;
 
-
     @OneToMany(() => Ciudad, (ciudad)=> ciudad.users, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
