@@ -44,12 +44,15 @@ export class Users extends BaseEntity{
     ciudad!: Ciudad;
 
     @OneToOne((type) => Valoracion, (valoracion) => valoracion.users, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     valoracion!: Valoracion;
 
+    @Field(type => Carrito)
     @OneToOne((type) => Carrito, (carrito) => carrito.users, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     carrito!: Carrito;
 

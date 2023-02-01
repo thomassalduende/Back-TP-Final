@@ -1,9 +1,10 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { ObjectType, Field, ID, Float, Int } from "type-graphql";
 import { CuponDeDescuento } from "./CuponDeDescuento";
 import { Envio } from "./Envio";
 import { Users } from "./Users";
 import { Books } from "./Books";
+import { Factura_detalle } from "./Factura_detalllada";
 
 @ObjectType()
 @Entity()
@@ -11,15 +12,11 @@ export class Factura extends BaseEntity{
 
     @Field(type => ID)
     @PrimaryGeneratedColumn()
-    id_cliente!: number;
+    id!: number;
 
     @Field(type => String)
     @Column()
-    fecha!: string;
-
-    @Field(type => Int, {nullable: true}) 
-    @Column()
-    cantidad!: number;
+    fecha!: String;
 
     @Field(type => Float)
     @Column({
@@ -29,18 +26,23 @@ export class Factura extends BaseEntity{
     })
     monto!: number;
 
-    @Field()
-    @Column({type: 'varchar'})
-    modo_pago: string;
+    @Column({type: "varchar"})
+    paymentID_MP!: string;
 
-    @OneToOne((type) => CuponDeDescuento, (cupon) => cupon.id_factura, {
-        onUpdate: 'CASCADE'
+    @Field(type => CuponDeDescuento)
+    @ManyToOne((type) => CuponDeDescuento, (cupon) => cupon.id_factura, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
+    @JoinColumn({name: 'cupon'})
     cupon!: CuponDeDescuento;
 
+    @Field(type => Envio)
     @OneToOne((type) => Envio, (envio) => envio.cod_postal, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
+    @JoinColumn({name: 'cod_postal'})
     envio!: Envio;
 
     @ManyToOne((type) => Users, {
@@ -56,4 +58,11 @@ export class Factura extends BaseEntity{
     })
     @JoinColumn({name: 'isbn'})
     book!: Books
+
+    @Field(type => [Factura_detalle])
+    @OneToMany((type) => Factura_detalle, (factura_detalle) => factura_detalle.factura, {
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
+    })
+    factura_detalle: Factura_detalle[]
 }
