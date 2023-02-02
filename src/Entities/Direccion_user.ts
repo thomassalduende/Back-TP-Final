@@ -13,6 +13,18 @@ export class Direccion extends BaseEntity{
 
     @Field()
     @Column()
+    nombre: string;
+
+    @Field()
+    @Column()
+    apellido: string;
+    
+    @Field(type => Int)
+    @Column({type: 'bigint'})
+    dni!: number;
+
+    @Field()
+    @Column()
     direccion!: string;
 
     @Field()

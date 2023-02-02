@@ -12,3 +12,6 @@ export const DB_PORT = process.env.DB_PORT
 
 export const ACCESS_TOKEN_MP = process.env.ACCESS_TOKEN_MP
 export const PUBLIC_KEY = process.env.PUBLIC_KEY
+
+export const EMAIL_BS = process.env.MAIL
+export const PASS_EMAIL = process.env.PASS_EMAIL
