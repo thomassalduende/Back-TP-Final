@@ -5,13 +5,12 @@ import { Genero } from "../../../Entities/Genero";
 
 export async function deleteGenero(nombreGenero: string) {
 
-    const existeGenero = existsNombre(nombreGenero, Genero)
-
-    if (!existeGenero)
-        throw `ERROR, NO EXISTE EL GENERO ${nombreGenero}`
-
-
     const genero = await getElementByNombre(nombreGenero, Genero)
 
+    if (!genero){
+
+        throw `ERROR, NO EXISTE EL GENERO ${nombreGenero}`
+    }
+        
     await genero[0].remove()
 }

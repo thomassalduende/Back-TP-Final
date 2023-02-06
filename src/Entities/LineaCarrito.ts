@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, Column, PrimaryColumn, ManyToOne, JoinColumn, OneToMany, OneToOne } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Carrito } from "./Carrito";
 import { Books } from "./Books";
@@ -9,7 +9,7 @@ import { LineaFactura } from "./LineaFactura";
 export class LineaCarrito extends BaseEntity{
 
     @Field(type => ID)
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id_venta!: number;
 
     @Field()

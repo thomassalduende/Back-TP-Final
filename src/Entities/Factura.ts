@@ -6,6 +6,7 @@ import { Users } from "./Users";
 import { Books } from "./Books";
 import { Factura_detalle } from "./Factura_detalllada";
 
+
 @ObjectType()
 @Entity()
 export class Factura extends BaseEntity{
@@ -65,4 +66,5 @@ export class Factura extends BaseEntity{
         onDelete: 'RESTRICT'
     })
     factura_detalle: Factura_detalle[]
+
 }
