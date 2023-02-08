@@ -54,4 +54,5 @@ export async function getAutor(args: any) {
         return GetAutorID(args.id_autor)
     }
     return GetAllAutores()
+
 }

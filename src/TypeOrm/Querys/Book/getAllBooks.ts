@@ -8,4 +8,6 @@ export async function getAllBooks() {
             genero: true
         }
     })
+
+    return books;
 }

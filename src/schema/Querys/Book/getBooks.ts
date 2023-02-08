@@ -94,7 +94,27 @@ async function GetBookNombre(nombre: string) {
     }
 }
 
+async function GetAllBooks() :Promise<SendBook>{
 
+    const message = new SendBook()
+
+    try{
+
+        const book = await getAllBooks()
+
+        message.message = 'Books Obtenidos'
+        message.success = true;
+        message.book = book
+
+        return message
+
+    }catch(error: any){
+        message.message = error;
+        message.success = false;
+        
+        return message;
+    }
+}
 
 export async function getBooks(args: any) {
 
@@ -111,6 +131,6 @@ export async function getBooks(args: any) {
         return await GetBookNombre(args.nombre)
     }
 
-    return getAllBooks() 
+    return GetAllBooks() 
 }
 
