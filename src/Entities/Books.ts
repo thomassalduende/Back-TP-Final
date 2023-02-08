@@ -77,7 +77,10 @@ export class Books extends BaseEntity {
     @JoinColumn({name: 'id_editoral'})
     editorial!: Editorial;
 
-    @ManyToMany((type) => Autor)
+    @ManyToMany((type) => Autor, (autor) => autor.id_autor,{
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
     @Field(type => [Autor], {nullable: true})
     @JoinColumn({name: 'id_autor'})
     autor!: Autor[];
