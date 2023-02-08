@@ -47,6 +47,28 @@ async function GetFacturaID(id: number) {
     
 }
 
+async function GetAllFacturas() {
+
+    const message = new SendFactura()
+
+    try{
+        const factura = await getAllFactura()
+
+        message.message = 'Factura obtenida'
+        message.success = false;
+        message.factura = factura
+
+        return message;
+    }catch(error: any){
+
+        message.message = error;
+        message.success = false;
+
+        return message;
+    }
+    
+}
+
 
 export async function getFacturas(args: any) {
 
@@ -59,5 +81,5 @@ export async function getFacturas(args: any) {
         return await GetFacturaID(args.id)
     }
     
-    return await getAllFactura()
+    return await GetAllFacturas()
 }
