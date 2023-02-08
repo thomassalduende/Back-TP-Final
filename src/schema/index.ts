@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import { getAllUsers } from "./Querys/User/getAllUsers";
-import { getUserID } from "./Querys/User/getUserID";
+import { getUserID } from "./Querys/User/getLoginUser";
 
 import { DeleteUser } from "./Mutations/User/deleteUser";
 import { UpdateUser } from "./Mutations/User/updateUser";

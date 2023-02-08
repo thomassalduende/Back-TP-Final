@@ -7,9 +7,23 @@ import { Carrito } from "../../../Entities/Carrito";
 export async function IniciarSesionRedSocial(nombre: string, apellido: string, dni: number, email: string, password: string) {
 
     let user = await Users.find({
+        relations:{
+            direccion:{
+                ciudad: true
+            },
+            notificacion: true,
+            carrito: true,
+            factura: true
+        },
         where: {
             email: ILike(`${email}`),
             password: password
+        },
+
+        order: {
+            notificacion: {
+                id: "DESC"
+            }
         }
     })
 

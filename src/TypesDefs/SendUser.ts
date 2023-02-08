@@ -6,7 +6,7 @@ import { Send } from "./Send";
 export class SendUser extends Send {
 
     @Field()
-    tokerUsuario: string = ''
+    accessToken: string = ''
 
     @Field(type => Users)
     user?: Users

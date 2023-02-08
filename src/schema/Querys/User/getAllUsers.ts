@@ -1,15 +1,26 @@
 // query que obtiene todos los usuarios
-import { Users } from "../../../Entities/Users"
-import { GraphQLList } from "graphql";
-import { User } from "../../TypeDefs/User";
+import { measureMemory } from "vm";
+import { getAllUsuarios } from "../../../TypeOrm/Querys/Usuario/getAllUsuarios";
+import { SendUser } from "../../../TypesDefs/SendUsers";
 
+export async function GetAllUsers():Promise<SendUser> {
 
-export const getAllUsers = {
-    type: new GraphQLList(User),
-    async resolve(){
-        // const result = await GetAllUsers()
-        const result = await Users.find()
+    const message = new SendUser()
+
+    try{
+        const users = await getAllUsuarios()
+
+        message.message = 'Users obtenidos'
+        message.success = true;
+        message.users = users;
+
+        return message;
+    }catch(error: any){
         
-        return result;
+        message.message = error;
+        message.success = false
+
+        return message;
     }
+    
 }

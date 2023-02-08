@@ -2,17 +2,32 @@ import { Users } from "../../../Entities/Users";
 import { ILike } from "typeorm";
 
 
-export async function IniciarSesion(dni: number, email: string, password: string) {
+export async function IniciarSesion(email: string, password: string) {
 
     const usuario = await Users.find({
-        where: {
+
+        relations:{
+            direccion:{
+                ciudad: true
+            },
+            notificacion: true,
+            carrito: true,
+            factura: true
+        },
+        
+       where:{
             email: ILike(`${email}`),
-            dni: dni,
             password: password
+        },
+
+        order: {
+            notificacion: {
+                id: "DESC"
+            }
         }
     })
 
-    if (!usuario){
+    if (!usuario[0]){
         throw "ERROR, CORREO, DNI O CONTRASEÑA INVALIDAS"
     }
     
