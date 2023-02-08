@@ -8,6 +8,7 @@ import { Valoracion } from "./Valoracion";
 import { LineaCarrito } from "./LineaCarrito";
 import { Factura } from "./Factura";
 import { Opiniones } from "./Opinion_user"
+import { Factura_detalle } from "./Factura_detalllada";
 
 @ObjectType()
 @Entity()
@@ -61,8 +62,11 @@ export class Books extends BaseEntity {
     @JoinColumn({name: 'id_genero'})
     genero!: Genero[];
 
-    @OneToOne(() => Valoracion, (valoracion) => valoracion.books)
-    valoracion!: Valoracion;
+    @OneToMany(() => Valoracion, (valoracion) => valoracion.books, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
+    public valoracion!: Valoracion[];
 
     
     @Field(type => Editorial, {nullable: true})
@@ -78,15 +82,12 @@ export class Books extends BaseEntity {
     @JoinColumn({name: 'id_autor'})
     autor!: Autor[];
 
-    @ManyToMany(() => LineaCarrito)
-    @JoinTable()
-    books!: Books[];
-
-    @OneToMany((type) => Factura, (factura) => factura.book, {
+    
+    @OneToMany((type) => Factura_detalle, (factura_detalle) => factura_detalle.book, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
-    public factura: Factura[];
+    public factura_detalle: Factura_detalle[];
 
     @Field(type => [Opiniones])
     @OneToMany((type) => Opiniones, (opiniones) => opiniones.book, {

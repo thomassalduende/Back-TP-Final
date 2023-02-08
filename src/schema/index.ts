@@ -7,7 +7,7 @@ import { UpdateUser } from "./Mutations/User/updateUser";
 
 import { DeleteBook } from "./Mutations/Book/deleteBook";
 import { UpdateBook } from "./Mutations/Book/updateBook";
-import { getAllBook } from "./Querys/Book/getAllBook";
+import { getAllBook } from "./Querys/Book/getBooks";
 import { getBookISBN } from "./Querys/Book/getBookISBN";
 import { getBookNombre } from "./Querys/Book/getBookNombre";
 

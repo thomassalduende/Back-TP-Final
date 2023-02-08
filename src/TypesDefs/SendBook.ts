@@ -12,6 +12,6 @@ export class SendBook extends Send {
     valoracion: number = 0
 
     @Field(type => [Books])
-    book: Books[] = []
+    book?: Books[]
 
 }
