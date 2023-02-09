@@ -15,6 +15,10 @@ import { Provincia } from "./Entities/Provincia";
 import { Valoracion } from "./Entities/Valoracion";
 
 import { DB_USERNAME,DB_PASSWORD, DB_DATABASE, DB_HOST, DB_PORT } from "./config";
+import { Factura_detalle } from "./Entities/Factura_detalllada";
+import { Direccion } from "./Entities/Direccion_user";
+import { Opiniones } from "./Entities/Opinion_user";
+import { Notificacion } from "./Entities/NotificarUser";
 
 export const ConnectionBD = new DataSource({
     type: 'postgres',
@@ -27,7 +31,10 @@ export const ConnectionBD = new DataSource({
          Ciudad, CuponDeDescuento, Editorial, 
          Envio, Factura, Genero, 
          LineaCarrito, LineaFactura, 
-         Provincia, Users, Valoracion],
+         Provincia, Users, Valoracion, 
+         Factura_detalle, Direccion, Opiniones, 
+         Notificacion],
+
     synchronize: true,
     logging: true
 })
