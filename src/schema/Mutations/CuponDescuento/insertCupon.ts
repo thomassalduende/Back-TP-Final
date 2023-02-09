@@ -13,8 +13,11 @@ export async function insertCuponDescuento(codigo_cupon: string, cantidad_desc: 
         message.success = true
 
         return message;
-    }catch(error){
+    }catch(error: any){
 
-        return error;
+        message.message = error;
+        message.success = false;
+
+        return message;
     }
 }

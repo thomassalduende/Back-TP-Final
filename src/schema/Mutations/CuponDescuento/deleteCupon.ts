@@ -14,7 +14,11 @@ export async function deleteCupon(codigo: string) {
 
         return message;
         
-    }catch(error){
-        return error;
+    }catch(error: any){
+        
+        message.message = error;
+        message.success = false;
+
+        return message;;
     }  
 }
