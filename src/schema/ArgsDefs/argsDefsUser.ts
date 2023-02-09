@@ -97,17 +97,17 @@ export class ArgsUpdateUser {
     tokenUser: string;
 
     @Field()
-    nombre: string
+    nombre: string;
 
     @Field()
-    apellido: string
+    apellido: string;
 
     @Field()
-    email_orig: string
+    email_orig: string;
 
     @Field()
-    email: string
+    email: string;
 
     @Field()
-    password: string
+    password: string;
 }
