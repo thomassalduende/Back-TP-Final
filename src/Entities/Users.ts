@@ -36,7 +36,7 @@ export class Users extends BaseEntity{
     @Column({default: false})
     es_admin!:boolean;
 
-    @OneToMany(() => Ciudad, (ciudad)=> ciudad.users, {
+    @OneToMany(() => Ciudad, (ciudad)=> ciudad.cod_postal, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })

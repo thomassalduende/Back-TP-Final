@@ -5,6 +5,7 @@ import { Envio } from "./Envio";
 import { Users } from "./Users";
 import { Books } from "./Books";
 import { Factura_detalle } from "./Factura_detalllada";
+import { Ciudad } from "./Ciudad";
 
 
 @ObjectType()
@@ -38,12 +39,20 @@ export class Factura extends BaseEntity{
     @JoinColumn({name: 'cupon'})
     cupon!: CuponDeDescuento;
 
-    @Field(type => Envio)
-    @OneToOne((type) => Envio, (envio) => envio.cod_postal, {
+    @Field(type => Ciudad)
+    @OneToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
+    ciudad!: Ciudad;
+
+    @Field(type => Envio)
+    @OneToOne((type) => Envio, (envio) => envio.id, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
+    @JoinColumn({name: 'id_envio'})
     envio!: Envio;
 
     @ManyToOne((type) => Users, {
@@ -66,5 +75,4 @@ export class Factura extends BaseEntity{
         onDelete: 'RESTRICT'
     })
     factura_detalle: Factura_detalle[]
-
 }

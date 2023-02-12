@@ -15,15 +15,13 @@ export class Ciudad extends BaseEntity{
     @Column()
     nombre!: string;
 
-    @OneToMany(() => Users, (users)=> users.ciudad)
-    users: Users[];
-
     @Field(type => Provincia, {nullable: true}) 
     @ManyToOne(() => Provincia, (provincia) => provincia.ciudad, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'id_provincia'})
     provincia!: Provincia;
+    
     
     
    

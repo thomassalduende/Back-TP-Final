@@ -104,7 +104,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             }
 
             await envio.save()
-            array_factura.envio = envio
+            array_factura.envio = envio;
             await array_factura.save()
 
 

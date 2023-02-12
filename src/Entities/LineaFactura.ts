@@ -1,6 +1,7 @@
 import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
 import { ObjectType, Field, ID, Float, Int } from "type-graphql";
 import { LineaCarrito } from "./LineaCarrito";
+import { Books } from "./Books";
 import { Carrito } from "./Carrito";
 
 @ObjectType()
@@ -23,18 +24,18 @@ export class LineaFactura extends BaseEntity{
     })
     precio_unitario!: number;
 
-    @Field(type => [LineaCarrito])
-    @OneToOne((type) => LineaCarrito, (isbn) => isbn.isbn, {
+    @Field(type => [Books])
+    @OneToOne((type) => Books, (book) => book.isbn, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
-    isbn!: LineaCarrito;
+    isbn!: Books;
 
-    @Field(type => [LineaCarrito])
-    @OneToMany((type) => LineaCarrito, (linea_carrito) =>linea_carrito.id_carrito, {
+    @Field(type => [Carrito])
+    @OneToMany((type) => Carrito, (carrito) =>carrito.id_carrito, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'id_carrito'})
-    linea_carrito!: LineaCarrito[];
+    carrito!: Carrito[];
     
 }
