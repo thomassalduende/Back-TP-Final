@@ -71,9 +71,9 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
     
 }
 
-export async function realizarCompra(dni: number) {
+export async function realizarCompra(dni: number): Promise<string>{
 
-    let response = ""
+    let res = ""
 
     const user = await getCarrito(dni)
 
@@ -81,7 +81,7 @@ export async function realizarCompra(dni: number) {
 
         const items = Items(user[0])
 
-        response = await CrearLinkMercadoPago(user[0], items)
+        res = await CrearLinkMercadoPago(user[0], items)
     }
-    
+    return res;
 }

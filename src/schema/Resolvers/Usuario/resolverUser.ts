@@ -1,9 +1,21 @@
 import { Resolver, Args, Arg, Query, Mutation } from "type-graphql";
-import { ArgsLogin, IniciarSesion, ArgsInsertCupon, ArgsInsertDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser } from "../../ArgsDefs/argsDefsUser";
+import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser } from "../../ArgsDefs/argsDefsUser";
 import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
-import {}
+import { registrarse } from "../../Mutations/User/registrarse";
+import { DeleteUser } from "../../Mutations/User/DeleteUser";
+import { agregarItem } from "../../Mutations/User/agregarItem";
+import { DeleteItem } from "../../Mutations/User/DeleteItem";
+import { QuitarItem } from "../../Mutations/User/QuitarItem";
+import { AgregarDireccion } from "../../Mutations/User/AgregarDireccion";
+import { SendCupones } from "../../../TypesDefs/SendCupones";
+import { AgregarCupon } from "../../Mutations/User/AgregarCupon";
+import { SendMercadoPago } from "../../../TypesDefs/SendMercadoPago";
+import { RealizarCompra } from "../../Mutations/User/RealizarCompra";
+import { UpdateUser } from "../../Mutations/User/updateUser";
+import { getLoginUser } from "../../Querys/User/getLoginUser";
+import { GetAllUsers } from "../../Querys/User/getAllUsers";
 
 
 
@@ -12,5 +24,72 @@ import {}
 export class UserResolver {
 
     @Mutation(() => SendUser)
-    async iniciarSesion(@Args() {nombre, apellido, email, password})
+    async registrarse(@Args() {nombre, apellido,dni, email, password}: ArgsRegistrarse){
+
+        return await registrarse(nombre, apellido, dni, email, password)
+    }
+
+    @Mutation(() => Send)
+    async updateUser(@Args() args: ArgsUpdateUser){
+
+        return await UpdateUser(args)
+    }
+
+    @Mutation(() => Send)
+    async deleteUsuario(@Arg('tokenUser') tokenUser: string){
+
+        return await DeleteUser(tokenUser)
+    }
+
+    @Mutation(() => Send)
+    async AgregarItem(@Args() {isbn, cantidad, tokenUser}: ArgsAgregarItem){
+
+        return await agregarItem(isbn, cantidad, tokenUser);
+    }
+
+    @Mutation(() => Send)
+    async quitarItem(@Args() {isbn, cantidad, tokenUser}: ArgsAgregarItem){
+
+        return await QuitarItem(isbn, cantidad, tokenUser)
+    }
+
+    @Mutation(() => Send)
+    async deleteItem(@Args() {isbn, tokenUser}: ArgsDeleteItem){
+
+        return await DeleteItem(isbn, tokenUser)
+    }
+
+    @Mutation(() => SendUser)
+    async agregarDireccionUser(@Args() {tokenUser, direccion, AgregarInfo, telefono, cod_postal }:ArgsAgregarDireccion){
+
+        return await AgregarDireccion(tokenUser, direccion, AgregarInfo, telefono, cod_postal)
+    }
+
+    @Mutation(() => SendCupones)
+    async agregarCupon(@Args() {codigo, tokenUser}: ArgsAgregarCupon){
+
+        return await AgregarCupon(codigo, tokenUser)
+    }
+
+    @Mutation(() => SendMercadoPago)
+    async realizarCompra(@Arg('tokenUser') tokenUser: string){
+
+        return await RealizarCompra(tokenUser)
+    }
+
+    @Query(() => SendUser)
+    async LoginUser(@Args() args: ArgsLogin){
+
+        return getLoginUser(args)
+    }
+
+    @Query(() => SendUser)
+    async GetAllUser(){
+
+        return await GetAllUsers()
+    }
+
+
+
+
 }

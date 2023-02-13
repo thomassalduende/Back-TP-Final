@@ -30,7 +30,7 @@ export class IniciarSesion {
 }
 
 @ArgsType()
-export class ArgsInsertCupon {
+export class ArgsAgregarCupon {
 
     @Field()
     codigo: string;
@@ -40,16 +40,33 @@ export class ArgsInsertCupon {
 }
 
 @ArgsType()
-export class ArgsInsertDireccion {
+export class ArgsDeleteItem {
 
     @Field()
-    tokerUser: string;
+    isbn: string;
 
     @Field()
-    nombre: string;
+    tokenUser: string;
+}
+
+@ArgsType()
+export class ArgsAgregarItem {
 
     @Field()
-    apellido: string;
+    isbn: string;
+
+    @Field()
+    cantidad: number;
+
+    @Field()
+    tokenUser: string;
+}
+
+@ArgsType()
+export class ArgsAgregarDireccion {
+
+    @Field()
+    tokenUser: string;
 
     @Field()
     direccion: string;
@@ -88,6 +105,23 @@ export class ArgsValorar {
 
     @Field()
     tokenUser: string;
+}
+@ArgsType()
+export class ArgsRegistrarse {
+    @Field()
+    nombre: string;
+
+    @Field()
+    apellido: string;
+
+    @Field()
+    dni: number;
+
+    @Field()
+    email: string;
+
+    @Field()
+    password: string;
 }
 
 @ArgsType()
