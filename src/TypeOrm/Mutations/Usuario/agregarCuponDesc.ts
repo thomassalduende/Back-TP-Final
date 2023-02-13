@@ -1,7 +1,7 @@
 import { CuponDeDescuento } from "../../../Entities/CuponDeDescuento";
 import { Users } from "../../../Entities/Users";
 
-export async function insertCuponDesc(codigo: string, dni: number) {
+export async function agregarCuponDesc(codigo: string, dni: number) {
 
     let usuario = await Users.find({
         relations: {

@@ -24,11 +24,7 @@ export async function agregarBookaCarrito( isbn: string, cantidad: number, dni: 
         }
     });
 
-    let cupon = await CuponDeDescuento.find({
-        where: {
-            codigo: '-'
-        }
-    });
+    
 
     let cantidadItem = 0;
 
