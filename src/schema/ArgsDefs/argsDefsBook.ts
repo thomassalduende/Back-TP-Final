@@ -31,7 +31,7 @@ export class ArgsInsertBook {
     nombre: string
 
     @Field(type => Float)
-    precio: string
+    precio: number
 
     @Field()
     stock: number
@@ -43,19 +43,22 @@ export class ArgsInsertBook {
     fecha_ingreso: string
 
     @Field()
+    editorial: string
+
+    @Field()
     descuento?: number
 
-    @Field()
-    genero: string
+    @Field(type => [String])
+    genero: Array<string>
 
-    @Field()
-    autor: string
+    @Field(type => [String])
+    autor: Array<string>
 }
 
 @ArgsType()
 export class ArgsUpdateBook {
 
-    @Field({nullable: true})
+    @Field()
     isbn_orig: string
 
     @Field()
@@ -68,7 +71,7 @@ export class ArgsUpdateBook {
     nombre: string
 
     @Field(type => Float)
-    precio: string
+    precio: number
 
     @Field()
     stock: number
@@ -76,15 +79,18 @@ export class ArgsUpdateBook {
     @Field()
     descripcion: string
 
-    @Field({nullable: true})
+    @Field()
     fecha_ingreso: string
 
-    @Field({nullable: true})
+    @Field()
+    editorial: string
+
+    @Field()
     descuento?: number
 
-    @Field()
-    genero: string
+    @Field(type => [String])
+    genero: Array<string>
 
-    @Field()
-    autor: string
+    @Field(type => [String])
+    autor: Array<string>
 }
