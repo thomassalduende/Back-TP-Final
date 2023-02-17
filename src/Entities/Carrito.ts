@@ -14,7 +14,8 @@ export class Carrito extends BaseEntity{
     id_carrito!: number;
 
     @OneToOne(() => Users, (users) => users.carrito,{
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE', 
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'dni'})
     users: Users;
