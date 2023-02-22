@@ -16,6 +16,8 @@ import { RealizarCompra } from "../../Mutations/User/RealizarCompra";
 import { UpdateUser } from "../../Mutations/User/updateUser";
 import { getLoginUser } from "../../Querys/User/getLoginUser";
 import { GetAllUsers } from "../../Querys/User/getAllUsers";
+import { AgregarOpinion } from "../../Mutations/User/agregarOpinion";
+import { DeleteOpinion } from "../../Mutations/User/deleteOpinion";
 
 
 
@@ -75,6 +77,18 @@ export class UserResolver {
     async realizarCompra(@Arg('tokenUser') tokenUser: string){
 
         return await RealizarCompra(tokenUser)
+    }
+
+    @Mutation(() => Send)
+    async agregarOpinion(@Args() {coment, isbn, tokenUser}: ArgsOpinion){
+
+        return await AgregarOpinion(coment, isbn, tokenUser)
+    }
+
+    @Mutation(() => Send)
+    async deleteOpinion(@Args() {isbn, tokenUser}: ArgsOpinion){
+
+        return await DeleteOpinion(isbn, tokenUser)
     }
 
     @Query(() => SendUser)

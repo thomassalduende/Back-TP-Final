@@ -1,0 +1,27 @@
+import { verify } from "jsonwebtoken";
+import { JWT_SECRET } from "../../../config";
+import { deleteOpinion } from "../../../TypeOrm/Mutations/Usuario/deleteOpinion";
+import { Send } from "../../../TypesDefs/Send";
+
+
+export async function DeleteOpinion(isbn: string, tokenUser: string) {
+
+    const message = new Send()
+
+    try{
+        const dni_user = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+
+        await deleteOpinion(dni_user, isbn)
+
+        message.message = "Opinion eliminada";
+        message.success = true;
+
+        return message;
+
+    }catch(error: any) {
+        message.message = error;
+        message.success = false;
+
+        return message;
+    }
+}

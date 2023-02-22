@@ -85,7 +85,7 @@ export class ArgsAgregarDireccion {
 export class ArgsOpinion {
 
     @Field()
-    opinion: string;
+    coment: string;
 
     @Field()
     isbn: string;

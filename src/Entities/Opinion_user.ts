@@ -18,13 +18,15 @@ export class Opiniones extends BaseEntity {
 
     @Field(type => Users)
     @ManyToOne((type) => Users, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'dni'})
+    @JoinColumn({name: 'dni_user'})
     users: Users;
 
     @ManyToOne((type) => Books, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     book: Books;
