@@ -16,7 +16,7 @@ export class Ciudad extends BaseEntity{
     nombre!: string;
 
     @Field(type => Provincia, {nullable: true}) 
-    @ManyToOne(() => Provincia, (provincia) => provincia.ciudad, {
+    @ManyToOne(() => Provincia, (provincia) => provincia.id_provicia, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

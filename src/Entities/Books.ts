@@ -56,7 +56,7 @@ export class Books extends BaseEntity {
 
 
     @Field(type => Genero)
-    @OneToMany(() => Genero, (genero) => genero.books, {
+    @OneToMany(() => Genero, (genero) => genero.id_genero, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })
@@ -71,7 +71,7 @@ export class Books extends BaseEntity {
 
     
     @Field(type => Editorial, {nullable: true})
-    @OneToOne(() => Editorial, (editorial) => editorial.books, {
+    @OneToOne(() => Editorial, (editorial) => editorial.id_editorial, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })
