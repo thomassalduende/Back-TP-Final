@@ -17,14 +17,14 @@ export class Opiniones extends BaseEntity {
     opinion!: string
 
     @Field(type => Users)
-    @ManyToOne((type) => Users, {
+    @ManyToOne((type) => Users, (users) => users.dni, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'dni_user'})
     users: Users;
 
-    @ManyToOne((type) => Books, {
+    @ManyToOne((type) => Books, (books) => books.isbn, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

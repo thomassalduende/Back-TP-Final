@@ -32,11 +32,11 @@ export class Factura extends BaseEntity{
     paymentID_MP!: string;
 
     @Field(type => CuponDeDescuento)
-    @ManyToOne((type) => CuponDeDescuento, (cupon) => cupon.id_factura, {
+    @ManyToOne((type) => CuponDeDescuento, (cupon) => cupon.codigo, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'cupon'})
+    @JoinColumn({name: 'cod_cupon'})
     cupon!: CuponDeDescuento;
 
     @Field(type => Ciudad)
@@ -55,14 +55,14 @@ export class Factura extends BaseEntity{
     @JoinColumn({name: 'id_envio'})
     envio!: Envio;
 
-    @ManyToOne((type) => Users, {
+    @ManyToOne((type) => Users, (user) => user.dni, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'dni'})
     users!: Users;
 
     @Field(type => Books)
-    @ManyToOne((type) => Books, {
+    @ManyToOne((type) => Books, (books) => books.isbn, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

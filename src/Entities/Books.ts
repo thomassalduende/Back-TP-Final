@@ -13,6 +13,7 @@ import { Factura_detalle } from "./Factura_detalllada";
 @ObjectType()
 @Entity()
 export class Books extends BaseEntity {
+    
     @Field(type => ID, {nullable: true})
     @PrimaryColumn()
     isbn!: string;

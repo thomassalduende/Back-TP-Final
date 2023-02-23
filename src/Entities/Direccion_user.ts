@@ -31,7 +31,7 @@ export class Direccion extends BaseEntity{
     @Column()
     telefono!: number;
 
-    @OneToOne((type) => Users, {
+    @OneToOne((type) => Users, (user) => user.dni, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })
@@ -39,7 +39,7 @@ export class Direccion extends BaseEntity{
     users!: Users;
 
     @Field(type => Ciudad)
-    @ManyToOne((type) => Ciudad, {
+    @ManyToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })

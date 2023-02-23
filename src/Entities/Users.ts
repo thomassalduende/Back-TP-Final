@@ -58,7 +58,8 @@ export class Users extends BaseEntity{
 
     @Field(type => Direccion)
     @OneToOne((type) => Direccion, (direccion) => direccion.users, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     direccion: Direccion;
 

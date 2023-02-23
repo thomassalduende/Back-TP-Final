@@ -13,7 +13,4 @@ export class Provincia extends BaseEntity{
     @Field()
     @Column()
     nombre!: string;
-
-    @OneToMany((type) => Ciudad, (ciudad) => ciudad.provincia)
-    ciudad: Ciudad[];
 }

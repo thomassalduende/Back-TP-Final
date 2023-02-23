@@ -13,7 +13,4 @@ export class Editorial extends BaseEntity{
     @Field()
     @Column({unique: true})
     nombre!: string;
-
-    @OneToOne((type) => Books, (books) => books.editorial)
-    books!: Books;
 }

@@ -15,13 +15,13 @@ export class Valoracion extends BaseEntity{
     @Column()
     cantidad_estrellas!: number;
 
-    @ManyToOne(() => Books, (books) => books.valoracion, {
+    @ManyToOne(() => Books, (books) => books.isbn, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     books!: Books[];
 
-    @ManyToOne(() => Users, (users) => users.valoracion, {
+    @ManyToOne(() => Users, (users) => users.dni, {
         onUpdate: 'CASCADE'
     })
     @JoinColumn({name: 'dni'})
