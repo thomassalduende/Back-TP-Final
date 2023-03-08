@@ -1,4 +1,4 @@
-import { Entity ,BaseEntity, PrimaryColumn, Column, JoinColumn, OneToOne, OneToMany} from "typeorm";
+import { Entity ,BaseEntity, Column, JoinColumn, OneToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Carrito } from "./Carrito";
 import { Ciudad } from "./Ciudad";
@@ -13,16 +13,12 @@ import { Factura } from "./Factura";
 export class Users extends BaseEntity{
 
     @Field(type => ID)
-    @PrimaryColumn({type: 'bigint'})
-    dni!:number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Field()
     @Column()
     nombre!: string;
-
-    @Field()
-    @Column()
-    apellido!: string;
 
     @Field()
     @Column({unique: true})
@@ -38,7 +34,7 @@ export class Users extends BaseEntity{
 
     @OneToMany(() => Ciudad, (ciudad)=> ciudad.cod_postal, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name:'cod_postal'})
     ciudad!: Ciudad;

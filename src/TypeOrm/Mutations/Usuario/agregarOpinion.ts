@@ -3,13 +3,13 @@ import { Opiniones } from "../../../Entities/Opinion_user";
 import { Books } from "../../../Entities/Books";
 
 
-export async function agregarOpinion(coment: string, isbn: string, dni: number) {
+export async function agregarOpinion(coment: string, isbn: string, id: number) {
 
     const opinion = new Opiniones()
 
     const user = await Users.find({
         where:{
-            dni: dni
+            id: id
         }
     });
 
@@ -19,7 +19,7 @@ export async function agregarOpinion(coment: string, isbn: string, dni: number) 
         }
     });
 
-    opinion.nombre_user = dni.toString();
+    opinion.nombre_user = id.toString();
     opinion.opinion = coment;
     opinion.users = user[0];
     opinion.book = book[0];

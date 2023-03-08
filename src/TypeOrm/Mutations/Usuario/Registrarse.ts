@@ -3,7 +3,7 @@ import { Carrito } from "../../../Entities/Carrito";
 import { ILike } from "typeorm";
 
 
-export async function Registrarse(nombre: string, apellido: string, dni: number, email: string, password: string) {
+export async function Registrarse(nombre: string, email: string, password: string) {
 
     let user = await Users.find({
         where: {
@@ -17,8 +17,6 @@ export async function Registrarse(nombre: string, apellido: string, dni: number,
 
     const usuario = new Users();
     usuario.nombre = nombre;
-    usuario.apellido = apellido;
-    usuario.dni = dni;
     usuario.email = email;
     usuario.password = password;
 

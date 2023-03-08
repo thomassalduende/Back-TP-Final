@@ -9,9 +9,9 @@ export async function AgregarDireccion(tokenUser:string, direccion: string, info
 
     try{
 
-        const dni_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        const user = await agregarDireccionUser(dni_user, direccion, info, telefono, cod_postal)
+        const user = await agregarDireccionUser(id_user, direccion, info, telefono, cod_postal)
 
         message.message = 'Direccion agregada'
         message.success = true;

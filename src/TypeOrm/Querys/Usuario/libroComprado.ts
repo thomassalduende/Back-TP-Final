@@ -1,6 +1,6 @@
 import { Factura } from "../../../Entities/Factura";
 
-export async function libroComprado (isbn: string, dni: number) {
+export async function libroComprado (isbn: string, id: number) {
 
     const comprado = await Factura.find({
         relations:{
@@ -11,7 +11,7 @@ export async function libroComprado (isbn: string, dni: number) {
         },
         where: {
             users: {
-                dni: dni
+                id: id
             },
             factura_detalle: {
                 book: {

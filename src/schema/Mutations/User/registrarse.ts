@@ -4,20 +4,20 @@ import { JWT_SECRET } from "../../../config";
 import { sign } from "jsonwebtoken";
 
 
-export async function registrarse(nombre: string, apellido: string, dni: number, email: string, password: string) {
+export async function registrarse(nombre: string, email: string, password: string) {
 
     const message = new SendUser()
 
     try{
 
-        const user = await Registrarse(nombre, apellido, dni, email, password)
+        const user = await Registrarse(nombre, email, password)
 
-        const dni_user: string = user[0].dni.toString()
+        const id_user: string = user[0].id.toString()
 
 
         message.message = 'User registrado'
         message.success = true;
-        message.accessToken = sign(dni_user, <string>JWT_SECRET);
+        message.accessToken = sign(id_user, <string>JWT_SECRET);
         message.user = user[0];
 
         return message;

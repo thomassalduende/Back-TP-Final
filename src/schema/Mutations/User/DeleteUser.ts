@@ -8,9 +8,9 @@ export async function DeleteUser(tokenUser: string) {
     const message = new Send()
 
     try {
-        const dni_user: number = parseInt(<string>verify(tokenUser,<string> JWT_SECRET))
+        const id: number = parseInt(<string>verify(tokenUser,<string> JWT_SECRET))
 
-        await deleteUser(dni_user)
+        await deleteUser(id)
 
         message.message = 'User eliminado'
         message.success = true;

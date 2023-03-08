@@ -33,7 +33,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
 
     let factura = new Factura()
 
-    const dniUser = items[0].dni
+    const id_user = items[0].id_user
 
     const obj_user = await Users.find({
         relations: {
@@ -46,7 +46,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             }
         },
         where: {
-            dni: dniUser
+            id: id_user
         }
     })
 
@@ -71,7 +71,6 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             const envio = new Envio()
 
             envio.nombre = usuario.direccion.nombre
-            envio.apellido = usuario.direccion.apellido
             envio.direccion = usuario.direccion.direccion
             envio.AgregarInfo = usuario.direccion.AgregarInfo
             envio.telefono = usuario.direccion.telefono
@@ -99,7 +98,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
                     .createQueryBuilder()
                     .update(Carrito)
                     .set({cupo: null})
-                    .where("dni =: dni", {dniUser: usuario.dni})
+                    .where("id =: id", {idUser: usuario.id})
                     .execute()
             }
 
@@ -126,7 +125,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
                 fac_detallada.book = carrito.book
                 fac_detallada.factura = array_factura
 
-                await deleteItem(dniUser, carrito.book.isbn)
+                await deleteItem(id_user, carrito.book.isbn)
                 await fac_detallada.save()
                 await book[0].save()
             }

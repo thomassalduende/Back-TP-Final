@@ -1,4 +1,4 @@
-import { agregarBookaCarrito } from "../../../TypeOrm/Mutations/Usuario/agregarBookaCarrito";
+import { AgregarItem } from "../../../TypeOrm/Mutations/Usuario/AgregarItem";
 import { Send } from "../../../TypesDefs/Send";
 import { verify } from "jsonwebtoken";
 import { JWT_SECRET } from "../../../config";
@@ -9,9 +9,9 @@ export async function agregarItem(isbn: string, cantidad: number, tokenUser: str
     const message = new Send()
 
     try{
-        const dni_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        await agregarBookaCarrito(isbn, cantidad, dni_user)
+        await AgregarItem(isbn, cantidad, id_user)
 
         message.message = 'Se agrego item correctamente'
         message.success = true;

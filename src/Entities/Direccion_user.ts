@@ -31,11 +31,11 @@ export class Direccion extends BaseEntity{
     @Column()
     telefono!: number;
 
-    @OneToOne((type) => Users, (user) => user.dni, {
+    @OneToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
     })
-    @JoinColumn({name: 'dni'})
+    @JoinColumn({name: 'id_user'})
     users!: Users;
 
     @Field(type => Ciudad)

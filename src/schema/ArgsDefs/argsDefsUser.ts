@@ -7,9 +7,6 @@ export class ArgsLogin {
     nombre: string = '';
 
     @Field()
-    apellido: string = '';
-
-    @Field()
     email: string = '';
 
     @Field()
@@ -112,12 +109,6 @@ export class ArgsRegistrarse {
     nombre: string;
 
     @Field()
-    apellido: string;
-
-    @Field()
-    dni: number;
-
-    @Field()
     email: string;
 
     @Field()
@@ -132,9 +123,6 @@ export class ArgsUpdateUser {
 
     @Field()
     nombre: string;
-
-    @Field()
-    apellido: string;
 
     @Field()
     email_orig: string;

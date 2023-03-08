@@ -4,7 +4,7 @@ export async function deleteFactura(id: number) {
 
     const factura = await Factura.find({
         where: {
-            id_cliente: id
+            id: id
         }
     })
 

@@ -9,9 +9,9 @@ export async function AgregarOpinion(coment: string, isbn: string, tokenUser: st
     const message = new Send()
 
     try{
-        const dni_user = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        await agregarOpinion(coment, isbn, dni_user)
+        await agregarOpinion(coment, isbn, id)
 
         message.message = "Opinion agregada correctamente";
         message.success = true;

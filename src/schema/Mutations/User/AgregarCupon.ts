@@ -9,9 +9,9 @@ export async function AgregarCupon(codigo: string, tokenUser: string) {
     const message = new SendCupones()
 
     try {
-        const dni_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        const cupon = await agregarCuponDesc(codigo, dni_user)
+        const cupon = await agregarCuponDesc(codigo, id_user)
 
         message.message = 'Cupon agregado'
         message.success = false;

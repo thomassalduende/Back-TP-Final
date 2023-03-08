@@ -9,9 +9,9 @@ export async function DeleteOpinion(isbn: string, tokenUser: string) {
     const message = new Send()
 
     try{
-        const dni_user = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        await deleteOpinion(dni_user, isbn)
+        await deleteOpinion(id, isbn)
 
         message.message = "Opinion eliminada";
         message.success = true;

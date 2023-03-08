@@ -9,9 +9,9 @@ export async function DeleteItem(isbn: string, tokenUser: string): Promise<Send>
     const message = new Send()
 
     try{
-        const dni_user: number = parseInt(<string> verify(tokenUser, <string>JWT_SECRET))
+        const id_user: number = parseInt(<string> verify(tokenUser, <string>JWT_SECRET))
         
-        await deleteItem(dni_user, isbn)
+        await deleteItem(id_user, isbn)
 
         message.message = 'Item eliminado'
         message.success = true;

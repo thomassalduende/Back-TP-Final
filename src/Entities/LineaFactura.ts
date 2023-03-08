@@ -26,14 +26,16 @@ export class LineaFactura extends BaseEntity{
 
     @Field(type => [Books])
     @OneToOne((type) => Books, (book) => book.isbn, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'isbn'})
     isbn!: Books;
 
     @Field(type => [Carrito])
     @OneToMany((type) => Carrito, (carrito) =>carrito.id_carrito, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_carrito'})
     carrito!: Carrito[];

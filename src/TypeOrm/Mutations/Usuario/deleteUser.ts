@@ -1,15 +1,15 @@
 import { Users } from "../../../Entities/Users";
 
-export async function deleteUser(dni: number) {
+export async function deleteUser(id: number) {
 
     const usuario = await Users.find({
         where: {
-            dni: dni
+            id: id
         }
     })
 
     if(!usuario[0]){
-        throw `ERROR, EL USUARIO CON DNI ${dni} NO EXISTE`
+        throw `ERROR, EL USUARIO CON DNI ${id} NO EXISTE`
     }
 
     await usuario[0].remove()

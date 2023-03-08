@@ -31,11 +31,11 @@ export class Envio extends BaseEntity{
     @Column()
     telefono!: number;
 
-    @OneToOne((type) => Users, (user) => user.dni, {
+    @OneToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'dni'})
+    @JoinColumn({name: 'id_user'})
     users!: Users;
 
     @Field(type => Ciudad)

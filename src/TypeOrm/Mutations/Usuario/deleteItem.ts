@@ -1,6 +1,6 @@
 import { Users } from "../../../Entities/Users";
 
-export async function deleteItem(dni: number, isbn: string) {
+export async function deleteItem(id: number, isbn: string) {
 
     const usuario = await Users.find({
         relations: {
@@ -11,7 +11,7 @@ export async function deleteItem(dni: number, isbn: string) {
             }
         },
         where: {
-            dni: dni
+            id: id
         }
     })
 

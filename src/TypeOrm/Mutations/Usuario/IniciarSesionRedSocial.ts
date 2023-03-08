@@ -4,7 +4,7 @@ import { Carrito } from "../../../Entities/Carrito";
 
 
 
-export async function IniciarSesionRedSocial(nombre: string, apellido: string, dni: number, email: string, password: string) {
+export async function IniciarSesionRedSocial(nombre: string, email: string, password: string) {
 
     let user = await Users.find({
         relations:{
@@ -32,8 +32,6 @@ export async function IniciarSesionRedSocial(nombre: string, apellido: string, d
 
         const usuario = new Users();
         usuario.nombre = nombre;
-        usuario.apellido = apellido;
-        usuario.dni = dni;
         usuario.password = password;
 
         await usuario.save()

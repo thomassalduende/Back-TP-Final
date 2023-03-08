@@ -1,10 +1,10 @@
 import { Users } from "../../../Entities/Users";
 
-export async function getUsuarioDNI(dni: number) {
+export async function getUsuarioID(id: number) {
 
     const usuario = await Users.find({
         where: {
-            dni: dni
+            id: id
         }
     })
 

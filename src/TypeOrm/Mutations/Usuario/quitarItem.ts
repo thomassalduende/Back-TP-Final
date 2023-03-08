@@ -1,6 +1,6 @@
 import { Users } from "../../../Entities/Users";
 
-export async function quitarItem(isbn: string, cantidad: number, dni: number) {
+export async function quitarItem(isbn: string, cantidad: number, id: number) {
 
     const user = await Users.find({
         relations: {
@@ -11,7 +11,7 @@ export async function quitarItem(isbn: string, cantidad: number, dni: number) {
             }
         },
         where: {
-            dni: dni
+            id: id
         }
     })
 

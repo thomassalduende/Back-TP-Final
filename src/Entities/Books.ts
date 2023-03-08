@@ -5,8 +5,6 @@ import { Editorial } from "./Editorial";
 import { Genero } from "./Genero";
 import { Autor } from "./Autor";
 import { Valoracion } from "./Valoracion";
-import { LineaCarrito } from "./LineaCarrito";
-import { Factura } from "./Factura";
 import { Opiniones } from "./Opinion_user"
 import { Factura_detalle } from "./Factura_detalllada";
 
@@ -53,7 +51,6 @@ export class Books extends BaseEntity {
         scale: 2,
     })
     descuento!: number;
-
 
     @Field(type => Genero)
     @OneToMany(() => Genero, (genero) => genero.id_genero, {

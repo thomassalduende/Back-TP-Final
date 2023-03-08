@@ -7,7 +7,7 @@ export async function getFacturaID(id: number) {
             book: true
         },
         where: {
-            id_cliente: id
+            id: id
         }
     })
 

@@ -1,14 +1,14 @@
 import { CuponDeDescuento } from "../../../Entities/CuponDeDescuento";
 import { Users } from "../../../Entities/Users";
 
-export async function agregarCuponDesc(codigo: string, dni: number) {
+export async function agregarCuponDesc(codigo: string, id: number) {
 
     let usuario = await Users.find({
         relations: {
             carrito: true
         },
         where: {
-            dni: dni
+            id: id
         }
     })
 

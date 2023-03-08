@@ -1,6 +1,6 @@
 import { Users } from "../../../Entities/Users";
 
-export async function deleteOpinion(dni: number, isbn: string) {
+export async function deleteOpinion(id: number, isbn: string) {
 
 
     const user = await Users.find({
@@ -8,7 +8,7 @@ export async function deleteOpinion(dni: number, isbn: string) {
             opinion: true
         },
         where: {
-            dni: dni
+            id: id
         }
     });
 

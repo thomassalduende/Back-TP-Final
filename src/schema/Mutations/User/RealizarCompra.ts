@@ -10,9 +10,9 @@ export async function RealizarCompra(tokenUser: string) {
 
     try{
 
-        const dni_user = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        const res = await realizarCompra(dni_user)
+        const res = await realizarCompra(id)
 
         message.message = 'compra realizada'
         message.success = true;

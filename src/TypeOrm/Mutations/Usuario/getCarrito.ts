@@ -1,6 +1,6 @@
 import { Users } from "../../../Entities/Users";
 
-export async function getCarrito(dni: number) {
+export async function getCarrito(id: number) {
 
     const usuario = await Users.find({
         relations: {
@@ -13,7 +13,7 @@ export async function getCarrito(dni: number) {
             direccion: true
         },
         where: {
-            dni: dni
+            id: id
         }
 
     })

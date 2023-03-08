@@ -26,9 +26,9 @@ import { DeleteOpinion } from "../../Mutations/User/deleteOpinion";
 export class UserResolver {
 
     @Mutation(() => SendUser)
-    async registrarse(@Args() {nombre, apellido,dni, email, password}: ArgsRegistrarse){
+    async registrarse(@Args() {nombre, email, password}: ArgsRegistrarse){
 
-        return await registrarse(nombre, apellido, dni, email, password)
+        return await registrarse(nombre, email, password)
     }
 
     @Mutation(() => Send)

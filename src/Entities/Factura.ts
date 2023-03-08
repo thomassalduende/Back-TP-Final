@@ -55,10 +55,11 @@ export class Factura extends BaseEntity{
     @JoinColumn({name: 'id_envio'})
     envio!: Envio;
 
-    @ManyToOne((type) => Users, (user) => user.dni, {
-        onUpdate: 'CASCADE'
+    @ManyToOne((type) => Users, (user) => user.id, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'dni'})
+    @JoinColumn({name: 'id_user'})
     users!: Users;
 
     @Field(type => Books)
@@ -72,7 +73,7 @@ export class Factura extends BaseEntity{
     @Field(type => [Factura_detalle])
     @OneToMany((type) => Factura_detalle, (factura_detalle) => factura_detalle.factura, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE'
     })
     factura_detalle: Factura_detalle[]
 }

@@ -9,9 +9,9 @@ export async function QuitarItem(isbn: string, cantidad: number, tokenUser: stri
     const message = new Send()
 
     try{
-        const dni_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
 
-        await quitarItem(isbn, cantidad, dni_user)
+        await quitarItem(isbn, cantidad, id)
 
         message.message = 'Items removidos'
         message.success = true;

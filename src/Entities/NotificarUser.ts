@@ -16,10 +16,10 @@ export class Notificacion extends BaseEntity {
     notificacion: string;
 
     @Field((type) => Users) 
-    @ManyToOne((type) => Users, (users) => users.dni,{
+    @ManyToOne((type) => Users, (users) => users.id,{
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'dni'})
+    @JoinColumn({name: 'id_user'})
     users!: Users;
 }

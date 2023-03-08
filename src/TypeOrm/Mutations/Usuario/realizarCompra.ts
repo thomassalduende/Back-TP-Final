@@ -21,7 +21,7 @@ function Items(user: Users): Array<any> {
             }
 
             items.push({
-                id: user.dni,
+                id: user.id,
                 title: item.book.nombre,
                 description: item.book.descripcion,
                 quantity: (+item.cantidad),
@@ -42,15 +42,12 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
 
     const preference = {
         payer:{
-            name: {
-                first_name: user.nombre,
-                last_name: user.apellido
-            },
+            name: user.nombre,
             email: user.email
         },
         items: items,
         back_urls:{
-            success: `${linkFront}//checkout/success`,
+            success: `${linkFront}/checkout/success`,
             failure: `${linkFront}/checkout/failure`,
             pending: `${linkFront}/checkout/pending`,
         },
@@ -71,11 +68,11 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
     
 }
 
-export async function realizarCompra(dni: number): Promise<string>{
+export async function realizarCompra(id: number): Promise<string>{
 
     let res = ""
 
-    const user = await getCarrito(dni)
+    const user = await getCarrito(id)
 
     if(user){
 

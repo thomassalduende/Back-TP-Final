@@ -18,7 +18,8 @@ export class LineaCarrito extends BaseEntity{
 
     @Field(type => Carrito)
     @ManyToOne(() => Carrito, (carrito) => carrito.id_carrito, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_carrito'})
     carrito: Carrito;
@@ -32,7 +33,8 @@ export class LineaCarrito extends BaseEntity{
     book!: Books;
 
     @OneToOne(() => LineaFactura, (linea_factura) => linea_factura.isbn, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     linea_factura!: LineaFactura;
     

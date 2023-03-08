@@ -21,10 +21,11 @@ export class Valoracion extends BaseEntity{
     @JoinColumn({name: 'isbn'})
     books!: Books[];
 
-    @ManyToOne(() => Users, (users) => users.dni, {
-        onUpdate: 'CASCADE'
+    @ManyToOne(() => Users, (users) => users.id, {
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'dni'})
+    @JoinColumn({name: 'id_user'})
     users!: Users;
 
 }

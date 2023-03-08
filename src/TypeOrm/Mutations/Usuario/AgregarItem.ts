@@ -1,9 +1,8 @@
 import { Books } from "../../../Entities/Books";
 import { LineaCarrito } from "../../../Entities/LineaCarrito";
 import { Users } from "../../../Entities/Users";
-import { CuponDeDescuento } from "../../../Entities/CuponDeDescuento";
 
-export async function agregarBookaCarrito( isbn: string, cantidad: number, dni: number) {
+export async function AgregarItem( isbn: string, cantidad: number, id: number) {
 
     const book = await Books.find({
         where: {
@@ -20,7 +19,7 @@ export async function agregarBookaCarrito( isbn: string, cantidad: number, dni: 
             }
         },
         where: {
-            dni: dni
+            id: id
         }
     });
 
