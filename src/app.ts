@@ -30,8 +30,8 @@ export async function StartServer() {
 
     await server.start()
 
-    app.post('/notificar', async (request: any, response: any) => {
-        await notificarMP(request, response)
+    app.post('/notificar', async (req: any, res: any) => {
+        await notificarMP(req, res)
     })
 
     server.applyMiddleware({app, path:'/graphql'});
