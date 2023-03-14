@@ -14,19 +14,20 @@ import { LineaFactura } from "./Entities/LineaFactura";
 import { Provincia } from "./Entities/Provincia";
 import { Valoracion } from "./Entities/Valoracion";
 
-import { DB_USERNAME,DB_PASSWORD, DB_DATABASE, DB_HOST, DB_PORT } from "./config";
 import { Factura_detalle } from "./Entities/Factura_detalllada";
 import { Direccion } from "./Entities/Direccion_user";
 import { Opiniones } from "./Entities/Opinion_user";
 import { Notificacion } from "./Entities/NotificarUser";
 
+const { db } = require('./config');
+
 export const ConnectionBD = new DataSource({
     type: 'postgres',
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    host: DB_HOST,
-    port:Number(DB_PORT),
-    database: DB_DATABASE,
+    username: db.username,
+    password: db.password,
+    host: db.host,
+    port:db.port,
+    database: db.database,
     entities: [Autor, Books, Carrito,
          Ciudad, CuponDeDescuento, Editorial, 
          Envio, Factura, Genero, 
