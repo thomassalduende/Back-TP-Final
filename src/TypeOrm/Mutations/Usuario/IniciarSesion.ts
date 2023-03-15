@@ -28,7 +28,7 @@ export async function IniciarSesion(email: string, password: string) {
     })
 
     if (!usuario[0]){
-        throw "ERROR, CORREO, DNI O CONTRASEÑA INVALIDAS"
+        throw "ERROR, CORREO O CONTRASEÑA INVALIDAS"
     }
     
     return usuario

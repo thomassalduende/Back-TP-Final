@@ -9,7 +9,7 @@ export async function agregarItem(isbn: string, cantidad: number, tokenUser: str
     const message = new Send()
 
     try{
-        const id_user: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id_user: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
 
         await AgregarItem(isbn, cantidad, id_user)
 

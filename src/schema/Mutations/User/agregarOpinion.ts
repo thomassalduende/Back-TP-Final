@@ -9,7 +9,7 @@ export async function AgregarOpinion(coment: string, isbn: string, tokenUser: st
     const message = new Send()
 
     try{
-        const id = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
 
         await agregarOpinion(coment, isbn, id)
 

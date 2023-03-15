@@ -9,7 +9,7 @@ export async function QuitarItem(isbn: string, cantidad: number, tokenUser: stri
     const message = new Send()
 
     try{
-        const id: number = parseInt(<string>verify(tokenUser, <string>JWT_SECRET))
+        const id: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
 
         await quitarItem(isbn, cantidad, id)
 

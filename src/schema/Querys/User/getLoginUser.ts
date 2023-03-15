@@ -17,7 +17,7 @@ async function iniciarSesionRedSocial(nombre: string, email: string, password: s
 
         message.message = 'User logueado'
         message.success = true;
-        message.accessToken = sign(id, <string>JWT_SECRET)
+        message.accessToken = sign(id, JWT_SECRET)
         message.user = user[0];
 
         return message;
@@ -41,7 +41,7 @@ async function IniciarSesionCorreoyContraseña(args: any): Promise<SendUser> {
 
         message.message = 'User logueado'
         message.success = true;
-        message.accessToken = sign(id, <string>JWT_SECRET)
+        message.accessToken = sign(id, JWT_SECRET)
         message.user = user[0];
         return message;
 
@@ -61,7 +61,7 @@ async function getTokerUser(tokenUser: string): Promise<SendUser> {
     let id_string = ''
 
     try{
-        id_string = <string>verify(tokenUser, <string>JWT_SECRET)
+        id_string = <string>verify(tokenUser, JWT_SECRET)
 
     }catch(error: any){
         message.message = 'TokerUser invalido'

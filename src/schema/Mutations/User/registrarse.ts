@@ -17,7 +17,7 @@ export async function registrarse(nombre: string, email: string, password: strin
 
         message.message = 'User registrado'
         message.success = true;
-        message.accessToken = sign(id_user, <string>JWT_SECRET);
+        message.accessToken = sign(id_user, JWT_SECRET);
         message.user = user[0];
 
         return message;
