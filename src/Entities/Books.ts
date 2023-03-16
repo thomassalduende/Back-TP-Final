@@ -52,13 +52,46 @@ export class Books extends BaseEntity {
     })
     descuento!: number;
 
-    @Field(type => Genero)
-    @OneToMany(() => Genero, (genero) => genero.id_genero, {
+    // @Field(type => Genero)
+    // @OneToMany(() => Genero, (genero) => genero.id_genero, {
+    //     onUpdate: 'CASCADE',
+    //     onDelete: 'RESTRICT'
+    // })
+    // @JoinColumn({name: 'id_genero'})
+    // genero!: Genero[];
+
+    @Field(type => [Genero], {nullable: true})
+    @ManyToMany((type) => Genero, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
     })
-    @JoinColumn({name: 'id_genero'})
+    @JoinTable({
+        name: "genero_book",
+        joinColumn: {
+            name: 'isbn'
+        },
+        inverseJoinColumn: {
+            name: 'id_genero'
+        }
+    })
     genero!: Genero[];
+
+    @Field(type => [Autor], {nullable: true})
+    @ManyToMany((type) => Autor, {
+        onUpdate: 'CASCADE',
+    })
+    @JoinTable({
+        name: "autor_book",
+        joinColumn: {
+            name: 'isbn'
+        },
+        inverseJoinColumn: {
+            name: 'id_autor',
+        }
+    })
+    @JoinColumn({
+        name: 'id_autor',
+    })
+    autor!: Autor[];
 
     @OneToMany(() => Valoracion, (valoracion) => valoracion.books, {
         onUpdate: 'CASCADE',
@@ -75,13 +108,13 @@ export class Books extends BaseEntity {
     @JoinColumn({name: 'id_editoral'})
     editorial!: Editorial;
 
-    @ManyToMany((type) => Autor, (autor) => autor.id_autor,{
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-    })
-    @Field(type => [Autor], {nullable: true})
-    @JoinColumn({name: 'id_autor'})
-    autor!: Autor[];
+    // @ManyToMany((type) => Autor, (autor) => autor.id_autor,{
+    //     onUpdate: 'CASCADE',
+    //     onDelete: 'CASCADE'
+    // })
+    // @Field(type => [Autor], {nullable: true})
+    // @JoinColumn({name: 'id_autor'})
+    // autor!: Autor[];
 
     
     @OneToMany((type) => Factura_detalle, (factura_detalle) => factura_detalle.book, {

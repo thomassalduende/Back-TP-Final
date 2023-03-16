@@ -17,7 +17,7 @@ export class Direccion extends BaseEntity{
 
     @Field()
     @Column()
-    apellido: string;
+    dni!: number;
 
     @Field()
     @Column()
