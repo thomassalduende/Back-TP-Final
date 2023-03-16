@@ -20,24 +20,6 @@ VALUES(43267890,'Carlos Maire'),(43267891,'Carlos Miguel'),(43267892,'Florencia 
 INSERT INTO editorial(id_editorial, nombre)
 VALUES (1, 'Morango'),(2, 'Dinarl'),(3, 'Carto'),(4, 'Luke'),(5, 'Nest'),(6, 'Niron'),(7, 'Rayos');
 
-INSERT INTO books(isbn, url_imagen, nombre, precio, stock, descripcion, fecha_ingreso, descuento, id_editorial)
-VALUES('123', 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg','Android in Action, Second Edition', 500.00, 10, 'Android in Action, Second Edition is a comprehensive tutorial for Android developers. Taking you far beyond  this fast-paced book puts you in the drivers seat as you learn important architectural concepts and implementation strategies. You', '13/04', 8, 3),
-('124','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg', 'Unlocking Android', 250.00, 5,'Unlocking Android: A Developers Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout', '12/07', 5 , 4),
-('125','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg','Specification by Example',2000.00,12,'nada','2/09'4, 5),
-('126','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg','Flex 3 in Action',2530.00,13,'New web applications require engaging user-friendly','13/04', 3, 3),
-('127','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg','Flex 4 in Action',2150.00,4,'Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications','13/04', 6, 2),
-('128','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg','Collective Intelligence in Action', 2159, 14,'s a great deal of wisdom in a crowd','22/02', 1,4),
-('129','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg', 'Unlocking Android', 250.00, 5,'Unlocking Android: A Developers Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout', '12/07', 5 , 4),
-('130','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg','Specification by Example',2000.00,12,'nada','12/09', 4, 5),
-('131','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg','Flex 3 in Action',2530.00,13,'New web applications require engaging user-friendly','13/04', 3, 3),
-('132','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg','Flex 4 in Action',2150.00,4,'Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications','13/04', 3, 2),
-('133','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg','Collective Intelligence in Action',2159,14,'eres a great deal of wisdom in a crowd','22/02', 6,4),
-('134','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg', 'Unlocking Android', 250.00, 5,'Unlocking Android: A Developers Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout', '12/07', 5 , 4),
-('135','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg','Specification by Example',2000.00,12,'nada','12/09', 4, 5),
-('136','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg','Flex 3 in Action',2530.00,13,'New web applications require engaging user-friendly','13/04', 3, 3),
-('137','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg','Flex 4 in Action',2150.00,4,'Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications','13/04', 4, 2),
-('138','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg','Collective Intelligence in Action',2159.00,14,'eres a great deal of wisdom in a crowd','22/02', 6,4)
-
 
 
 INSERT INTO genero(id_genero, nombre, url_imagen)
@@ -46,6 +28,28 @@ VALUES (1, 'Fantasia', 'https://cdn.pixabay.com/photo/2016/04/04/20/34/treehouse
         (3, 'Ficcion', 'https://cdn.pixabay.com/photo/2016/09/18/08/45/science-fiction-1677542_960_720.jpg'),
         (4, 'Comedia','https://cdn.pixabay.com/photo/2017/02/24/07/45/woman-2094172_960_720.jpg'),
         (5, 'Suspenso', 'https://cdn.pixabay.com/photo/2019/09/22/16/50/tunnel-4496526_960_720.jpg');
+
+
+
+
+INSERT INTO books(isbn, url_imagen, nombre, precio, stock, descripcion, fecha_ingreso, descuento, id_editoral)
+VALUES('123', 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg','Android in Action, Second Edition', 500.00, 10, 'Android in Action, Second Edition is a comprehensive tutorial for Android developers. Taking you far beyond  this fast-paced book puts you in the drivers seat as you learn important architectural concepts and implementation strategies. You', '13/04', 8.00, 3),
+('124','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg', 'Unlocking Android', 250.00, 5,'Unlocking Android: A Developers Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout', '12/07', 5.00 , 4),
+('125','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg','Specification by Example',2000.00,12,'nada','2/09', 4.00, 5),
+('126','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg','Flex 3 in Action',2530.00,13,'New web applications require engaging user-friendly','13/04', 3.00, 3),
+('127','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg','Flex 4 in Action',2150.00,4,'Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications','13/04', 6.00, 2),
+('128','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg','Collective Intelligence in Action', 2159, 14,'s a great deal of wisdom in a crowd','22/02', 1.00,4),
+('129','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg', 'Unlocking Android', 250.00, 5,'Unlocking Android: A Developers Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout', '12/07', 5.00 , 4),
+('130','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg','Specification by Example',2000.00,12,'nada','12/09', 4.00, 5),
+('131','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg','Flex 3 in Action',2530.00,13,'New web applications require engaging user-friendly','13/04', 3.00, 3),
+('132','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg','Flex 4 in Action',2150.00,4,'Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications','13/04', 3.00, 2),
+('133','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg','Collective Intelligence in Action',2159,14,'eres a great deal of wisdom in a crowd','22/02', 6.00,4),
+('134','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg', 'Unlocking Android', 250.00, 5,'Unlocking Android: A Developers Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout', '12/07', 5.00 , 4),
+('135','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg','Specification by Example',2000.00,12,'nada','12/09', 4.00, 5),
+('136','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg','Flex 3 in Action',2530.00,13,'New web applications require engaging user-friendly','13/04', 3.00, 3),
+('137','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg','Flex 4 in Action',2150.00,4,'Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications','13/04', 4.00, 2),
+('138','https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg','Collective Intelligence in Action',2159.00,14,'eres a great deal of wisdom in a crowd','22/02', 6.00,4)
+
 
 
 INSERT INTO direccion (nombre, dni, direccion, "infoAdicional",telefono, id_user, cod_postal)
@@ -69,27 +73,24 @@ VALUES
         ('135', 43267898),
         ('136', 43267896),
         ('137', 43267896),
-        ('138', 43267898),
+        ('138', 43267898)
       
 
 INSERT INTO public.genero_book(isbn, id_genero)
 VALUES
-        ('8418174072', 2),
-        ('8478885196', 2),
-        ('1644736136', 1),
-        ('1644736136', 5),
-        ('8423362477', 4),
-        ('8423362477', 3),
-        ('8466349294', 4),
-        ('8466349294', 3),
-        ('8497930010', 5),
-        ('8466356894', 1),
-        ('8466356894', 2),
-        ('8417854312', 1),
-        ('8417854312', 2),
-        ('8417854363', 1),
-        ('8417854363', 2),
-        ('1644735814', 1),
-        ('8417347003', 1),
-        ('8417347003', 2),
-        ('8466672478', 3),
+        ('123', 2),
+        ('124', 2),
+        ('125', 1),
+        ('126', 5),
+        ('127', 4),
+        ('128', 3),
+        ('129', 4),
+        ('130', 3),
+        ('131', 5),
+        ('132', 1),
+        ('133', 2),
+        ('134', 1),
+        ('135', 2),
+        ('136', 4),
+        ('137', 2),
+        ('138', 5)
