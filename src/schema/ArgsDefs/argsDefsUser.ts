@@ -72,7 +72,7 @@ export class ArgsAgregarDireccion {
     AgregarInfo!: string;
 
     @Field()
-    telefono!: number;
+    telefono!: string;
 
     @Field()
     cod_postal: number;
