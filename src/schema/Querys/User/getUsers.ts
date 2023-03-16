@@ -1,11 +1,14 @@
 // query que obtiene todos los usuarios
-import { measureMemory } from "vm";
 import { getAllUsuarios } from "../../../TypeOrm/Querys/Usuario/getAllUsuarios";
-import { SendUser } from "../../../TypesDefs/SendUsers";
+import { getUsuarioID } from "../../../TypeOrm/Querys/Usuario/getUsuarioID";
+import { getUsuarioMail } from "../../../TypeOrm/Querys/Usuario/getUsuarioMail";
+import { SendUsers } from "../../../TypesDefs/SendUsers";
 
-export async function GetAllUsers():Promise<SendUser> {
 
-    const message = new SendUser()
+
+export async function GetUsers() {
+
+    const message = new SendUsers()
 
     try{
         const users = await getAllUsuarios()

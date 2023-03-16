@@ -13,9 +13,6 @@ export class ArgsGetBook {
 
     @Field()
     autor: string = '';
-
-    @Field()
-    descuento: boolean = false;
 }
 
 @ArgsType()

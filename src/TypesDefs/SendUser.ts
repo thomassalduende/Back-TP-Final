@@ -9,5 +9,5 @@ export class SendUser extends Send {
     accessToken: string = ''
 
     @Field(type => Users)
-    user?: Users
+    user: Users;
 }

@@ -1,5 +1,5 @@
 import { Resolver, Args, Arg, Query, Mutation } from "type-graphql";
-import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser } from "../../ArgsDefs/argsDefsUser";
+import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser, ArgsGetUser } from "../../ArgsDefs/argsDefsUser";
 import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
@@ -15,9 +15,10 @@ import { SendMercadoPago } from "../../../TypesDefs/SendMercadoPago";
 import { RealizarCompra } from "../../Mutations/User/RealizarCompra";
 import { UpdateUser } from "../../Mutations/User/updateUser";
 import { getLoginUser } from "../../Querys/User/getLoginUser";
-import { GetAllUsers } from "../../Querys/User/getAllUsers";
+import { GetUsers } from "../../Querys/User/getUsers";
 import { AgregarOpinion } from "../../Mutations/User/agregarOpinion";
 import { DeleteOpinion } from "../../Mutations/User/deleteOpinion";
+
 
 
 
@@ -98,9 +99,8 @@ export class UserResolver {
     }
 
     @Query(() => SendUser)
-    async GetAllUser(){
-
-        return await GetAllUsers()
+    async getUser(){
+        return await GetUsers()
     }
 
 

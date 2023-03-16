@@ -17,6 +17,16 @@ export class ArgsLogin {
 }
 
 @ArgsType()
+export class ArgsGetUser {
+    @Field()
+    id_user: number;
+
+    @Field()
+    email: string;
+
+}
+
+@ArgsType()
 export class IniciarSesion {
 
     @Field()
