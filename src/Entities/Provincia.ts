@@ -8,7 +8,7 @@ export class Provincia extends BaseEntity{
 
     @Field(type => ID)
     @PrimaryGeneratedColumn()
-    id_provicia!: number;
+    id_provincia!: number;
 
     @Field()
     @Column()

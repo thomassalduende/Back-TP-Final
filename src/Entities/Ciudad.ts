@@ -1,6 +1,5 @@
 import { Entity, BaseEntity, Column, OneToMany, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
 import { ObjectType, Field, ID} from "type-graphql";
-import { Users } from "./Users";
 import { Provincia } from "./Provincia";
 
 @ObjectType()
@@ -16,7 +15,7 @@ export class Ciudad extends BaseEntity{
     nombre!: string;
 
     @Field(type => Provincia, {nullable: true}) 
-    @ManyToOne(() => Provincia, (provincia) => provincia.id_provicia, {
+    @ManyToOne(() => Provincia, (provincia) => provincia.id_provincia, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

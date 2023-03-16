@@ -98,12 +98,4 @@ export class UserResolver {
         return getLoginUser(args)
     }
 
-    @Query(() => SendUser)
-    async getUser(){
-        return await GetUsers()
-    }
-
-
-
-
 }
