@@ -15,8 +15,8 @@ export class Direccion extends BaseEntity{
     @Column()
     nombre: string;
 
-    @Field()
-    @Column()
+    @Field(type => Int)
+    @Column({type: 'bigint'})
     dni!: number;
 
     @Field()
@@ -27,9 +27,9 @@ export class Direccion extends BaseEntity{
     @Column()
     AgregarInfo!: string;
 
-    @Field(type => Int)
+    @Field()
     @Column()
-    telefono!: number;
+    telefono!: string;
 
     @OneToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
