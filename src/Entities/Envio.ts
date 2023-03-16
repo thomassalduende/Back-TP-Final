@@ -27,9 +27,9 @@ export class Envio extends BaseEntity{
     @Column()
     AgregarInfo!: string;
 
-    @Field(type => Int)
+    @Field()
     @Column()
-    telefono!: number;
+    telefono!: string;
 
     @OneToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
