@@ -1,5 +1,5 @@
 
-import { Entity ,BaseEntity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn, ManyToMany, JoinTable} from "typeorm";
+import { Entity ,BaseEntity, PrimaryColumn, Column, ManyToOne, OneToMany, JoinColumn, ManyToMany, JoinTable} from "typeorm";
 import { ObjectType, Int, ID, Field, Float } from "type-graphql";
 import { Editorial } from "./Editorial";
 import { Genero } from "./Genero";
@@ -101,9 +101,8 @@ export class Books extends BaseEntity {
 
     
     @Field(type => Editorial, {nullable: true})
-    @OneToOne(() => Editorial, (editorial) => editorial.id_editorial, {
+    @ManyToOne(() => Editorial, (editorial) => editorial.id_editorial, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
     })
     @JoinColumn({name: 'id_editoral'})
     editorial!: Editorial;
