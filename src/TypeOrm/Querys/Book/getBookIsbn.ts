@@ -3,6 +3,11 @@ import { Books } from "../../../Entities/Books";
 export async function getBookIsbn(isbn: string) {
 
     const book = await Books.find({
+        relations: {
+            editorial: true,
+            genero: true,
+            autor: true
+        },
         where: {
             isbn: isbn
         }

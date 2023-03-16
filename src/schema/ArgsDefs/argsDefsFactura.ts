@@ -1,18 +1,15 @@
 import { ArgsType, Field } from "type-graphql";
 
 @ArgsType()
-export class ArgsGetFacurasFecha {
+export class ArgsGetFacuras {
 
     @Field()
     fechaMenor: string = '';
 
     @Field()
     fechaMayor: string = '';
-}
-
-@ArgsType()
-export class ArgsGetFacturasID {
 
     @Field()
     id_factura: string = '';
 }
+

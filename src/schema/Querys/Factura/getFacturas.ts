@@ -4,12 +4,27 @@ import { getFacturasFecha } from "../../../TypeOrm/Querys/Factura/getFacturasFec
 import { getFacturaID } from "../../../TypeOrm/Querys/Factura/getFacturaId";
 
 
-async function GetFaturaFecha(fechaMenor: string, fechaMayor: string) {
+async function FuncionGetFactura(args: any) {
+
+    if((args.fechaMenor && args.fechaMayor) && (args.fechaMenor != '' && args.fechaMayor != '')){
+
+        return await getFacturasFecha(args.fechaMenor, args.fechaMayor)
+
+    }else if((args.id) && (args.id != '')){
+
+        return await getFacturaID(args.id)
+    }
+    
+    return await getAllFactura();
+
+}
+
+export async function GetFactura(args: any) {
 
     const message = new SendFactura()
 
     try {
-        const factura = await getFacturasFecha(fechaMenor, fechaMayor)
+        const factura = await FuncionGetFactura(args)
 
         message.message = 'Facturas obtenidas'
         message.success = true;
@@ -25,61 +40,3 @@ async function GetFaturaFecha(fechaMenor: string, fechaMayor: string) {
     }  
 }
 
-async function GetFacturaID(id: number) {
-
-    const message = new SendFactura()
-
-    try{
-        const factura = await getFacturaID(id)
-
-        message.message = 'Factura obtenida'
-        message.success = false;
-        message.factura = factura
-
-        return message;
-    }catch(error: any){
-
-        message.message = error;
-        message.success = false;
-
-        return message;
-    }
-    
-}
-
-async function GetAllFacturas() {
-
-    const message = new SendFactura()
-
-    try{
-        const factura = await getAllFactura()
-
-        message.message = 'Factura obtenida'
-        message.success = false;
-        message.factura = factura
-
-        return message;
-    }catch(error: any){
-
-        message.message = error;
-        message.success = false;
-
-        return message;
-    }
-    
-}
-
-
-export async function getFacturas(args: any) {
-
-    if((args.fechaMenor && args.fechaMayor) && (args.fechaMenor != '' && args.fechaMayor != '')){
-
-        return await GetFaturaFecha(args.fechaMenor, args.fechaMayor)
-
-    }else if((args.id) && (args.id != '')){
-
-        return await GetFacturaID(args.id)
-    }
-    
-    return await GetAllFacturas()
-}

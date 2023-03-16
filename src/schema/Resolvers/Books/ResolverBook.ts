@@ -2,7 +2,7 @@ import { Query, Resolver, Mutation, Args, Arg, Field } from "type-graphql";
 import { InsertBook } from "../../Mutations/Book/insertBook";
 import { UpdateBook } from "../../Mutations/Book/updateBook";
 import { DeleteBook } from "../../Mutations/Book/deleteBook";
-import { getBooks } from "../../Querys/Book/getBooks";
+import { GetBooks } from "../../Querys/Book/getBooks";
 import { SendBook } from "../../../TypesDefs/SendBook";
 import { ArgsGetBook, ArgsInsertBook, ArgsUpdateBook } from "../../ArgsDefs/argsDefsBook";
 import { Send } from "../../../TypesDefs/Send";
@@ -32,9 +32,9 @@ export class ResolverBook {
     }
 
     @Query(() => SendBook)
-    async GetBook(@Args() args: ArgsGetBook){
+    async getBook(@Args() args: ArgsGetBook){
         
-        return await getBooks(args)
+        return await GetBooks(args)
     }
 
 
