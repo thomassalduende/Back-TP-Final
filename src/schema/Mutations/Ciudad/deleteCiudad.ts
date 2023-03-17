@@ -11,9 +11,9 @@ export async function DeleteCiudad(nombre: string) {
         message.message = `LA CIUDAD SE ELIMINO CON EXITO`
         message.success = true
     }catch(error: any){
-        message.message = error
-        message.success = false
+        message.message = error;
+        message.success = false;
 
-        return message
+        return message;
     }
 }

@@ -1,6 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn} from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
-import { Ciudad } from "./Ciudad";
 
 @ObjectType()
 @Entity()

@@ -11,7 +11,7 @@ export async function deleteCiudad(nombreCiudad: string) {
 
     const ciudad = await getElementByNombre(nombreCiudad, Ciudad)
 
-    await ciudad[0].remove()
+    await ciudad.remove()
 }
 
 

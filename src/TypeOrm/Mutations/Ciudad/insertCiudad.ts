@@ -13,7 +13,6 @@ export async function insertCiudad(nombreCiudad: string, nombreProv: string) {
     const provincia = await getElementByNombre(nombreProv, Provincia)
     
     const ciudad = new Ciudad()
-
     ciudad.nombre = nombreCiudad;
     ciudad.provincia = provincia;
 

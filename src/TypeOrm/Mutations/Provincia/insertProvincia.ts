@@ -6,12 +6,12 @@ export async function insertProvincia(nombreProvincia: string) {
 
     const existeProv = await existsNombre(nombreProvincia, Provincia)
 
-    if (!existeProv){
-
-        const provincia = new Provincia();
-        provincia.nombre = nombreProvincia;
-        await provincia.save()
-
+    if (existeProv){
+        throw `ERROR, LA PROVINCIA ${nombreProvincia} YA EXISTE`
     }
-    return getElementByNombre(nombreProvincia, Provincia)
+    const provincia = new Provincia();
+    provincia.nombre = nombreProvincia;
+    await provincia.save()
+
+    // return getElementByNombre(nombreProvincia, Provincia)
 }
