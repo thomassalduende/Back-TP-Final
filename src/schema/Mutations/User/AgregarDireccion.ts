@@ -9,7 +9,7 @@ export async function AgregarDireccion(tokenUser:string, direccion: string, info
 
     try{
 
-        const id_user: number = parseInt(<string>verify(tokenUser, JWT_SECRET))
+        const id_user: number = parseInt(<string>verify(tokenUser, 'secret-key'))
 
         const user = await agregarDireccionUser(id_user, direccion, info, telefono, cod_postal)
 

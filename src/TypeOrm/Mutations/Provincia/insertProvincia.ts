@@ -11,7 +11,9 @@ export async function insertProvincia(nombreProvincia: string) {
     }
     const provincia = new Provincia();
     provincia.nombre = nombreProvincia;
+
+    
     await provincia.save()
 
-    // return getElementByNombre(nombreProvincia, Provincia)
+
 }

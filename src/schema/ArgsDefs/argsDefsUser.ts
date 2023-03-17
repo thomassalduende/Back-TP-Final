@@ -19,11 +19,10 @@ export class ArgsLogin {
 @ArgsType()
 export class ArgsGetUser {
     @Field()
-    id_user: number;
+    nombre: string;
 
     @Field()
     email: string;
-
 }
 
 @ArgsType()

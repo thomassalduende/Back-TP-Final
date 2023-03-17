@@ -7,12 +7,7 @@ export async function IniciarSesion(email: string, password: string) {
     const usuario = await Users.find({
 
         relations:{
-            direccion:{
-                ciudad: true
-            },
-            notificacion: true,
             carrito: true,
-            factura: true
         },
         
        where:{

@@ -9,7 +9,7 @@ export async function DeleteItem(isbn: string, tokenUser: string): Promise<Send>
     const message = new Send()
 
     try{
-        const id_user: number = parseInt(<string> verify(tokenUser, JWT_SECRET))
+        const id_user: number = parseInt(<string> verify(tokenUser, 'secret-key'))
         
         await deleteItem(id_user, isbn)
 

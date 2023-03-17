@@ -18,6 +18,7 @@ import { getLoginUser } from "../../Querys/User/getLoginUser";
 import { GetUsers } from "../../Querys/User/getUsers";
 import { AgregarOpinion } from "../../Mutations/User/agregarOpinion";
 import { DeleteOpinion } from "../../Mutations/User/deleteOpinion";
+import { SendUsers } from "../../../TypesDefs/SendUsers";
 
 
 
@@ -95,7 +96,7 @@ export class UserResolver {
     @Query(() => SendUser)
     async LoginUser(@Args() args: ArgsLogin){
 
-        return getLoginUser(args)
+        return await getLoginUser(args)
     }
 
 }

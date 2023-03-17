@@ -32,7 +32,7 @@ async function UpdateUserToken(tokenUser: string, nombre: string, email: string,
     const message = new Send()
 
     try{
-        const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
+        const id = parseInt(<string>verify(tokenUser, 'secret-key'))
 
         const user = await getUsuarioID(id)
         await updateUser(nombre, email, password, user[0])

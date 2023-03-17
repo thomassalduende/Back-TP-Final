@@ -8,7 +8,7 @@ export async function DeleteUser(tokenUser: string) {
     const message = new Send()
 
     try {
-        const id: number = parseInt(<string>verify(tokenUser,JWT_SECRET))
+        const id: number = parseInt(<string>verify(tokenUser, 'secret-key'))
 
         await deleteUser(id)
 

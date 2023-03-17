@@ -19,4 +19,4 @@ export const PUBLIC_KEY = process.env.PUBLIC_KEY
 export const EMAIL_BS = process.env.MAIL
 export const PASS_EMAIL = process.env.PASS_EMAIL
 
-export const JWT_SECRET = process.env.JWT_SECRET || 'HS256'
+export const JWT_SECRET = process.env.JWT_SECRET || 'secret-token'

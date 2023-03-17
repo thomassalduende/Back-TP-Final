@@ -1,12 +1,10 @@
 // query que obtiene todos los usuarios
 import { getAllUsuarios } from "../../../TypeOrm/Querys/Usuario/getAllUsuarios";
-import { getUsuarioID } from "../../../TypeOrm/Querys/Usuario/getUsuarioID";
-import { getUsuarioMail } from "../../../TypeOrm/Querys/Usuario/getUsuarioMail";
 import { SendUsers } from "../../../TypesDefs/SendUsers";
 
 
 
-export async function GetUsers() {
+export async function GetUsers(): Promise<SendUsers>{
 
     const message = new SendUsers()
 
