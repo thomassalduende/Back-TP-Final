@@ -17,10 +17,6 @@ export class Envio extends BaseEntity{
 
     @Field()
     @Column()
-    apellido: string;
-
-    @Field()
-    @Column()
     direccion!: string;
 
     @Field()
@@ -33,7 +29,7 @@ export class Envio extends BaseEntity{
 
     @OneToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
     })
     @JoinColumn({name: 'id_user'})
     users!: Users;
@@ -41,7 +37,7 @@ export class Envio extends BaseEntity{
     @Field(type => Ciudad)
     @ManyToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
     ciudad!: Ciudad;

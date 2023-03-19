@@ -31,7 +31,7 @@ export async function StartServer() {
 
     await server.start()
 
-    app.post('/notificar', async (req: any, res: any) => {
+    app.post('/pagos/notificacion', async (req: any, res: any) => {
         await notificarMP(req, res)
     })
 

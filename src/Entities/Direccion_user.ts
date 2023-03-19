@@ -14,11 +14,7 @@ export class Direccion extends BaseEntity{
     @Field()
     @Column()
     nombre: string;
-
-    @Field(type => Int)
-    @Column({type: 'bigint'})
-    dni!: number;
-
+    
     @Field()
     @Column()
     direccion!: string;
@@ -41,7 +37,7 @@ export class Direccion extends BaseEntity{
     @Field(type => Ciudad)
     @ManyToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
     ciudad!: Ciudad;

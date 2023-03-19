@@ -13,6 +13,8 @@ import { Factura_detalle } from "../../../Entities/Factura_detalllada";
 import { deleteItem } from "../Usuario/deleteItem";
 import { sendMail } from "../../../ControlerMail/sendMail";
 
+import { notificacionEmail, notificacionEmail2 } from "../../../ControlerMail/html-noti/notificacionEmail";
+
 
 async function NotiRepetida(paymentID: string) {
 
@@ -30,6 +32,9 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
     let total: number = 0;
     let subject: string;
     let messageText: string;
+    let fecha: string;
+    let nombre_user: string;
+    let direccion_user: string;
 
     let factura = new Factura()
 
@@ -39,7 +44,6 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
         relations: {
             direccion: true,
             carrito: {
-                cupon: true,
                 items: {
                     book: true
                 }
@@ -49,8 +53,14 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             id: id_user
         }
     })
+    console.log(obj_user)
 
     const usuario = obj_user[0]
+
+    console.log(usuario)
+    nombre_user = usuario.nombre
+    direccion_user = usuario.direccion.direccion
+    fecha = (formatoFecha(new Date())).toString()
 
     if(!usuario){
         throw new Error("EL USUARIO NO EXISTE");  
@@ -58,6 +68,8 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
         
     let mensaje = message(usuario.email, "", "", "")
 
+
+    console.log(status)
     if (status == 'approved') {
         const payment = await Factura.find({
             where: {
@@ -70,6 +82,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             const array_factura = new Factura()
             const envio = new Envio()
 
+            
             envio.nombre = usuario.direccion.nombre
             envio.direccion = usuario.direccion.direccion
             envio.AgregarInfo = usuario.direccion.AgregarInfo
@@ -77,15 +90,15 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             envio.ciudad = usuario.direccion.ciudad
             envio.users = usuario
 
-            array_factura.users = usuario
-            array_factura.fecha = (formatoFecha(new Date())).toString()
-            array_factura.monto = total
-            array_factura.paymentID_MP = paymentID_MP
-
             for (const carrito of usuario.carrito.items) {
 
                 total = total +(CalcularTotal(carrito.cantidad, carrito.book.precio))
             }
+
+            array_factura.users = usuario
+            array_factura.fecha = (formatoFecha(new Date())).toString()
+            array_factura.monto = total
+            array_factura.paymentID_MP = paymentID_MP
 
 
             // Me fijo si existe el descuento, si existe lo aplico y lo elimino
@@ -140,10 +153,13 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
 
             subject = 'COMPRA APROBADA'
             messageText = `PAGO EXITOSO\nTICKET: N° ${paymentID_MP}`
+            
 
             mensaje.subject = subject
             mensaje.text = messageText
-            // mensaje.html = falta agregar
+            // mensaje.html = notificacionEmail('COMPRA APROBADA:', paymentID_MP)
+            mensaje.html = notificacionEmail2('COMPRA APROBADA:', nombre_user, direccion_user, paymentID_MP, fecha)
+
 
             await sendMail(mensaje)
 
@@ -165,7 +181,8 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
 
             mensaje.subject = subject
             mensaje.text = messageText
-            // mensaje.text = html falta agregar
+            // mensaje.html = notificacionEmail('PAGO PENDIENTE. NO SE HA PODIDO CONCRETAR POR EL MOMENTO', paymentID_MP)
+            mensaje.html = notificacionEmail2('PAGO PENDIENTE. NO SE HA PODIDO CONCRETAR POR EL MOMENTO', nombre_user, direccion_user, paymentID_MP, fecha)
 
             await sendMail(mensaje)
         }
@@ -185,7 +202,8 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
 
             mensaje.subject = subject
             mensaje.text = messageText
-            // mensaje.html = html 
+            // mensaje.html = notificacionEmail('COMPRA RECHAZADA', paymentID_MP)
+            mensaje.html = notificacionEmail2('COMPRA RECHAZADA', nombre_user, direccion_user, paymentID_MP, fecha)
 
             await sendMail(mensaje)
         }

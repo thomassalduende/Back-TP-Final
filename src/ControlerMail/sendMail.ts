@@ -4,10 +4,11 @@ const nodemailer = require("nodemailer")
 
 const config = {
     host: "smtp.gmail.com",
-    port: 587,
+    port: 465,
+    secure: true,
     auth: {
-        user:EMAIL_BS,
-        pass: PASS_EMAIL
+        user:'BookShopETN@gmail.com',
+        pass: 'bprsjtctkpszqwsm'
     }
 }
 
