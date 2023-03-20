@@ -1,5 +1,5 @@
-import { ACCESS_TOKEN_MP } from "./config";
-import { crearFacura } from "./TypeOrm/Mutations/Factura/crearFactura";
+import { ACCESS_TOKEN_MP } from "../config";
+import { crearFacura } from "../TypeOrm/Mutations/Factura/crearFactura";
 
 const mercadopago = require("mercadopago")
 

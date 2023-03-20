@@ -75,6 +75,9 @@ export class ArgsAgregarDireccion {
     tokenUser: string;
 
     @Field()
+    nombre: string;
+
+    @Field()
     direccion: string;
 
     @Field()

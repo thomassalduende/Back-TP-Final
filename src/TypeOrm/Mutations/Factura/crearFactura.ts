@@ -1,4 +1,3 @@
-import { Like } from "typeorm";
 import { message } from "../../../ControlerMail/message";
 import { Factura } from "../../../Entities/Factura";
 import { Notificacion } from "../../../Entities/NotificarUser";
@@ -13,19 +12,8 @@ import { Factura_detalle } from "../../../Entities/Factura_detalllada";
 import { deleteItem } from "../Usuario/deleteItem";
 import { sendMail } from "../../../ControlerMail/sendMail";
 
-import { notificacionEmail, notificacionEmail2 } from "../../../ControlerMail/html-noti/notificacionEmail";
+import { EmailPagoAprobado, EmailPagoRechazado } from "../../../ControlerMail/html-noti/notificacionEmail";
 
-
-async function NotiRepetida(paymentID: string) {
-
-    const notificacion = await Notificacion.find({
-        where: {
-            notificacion: Like(`%${paymentID}%`)
-        }
-    })
-
-    return (!notificacion[0])? true : false
-}
 
 export async function crearFacura(items: Array<any>, paymentID_MP: string, status: string) {
 
@@ -58,8 +46,12 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
     const usuario = obj_user[0]
 
     console.log(usuario)
+    console.log(usuario.ciudad)
+    console.log(usuario.ciudad.nombre)
+    console.log(usuario.ciudad.provincia.nombre)
+    
     nombre_user = usuario.nombre
-    direccion_user = usuario.direccion.direccion
+    direccion_user = usuario.direccion.direccion +usuario.ciudad.provincia.nombre
     fecha = (formatoFecha(new Date())).toString()
 
     if(!usuario){
@@ -110,7 +102,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
                 await ConnectionBD
                     .createQueryBuilder()
                     .update(Carrito)
-                    .set({cupo: null})
+                    .set({cupon: null})
                     .where("id =: id", {idUser: usuario.id})
                     .execute()
             }
@@ -158,7 +150,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             mensaje.subject = subject
             mensaje.text = messageText
             // mensaje.html = notificacionEmail('COMPRA APROBADA:', paymentID_MP)
-            mensaje.html = notificacionEmail2('COMPRA APROBADA:', nombre_user, direccion_user, paymentID_MP, fecha)
+            mensaje.html = EmailPagoAprobado('COMPRA APROBADA, disfrute de sus libros comprados en BookShop.', nombre_user, direccion_user, paymentID_MP, fecha)
 
 
             await sendMail(mensaje)
@@ -166,8 +158,6 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             factura = array_factura
         }
     }else if(status == 'in_process'){
-
-        if(await NotiRepetida(paymentID_MP)){
 
             const notificacion = new Notificacion()
             notificacion.notificacion = `COMPRA PENDIENTE\nTICKET: N° ${paymentID_MP}`
@@ -182,13 +172,11 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             mensaje.subject = subject
             mensaje.text = messageText
             // mensaje.html = notificacionEmail('PAGO PENDIENTE. NO SE HA PODIDO CONCRETAR POR EL MOMENTO', paymentID_MP)
-            mensaje.html = notificacionEmail2('PAGO PENDIENTE. NO SE HA PODIDO CONCRETAR POR EL MOMENTO', nombre_user, direccion_user, paymentID_MP, fecha)
+            mensaje.html = EmailPagoRechazado('PAGO PENDIENTE. NO SE HA PODIDO CONCRETAR POR EL MOMENTO', nombre_user, paymentID_MP)
 
             await sendMail(mensaje)
-        }
+        
     }else if(status == 'rejected'){
-
-        if(await NotiRepetida(paymentID_MP)){
 
             const notificacion = new Notificacion()
             notificacion.notificacion = `COMPRA RECHAZADA`
@@ -203,10 +191,9 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             mensaje.subject = subject
             mensaje.text = messageText
             // mensaje.html = notificacionEmail('COMPRA RECHAZADA', paymentID_MP)
-            mensaje.html = notificacionEmail2('COMPRA RECHAZADA', nombre_user, direccion_user, paymentID_MP, fecha)
+            mensaje.html = EmailPagoRechazado('COMPRA RECHAZADA', nombre_user, paymentID_MP)
 
             await sendMail(mensaje)
-        }
     }
     
 }

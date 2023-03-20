@@ -3,7 +3,7 @@ import { SendUser } from "../../../TypesDefs/SendUser";
 import { sign, verify } from "jsonwebtoken";
 import { JWT_SECRET } from "../../../config";
 
-export async function AgregarDireccion(tokenUser:string, direccion: string, info: string, telefono: string, cod_postal: number) {
+export async function AgregarDireccion(tokenUser:string, nombre:string, direccion: string, info: string, telefono: string, cod_postal: number) {
 
     const message = new SendUser()
 
@@ -11,7 +11,7 @@ export async function AgregarDireccion(tokenUser:string, direccion: string, info
 
         const id_user: number = parseInt(<string>verify(tokenUser, 'secret-key'))
 
-        const user = await agregarDireccionUser(id_user, direccion, info, telefono, cod_postal)
+        const user = await agregarDireccionUser(id_user, nombre, direccion, info, telefono, cod_postal)
 
         message.message = 'Direccion agregada'
         message.success = true;
