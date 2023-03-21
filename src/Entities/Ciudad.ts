@@ -23,7 +23,4 @@ export class Ciudad extends BaseEntity{
     provincia!: Provincia;
     
     
-    
-   
-    
 }

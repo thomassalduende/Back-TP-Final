@@ -8,4 +8,7 @@ export class ArgsInsertCiudad {
 
     @Field()
     nombre_prov: string;
+
+    @Field()
+    cod_postal: number;
 }

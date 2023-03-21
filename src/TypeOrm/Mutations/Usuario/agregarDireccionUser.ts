@@ -27,6 +27,7 @@ export async function agregarDireccionUser(id: number, nombre:string, direccion:
             cod_postal: cod_postal
         }
     })
+    console.log(ciudad[0])
 
     let Direcciones = new Direccion();
 

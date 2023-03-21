@@ -35,23 +35,24 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
                 items: {
                     book: true
                 }
-            }
+            },
+
+            // ciudad:true
         },
         where: {
             id: id_user
         }
     })
-    console.log(obj_user)
+    // console.log(obj_user)
 
     const usuario = obj_user[0]
 
-    console.log(usuario)
-    console.log(usuario.ciudad)
-    console.log(usuario.ciudad.nombre)
-    console.log(usuario.ciudad.provincia.nombre)
+    console.log(usuario.direccion)
+    // console.log(usuario.direccion.ciudad.nombre)
+    // console.log(usuario.direccion.ciudad.provincia.nombre)
     
     nombre_user = usuario.nombre
-    direccion_user = usuario.direccion.direccion +usuario.ciudad.provincia.nombre
+    direccion_user = usuario.direccion.direccion
     fecha = (formatoFecha(new Date())).toString()
 
     if(!usuario){

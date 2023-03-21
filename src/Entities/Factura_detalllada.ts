@@ -24,7 +24,7 @@ export class Factura_detalle extends BaseEntity{
     })
     precio!: number;
 
-    @ManyToOne((type) => Factura, (factura) => factura.id, {
+    @ManyToOne((type) => Factura, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
@@ -32,7 +32,7 @@ export class Factura_detalle extends BaseEntity{
     factura!: Factura;
 
     @Field(type => Books)
-    @ManyToOne((type) => Books, (book) => book.isbn, {
+    @ManyToOne((type) => Books, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

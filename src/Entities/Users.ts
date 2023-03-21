@@ -32,12 +32,12 @@ export class Users extends BaseEntity{
     @Column({default: false})
     es_admin!:boolean;
 
-    @OneToMany(() => Ciudad, (ciudad)=> ciudad.cod_postal, {
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-    })
-    @JoinColumn({name:'cod_postal'})
-    ciudad!: Ciudad;
+    // @OneToMany(() => Ciudad, (ciudad)=> ciudad.cod_postal, {
+    //     onUpdate: 'CASCADE',
+    //     onDelete: 'CASCADE'
+    // })
+    // @JoinColumn({name:'cod_postal'})
+    // ciudad!: Ciudad;
 
     @OneToOne((type) => Valoracion, (valoracion) => valoracion.users, {
         onUpdate: 'CASCADE',

@@ -39,15 +39,15 @@ export class Factura extends BaseEntity{
     @JoinColumn({name: 'cod_cupon'})
     cupon!: CuponDeDescuento;
 
-    @Field(type => Ciudad)
-    @OneToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
+
+    @OneToOne((type) => Ciudad, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
     ciudad!: Ciudad;
 
-    @Field(type => Envio)
+    
     @OneToOne((type) => Envio, (envio) => envio.id, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
@@ -62,8 +62,7 @@ export class Factura extends BaseEntity{
     @JoinColumn({name: 'id_user'})
     users!: Users;
 
-    @Field(type => Books)
-    @ManyToOne((type) => Books, (books) => books.isbn, {
+    @ManyToOne((type) => Books, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

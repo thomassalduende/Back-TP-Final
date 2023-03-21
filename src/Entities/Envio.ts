@@ -35,7 +35,7 @@ export class Envio extends BaseEntity{
     users!: Users;
 
     @Field(type => Ciudad)
-    @ManyToOne((type) => Ciudad, (ciudad) => ciudad.cod_postal, {
+    @ManyToOne((type) => Ciudad, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

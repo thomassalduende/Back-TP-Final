@@ -10,9 +10,9 @@ import { ArgsInsertCiudad } from "../../ArgsDefs/argsDefsCiudad";
 export class CiudadResolver {
 
     @Mutation(() => Send)
-    async insertCiudad(@Args() {nombre, nombre_prov}: ArgsInsertCiudad){
+    async insertCiudad(@Args() {nombre, nombre_prov, cod_postal}: ArgsInsertCiudad){
 
-        return await InsertCiudad(nombre, nombre_prov)
+        return await InsertCiudad(nombre, nombre_prov, cod_postal)
     }
 
     @Mutation(() => Send)

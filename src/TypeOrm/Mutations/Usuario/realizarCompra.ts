@@ -52,7 +52,7 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
             pending: `${linkFront}/checkout/pending`,
         },
         auto_return: 'approved',
-        notification_url: 'https://717a-190-17-64-57.sa.ngrok.io/pagos/notificacion'
+        notification_url: 'https://9b1c-190-17-64-57.sa.ngrok.io/pagos/notificacion'
     };
 
     const link = mercadopago.preferences.create(preference)
