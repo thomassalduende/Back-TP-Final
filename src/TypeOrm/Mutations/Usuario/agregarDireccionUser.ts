@@ -3,7 +3,7 @@ import { Direccion } from '../../../Entities/Direccion_user';
 import { Users } from '../../../Entities/Users';
 
 
-export async function agregarDireccionUser(id: number, nombre:string, direccion: string, informacion: string, telefono: string, cod_postal: number) {
+export async function agregarDireccionUser(id: number, nombre:string,  dni: string, direccion: string, informacion: string, telefono: string, cod_postal: number) {
 
     let usuario = await Users.find({
         relations: {
@@ -33,6 +33,7 @@ export async function agregarDireccionUser(id: number, nombre:string, direccion:
 
     if (!Direc[0] && ciudad[0]){
         Direcciones.nombre = nombre;
+        Direcciones.dni = dni;
         Direcciones.direccion = direccion;
         Direcciones.AgregarInfo = informacion;
         Direcciones.telefono = telefono;
@@ -44,7 +45,7 @@ export async function agregarDireccionUser(id: number, nombre:string, direccion:
     }else if(usuario[0].direccion && ciudad[0]){
 
         Direcciones = Direc[0]
-
+        Direcciones.dni = dni;
         Direcciones.direccion = direccion;
         Direcciones.AgregarInfo = informacion;
         Direcciones.telefono = telefono;

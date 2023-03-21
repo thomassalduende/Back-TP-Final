@@ -78,6 +78,9 @@ export class ArgsAgregarDireccion {
     nombre: string;
 
     @Field()
+    dni: string;
+
+    @Field()
     direccion: string;
 
     @Field()

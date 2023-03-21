@@ -14,6 +14,10 @@ export class Direccion extends BaseEntity{
     @Field()
     @Column()
     nombre: string;
+
+    @Field()
+    @Column()
+    dni: string;
     
     @Field()
     @Column()
