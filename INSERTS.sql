@@ -51,8 +51,8 @@ VALUES  ('123', 'https://m.media-amazon.com/images/I/91NW7CBaVwL.jpg', 'Harry Po
         ('138', 'https://m.media-amazon.com/images/I/51hCOUu+PML._SX398_BO1,204,203,200_.jpg', 'De sangre y cenizas', 2500.00, 25, 'Elegida desde su nacimiento para dar comienzo a una nueva era, la vida de Poppy nunca le ha pertenecido. La vida de la Doncella es solitaria. Jamás la tocarán. Jamás la mirarán. Jamás le hablarán. Jamás sentirá placer. Mientras espera el día de su Ascensión, preferiría estar con los guardias luchando contra el mal que se llevó a su familia que preparándose para que los dioses la encuentren lo bastante digna. Pero la elección nunca ha sido suya. El futuro del reino entero recae sobre los hombros de Poppy, algo que ni siquiera está demasiado segura de querer para ella. Porque la Doncella tiene corazón. Y alma. Y deseo. Y cuando Hawke, un guardia de ojos dorados que ha jurado garantizar su Ascensión, entra en su vida, el destino y el deber se entremezclan con el deseo y la necesidad. Él incita su ira, hace que se cuestione todo aquello en lo que cree y la tienta con lo prohibido. Abandonado por los dioses y temido por los mortales, un reino caído está resurgiendo, decidido a recuperar lo que cree que es suyo mediante la violencia y la venganza. Y a medida que la sombra de los malditos se acerca, la línea entre lo prohibido y lo correcto se difumina. Poppy no solo está a punto de perder el corazón y ser considerada indigna por los dioses, sino que también está a punto de perder la vida cuando los ensangrentados hilos que mantienen unido su mundo empiezan a deshilacharse.','15/03/2023' ,13.00, 5)
 
 
-INSERT INTO direccion (nombre, dni, direccion, "infoAdicional",telefono, id_user, cod_postal)
-VALUES ('Thomas Salduende', 44152717, 'Mario Lound 268', 'casa 7', 3446476809, 1, 2854);
+INSERT INTO direccion (nombre, direccion, "infoAdicional",telefono, id_user, cod_postal, dni)
+VALUES ('Thomas Salduende', 'Mario Lound 268', 'casa 7', 3446476809, 1, 2854, '44152717');
 
 
 INSERT INTO autor_book(isbn, id_autor)

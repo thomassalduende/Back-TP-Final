@@ -68,6 +68,8 @@ export class ArgsAgregarItem {
     tokenUser: string;
 }
 
+
+
 @ArgsType()
 export class ArgsAgregarDireccion {
 
@@ -147,4 +149,13 @@ export class ArgsUpdateUser {
 
     @Field()
     password: string;
+}
+
+@ArgsType()
+export class ArgsAgregarFav {
+    @Field()
+    tokenUser: string;
+
+    @Field()
+    isbn: string;
 }

@@ -2,7 +2,6 @@ import { message } from "../../../ControlerMail/message";
 import { Factura } from "../../../Entities/Factura";
 import { Notificacion } from "../../../Entities/NotificarUser";
 import { Users } from "../../../Entities/Users";
-import { CalcularTotal } from "../Utilities/CacularTotal";
 import { formatoFecha } from "../Utilities/formatoFecha";
 import { ConnectionBD } from "../../../db"
 import { Carrito } from "../../../Entities/Carrito";
@@ -30,7 +29,11 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
 
     const obj_user = await Users.find({
         relations: {
-            direccion: true,
+            direccion: {
+                ciudad: {
+                    provincia: true
+                }
+            },
             carrito: {
                 items: {
                     book: true
@@ -47,22 +50,28 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
 
     const usuario = obj_user[0]
 
-    console.log(usuario.direccion)
-    // console.log(usuario.direccion.ciudad.nombre)
-    // console.log(usuario.direccion.ciudad.provincia.nombre)
     
+    // VARIABLE PARA DATOS DEL ENVIO
     nombre_user = usuario.nombre
-    direccion_user = usuario.direccion.direccion
+    direccion_user = (usuario.direccion.ciudad.provincia.nombre +', '+ usuario.direccion.ciudad.nombre+', '+ usuario.direccion.direccion +', '+ usuario.direccion.ciudad.cod_postal)
     fecha = (formatoFecha(new Date())).toString()
+    // console.log(usuario.direccion.ciudad.provincia.nombre +', '+ usuario.direccion.ciudad.nombre+', '+ usuario.direccion.direccion +', '+ usuario.direccion.ciudad.cod_postal)
+
+    
 
     if(!usuario){
         throw new Error("EL USUARIO NO EXISTE");  
+    }
+    if(!usuario.direccion){
+        throw new Error("DEBE COMPLETAR LOS CAMPOS DE DIRECCION PARA PODER REALIZAR LA COMPRA");
     }
         
     let mensaje = message(usuario.email, "", "", "")
 
 
-    console.log(status)
+    // console.log(status)
+
+
     if (status == 'approved') {
         const payment = await Factura.find({
             where: {
@@ -80,18 +89,20 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             envio.direccion = usuario.direccion.direccion
             envio.AgregarInfo = usuario.direccion.AgregarInfo
             envio.telefono = usuario.direccion.telefono
-            envio.ciudad = usuario.direccion.ciudad
+            envio.ciudad = usuario.direccion.ciudad.cod_postal
             envio.users = usuario
 
             for (const carrito of usuario.carrito.items) {
 
-                total = total +(CalcularTotal(carrito.cantidad, carrito.book.precio))
+                total = total + ( carrito.cantidad *  ( + carrito.book.precio))
             }
 
             array_factura.users = usuario
             array_factura.fecha = (formatoFecha(new Date())).toString()
             array_factura.monto = total
             array_factura.paymentID_MP = paymentID_MP
+            array_factura.ciudad = usuario.direccion.ciudad.cod_postal
+            array_factura.book = usuario.carrito.items[0].book.isbn
 
 
             // Me fijo si existe el descuento, si existe lo aplico y lo elimino
@@ -151,7 +162,7 @@ export async function crearFacura(items: Array<any>, paymentID_MP: string, statu
             mensaje.subject = subject
             mensaje.text = messageText
             // mensaje.html = notificacionEmail('COMPRA APROBADA:', paymentID_MP)
-            mensaje.html = EmailPagoAprobado('COMPRA APROBADA, disfrute de sus libros comprados en BookShop.', nombre_user, direccion_user, paymentID_MP, fecha)
+            mensaje.html = EmailPagoAprobado('COMPRA APROBADA, disfrute de sus libros comprados en BookShop.', nombre_user, direccion_user, paymentID_MP, fecha ,total)
 
 
             await sendMail(mensaje)

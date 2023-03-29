@@ -1,5 +1,5 @@
 import { Resolver, Args, Arg, Query, Mutation } from "type-graphql";
-import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser, ArgsGetUser } from "../../ArgsDefs/argsDefsUser";
+import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser, ArgsGetUser, ArgsAgregarFav } from "../../ArgsDefs/argsDefsUser";
 import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
@@ -19,6 +19,8 @@ import { GetUsers } from "../../Querys/User/getUsers";
 import { AgregarOpinion } from "../../Mutations/User/agregarOpinion";
 import { DeleteOpinion } from "../../Mutations/User/deleteOpinion";
 import { SendUsers } from "../../../TypesDefs/SendUsers";
+import { AgregarFav } from "../../Mutations/User/agregarFavoritoUser";
+import { DeleteFavorito } from "../../Mutations/User/deleteFavoritoUser";
 
 
 
@@ -94,6 +96,19 @@ export class UserResolver {
         return await DeleteOpinion(isbn, tokenUser)
     }
 
+    @Mutation(() => Send)
+    async agregarFavorito(@Args() {tokenUser, isbn}: ArgsAgregarFav){
+
+        return await AgregarFav(tokenUser, isbn)
+    }
+
+    @Mutation(() => Send)
+    async deleteFavorito(@Args() {tokenUser, isbn}: ArgsAgregarFav){
+
+        return await DeleteFavorito(tokenUser, isbn)
+
+    }
+    
     @Query(() => SendUser)
     async LoginUser(@Args() args: ArgsLogin){
 

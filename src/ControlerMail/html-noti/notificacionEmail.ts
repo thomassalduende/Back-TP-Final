@@ -31,7 +31,7 @@ export const EmailPagoRechazado = (message: string, usuario: string, id_factura:
             </html>`)
 }
 
-export const EmailPagoAprobado = (message: string, usuario: string, envio: string, id_factura: string, fecha: string): string =>{
+export const EmailPagoAprobado = (message: string, usuario: string, envio: string, id_factura: string, fecha: string, total: number): string =>{
 
     return(
         `
@@ -67,6 +67,8 @@ export const EmailPagoAprobado = (message: string, usuario: string, envio: strin
                     <div class="col-3">
                         <h5>N° de factura</h5>
                         <p>${id_factura}</p>
+                        <h5>TOTAL</h5>
+                        <p>$${total}</p>
                         <h5>Fecha</h5>
                         <p>${fecha}</p>
                     </div>

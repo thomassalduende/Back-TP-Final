@@ -18,6 +18,7 @@ import { Factura_detalle } from "./Entities/Factura_detalllada";
 import { Direccion } from "./Entities/Direccion_user";
 import { Opiniones } from "./Entities/Opinion_user";
 import { Notificacion } from "./Entities/NotificarUser";
+import { Favoritos } from "./Entities/Favoritos_user";
 
 const { db } = require('./config');
 
@@ -34,7 +35,7 @@ export const ConnectionBD = new DataSource({
          LineaCarrito, LineaFactura, 
          Provincia, Users, Valoracion, 
          Factura_detalle, Direccion, Opiniones, 
-         Notificacion],
+         Notificacion, Favoritos],
 
     synchronize: true,
     logging: true

@@ -7,6 +7,7 @@ import { Direccion } from "./Direccion_user";
 import { Opiniones } from "./Opinion_user";
 import { Notificacion } from "./NotificarUser";
 import { Factura } from "./Factura";
+import { Favoritos } from "./Favoritos_user";
 
 @ObjectType()
 @Entity()
@@ -44,6 +45,12 @@ export class Users extends BaseEntity{
         onDelete: 'CASCADE'
     })
     valoracion!: Valoracion;
+
+    @OneToMany(() => Favoritos, (favorito) => favorito.users ,{
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+    })
+    favoritos: Favoritos[];
 
     @Field(type => Carrito)
     @OneToOne((type) => Carrito, (carrito) => carrito.users, {

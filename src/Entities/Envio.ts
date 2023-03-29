@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, Generated, ManyToOne, OneToOne, JoinColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 import { ObjectType, Field, Int} from "type-graphql";
 import { Ciudad } from "./Ciudad";
 import { Users } from "./Users";
@@ -27,7 +27,7 @@ export class Envio extends BaseEntity{
     @Column()
     telefono!: string;
 
-    @OneToOne((type) => Users, (user) => user.id, {
+    @ManyToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
     })
@@ -40,6 +40,6 @@ export class Envio extends BaseEntity{
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
-    ciudad!: Ciudad;
+    ciudad!: number;
 
 }
