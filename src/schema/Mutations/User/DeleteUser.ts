@@ -1,7 +1,6 @@
 import { deleteUser } from "../../../TypeOrm/Mutations/Usuario/deleteUser";
 import { Send } from "../../../TypesDefs/Send";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
 
 export async function DeleteUser(tokenUser: string) {
 

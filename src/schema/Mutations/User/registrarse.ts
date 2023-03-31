@@ -1,6 +1,5 @@
 import { Registrarse } from "../../../TypeOrm/Mutations/Usuario/Registrarse";
 import { SendUser } from "../../../TypesDefs/SendUser";
-import { JWT_SECRET } from "../../../config";
 import { sign } from "jsonwebtoken";
 
 

@@ -1,7 +1,7 @@
 import { realizarCompra } from "../../../TypeOrm/Mutations/Usuario/realizarCompra";
 import { SendMercadoPago } from "../../../TypesDefs/SendMercadoPago";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
+
 
 
 export async function RealizarCompra(tokenUser: string) {

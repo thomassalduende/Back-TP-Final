@@ -1,5 +1,4 @@
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
 import { agregarOpinion } from "../../../TypeOrm/Mutations/Usuario/agregarOpinion";
 import { Send } from "../../../TypesDefs/Send";
 

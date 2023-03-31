@@ -1,7 +1,6 @@
 import { quitarItem } from "../../../TypeOrm/Mutations/Usuario/quitarItem";
 import { Send } from "../../../TypesDefs/Send";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
 
 
 export async function QuitarItem(isbn: string, cantidad: number, tokenUser: string) {

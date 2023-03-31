@@ -1,7 +1,6 @@
 import { AgregarItem } from "../../../TypeOrm/Mutations/Usuario/AgregarItem";
 import { Send } from "../../../TypesDefs/Send";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
 
 
 export async function agregarItem(isbn: string, cantidad: number, tokenUser: string): Promise<Send> {

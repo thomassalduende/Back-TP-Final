@@ -1,7 +1,6 @@
 import { getUsuarioMail } from "../../../TypeOrm/Querys/Usuario/getUsuarioMail";
 import { getUsuarioID } from "../../../TypeOrm/Querys/Usuario/getUsuarioID";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
 import { Send } from "../../../TypesDefs/Send";
 import { updateUser } from "../../../TypeOrm/Mutations/Usuario/updateUser";
 

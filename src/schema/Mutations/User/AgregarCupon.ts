@@ -1,7 +1,7 @@
 import { agregarCuponDesc } from "../../../TypeOrm/Mutations/Usuario/agregarCuponDesc";
 import { SendCupones } from "../../../TypesDefs/SendCupones";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
+
 
 
 export async function AgregarCupon(codigo: string, tokenUser: string) {

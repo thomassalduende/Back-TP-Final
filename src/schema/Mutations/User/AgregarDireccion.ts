@@ -1,7 +1,7 @@
 import { agregarDireccionUser } from "../../../TypeOrm/Mutations/Usuario/agregarDireccionUser";
 import { SendUser } from "../../../TypesDefs/SendUser";
 import { sign, verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
+
 
 export async function AgregarDireccion(tokenUser:string, nombre:string, dni:string, direccion: string, info: string, telefono: string, cod_postal: number) {
 

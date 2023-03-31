@@ -1,7 +1,6 @@
 import { deleteItem } from "../../../TypeOrm/Mutations/Usuario/deleteItem";
 import { Send } from "../../../TypesDefs/Send";
 import { verify } from "jsonwebtoken";
-import { JWT_SECRET } from "../../../config";
 
 
 export async function DeleteItem(isbn: string, tokenUser: string): Promise<Send> {
