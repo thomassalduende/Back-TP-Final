@@ -1,5 +1,4 @@
 import { sign, verify } from "jsonwebtoken"
-import { JWT_SECRET } from "../../../config";
 import { IniciarSesion } from "../../../TypeOrm/Mutations/Usuario/IniciarSesion";
 import { IniciarSesionRedSocial } from "../../../TypeOrm/Mutations/Usuario/IniciarSesionRedSocial";
 import { getUsuarioID } from "../../../TypeOrm/Querys/Usuario/getUsuarioID";

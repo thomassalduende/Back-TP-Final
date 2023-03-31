@@ -1,6 +1,5 @@
 import { Users } from "../../../Entities/Users";
 import { getUsuarioMail } from "../../Querys/Usuario/getUsuarioMail";
-import { existEmail } from "./existEmail";
 
 export async function updateUser(nombre: string, email: string, password: string, user: Users) {
 
