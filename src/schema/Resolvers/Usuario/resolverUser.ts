@@ -21,6 +21,8 @@ import { DeleteOpinion } from "../../Mutations/User/deleteOpinion";
 import { SendUsers } from "../../../TypesDefs/SendUsers";
 import { AgregarFav } from "../../Mutations/User/agregarFavoritoUser";
 import { DeleteFavorito } from "../../Mutations/User/deleteFavoritoUser";
+import { SendFavoritos } from "../../../TypesDefs/SendFavoritos";
+import { GetFavoritos } from "../../Querys/User/getFavoritos";
 
 
 
@@ -113,6 +115,12 @@ export class UserResolver {
     async LoginUser(@Args() args: ArgsLogin){
 
         return await getLoginUser(args)
+    }
+
+    @Query(() => SendFavoritos)
+    async getFavoritos(@Arg('tokenUser') tokenUser: string){
+
+        return await GetFavoritos(tokenUser)
     }
 
 }
