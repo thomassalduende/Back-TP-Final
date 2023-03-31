@@ -1,4 +1,3 @@
-import { EMAIL_BS, PASS_EMAIL } from "../config"
 
 const nodemailer = require("nodemailer")
 
