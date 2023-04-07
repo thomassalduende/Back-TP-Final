@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, Column, PrimaryColumn, OneToOne } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Books } from "./Books";
 
@@ -7,7 +7,7 @@ import { Books } from "./Books";
 export class Editorial extends BaseEntity{
 
     @Field(type => ID)
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id_editorial!: number;
 
     @Field()

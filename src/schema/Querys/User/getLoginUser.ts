@@ -2,6 +2,7 @@ import { sign, verify } from "jsonwebtoken"
 import { IniciarSesion } from "../../../TypeOrm/Mutations/Usuario/IniciarSesion";
 import { IniciarSesionRedSocial } from "../../../TypeOrm/Mutations/Usuario/IniciarSesionRedSocial";
 import { getUsuarioID } from "../../../TypeOrm/Querys/Usuario/getUsuarioID";
+import { UserAdmin } from "../../../TypeOrm/Mutations/Usuario/UserAdmin";
 import { SendUser } from "../../../TypesDefs/SendUser";
 
 

@@ -31,12 +31,15 @@ export async function updateBook(   isbn_orig: string,
     isbn_orig = isbn;
    }
 
+   console.log(isbn_orig)
    const book = await getBookIsbn(isbn_orig)
-   const exsBook = await book[0];
+   const exsBook = book[0];
+   console.log(exsBook.isbn)
 
    if (!(exsBook.isbn == isbn) && (isbn_orig && !(isbn_orig == isbn))){
 
     exsBook.isbn = isbn;
+    
    }
 
    exsBook.url_imagen = imagen;
@@ -75,6 +78,7 @@ export async function updateBook(   isbn_orig: string,
     }else{
         throw `El libro debe contener al menos un genero`
     }
+
 
 
     await exsBook.save();

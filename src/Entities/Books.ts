@@ -24,7 +24,7 @@ export class Books extends BaseEntity {
     @Column()
     nombre!:string;
 
-    @Field(type => Float, {nullable: true})
+    @Field(type => Float)
     @Column({
         type: 'decimal',
         precision: 10,
@@ -32,7 +32,7 @@ export class Books extends BaseEntity {
     })
     precio!: number;
 
-    @Field(type => Int, {nullable: true})
+    @Field(type => Int)
     @Column()
     stock!:number;
 

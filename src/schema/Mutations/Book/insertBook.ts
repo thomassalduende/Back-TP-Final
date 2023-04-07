@@ -38,12 +38,15 @@ export async function InsertBook(isbn: string,
             message.success = false
         }
 
-        message.book.push(book)
+        // message.book.push(book)
 
         return message;
 
-    }catch(error){
-        return error;
+    }catch(error: any){
+        message.message = error;
+        message.success = false;
+
+        return message;
     }
 
 }

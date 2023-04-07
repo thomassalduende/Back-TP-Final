@@ -4,6 +4,7 @@ import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
 import { registrarse } from "../../Mutations/User/registrarse";
+import { userAdmin } from "../../Mutations/User/UserAdmin";
 import { DeleteUser } from "../../Mutations/User/DeleteUser";
 import { agregarItem } from "../../Mutations/User/agregarItem";
 import { DeleteItem } from "../../Mutations/User/DeleteItem";
@@ -35,6 +36,12 @@ export class UserResolver {
     async registrarse(@Args() {nombre, email, password}: ArgsRegistrarse){
 
         return await registrarse(nombre, email, password)
+    }
+
+    @Mutation(() => SendUser)
+    async UserAdminRegister(@Args() {nombre, email, password}: ArgsRegistrarse){
+
+        return await userAdmin(nombre, email, password)
     }
 
     @Mutation(() => Send)
