@@ -8,7 +8,7 @@ export class Ciudad extends BaseEntity{
 
     @Field(type => ID)
     @PrimaryColumn()
-    cod_postal!: number;
+    cod_postal!: string;
 
     @Field()
     @Column()

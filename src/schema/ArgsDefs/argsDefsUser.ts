@@ -92,7 +92,7 @@ export class ArgsAgregarDireccion {
     telefono!: string;
 
     @Field()
-    cod_postal: number;
+    cod_postal: string;
 }
 
 @ArgsType()

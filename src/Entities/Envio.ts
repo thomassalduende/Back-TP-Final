@@ -40,6 +40,6 @@ export class Envio extends BaseEntity{
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
-    ciudad!: number;
+    ciudad!: string;
 
 }

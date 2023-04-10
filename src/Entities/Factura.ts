@@ -45,7 +45,7 @@ export class Factura extends BaseEntity{
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'cod_postal'})
-    ciudad!: number;
+    ciudad!: string;
 
     
     @OneToOne((type) => Envio, (envio) => envio.id, {

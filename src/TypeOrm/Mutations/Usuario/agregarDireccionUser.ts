@@ -3,7 +3,7 @@ import { Direccion } from '../../../Entities/Direccion_user';
 import { Users } from '../../../Entities/Users';
 
 
-export async function agregarDireccionUser(id: number, nombre:string,  dni: string, direccion: string, informacion: string, telefono: string, cod_postal: number) {
+export async function agregarDireccionUser(id: number, nombre:string,  dni: string, direccion: string, informacion: string, telefono: string, cod_postal: string) {
 
     let usuario = await Users.find({
         relations: {

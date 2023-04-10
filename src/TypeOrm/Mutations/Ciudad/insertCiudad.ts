@@ -3,7 +3,7 @@ import { Provincia } from "../../../Entities/Provincia";
 import { existsNombre } from "../Utilities/Exists";
 import { getElementByNombre } from "../Utilities/getElementByNombre";
 
-export async function insertCiudad(nombreCiudad: string, nombreProv: string, cod_postal: number) {
+export async function insertCiudad(nombreCiudad: string, nombreProv: string, cod_postal: string) {
 
     const existeProv = await existsNombre(nombreProv, Provincia)
 

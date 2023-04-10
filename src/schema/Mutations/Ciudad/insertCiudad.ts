@@ -2,7 +2,7 @@ import { insertCiudad } from "../../../TypeOrm/Mutations/Ciudad/insertCiudad";
 import { Send } from "../../../TypesDefs/Send";
 
 
-export async function InsertCiudad(nombre: string, nombreProv: string, cod_postal: number) {
+export async function InsertCiudad(nombre: string, nombreProv: string, cod_postal: string) {
 
     const message = new Send()
 

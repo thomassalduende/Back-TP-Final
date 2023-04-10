@@ -10,5 +10,5 @@ export class ArgsInsertCiudad {
     nombre_prov: string;
 
     @Field()
-    cod_postal: number;
+    cod_postal: string;
 }

@@ -5,11 +5,11 @@ VALUES(1, 'Entre Rios'),(2, 'Misiones'),(3, 'Corrientes'),(4, 'Buenos Aires'),(5
 (13, 'Tucuman'),(14, 'Neuquen'),(15, 'Santa Cruz');
 
 INSERT INTO ciudad(cod_postal, nombre, id_provincia)
-VALUES(3260,'Concepcion del Uruguay',1), (2854, "Larroque", 1), (3261,'Posadas',2),(3262,'Corrientes', 3),
-(3263,'Caba',4),(3264,'Rosario',5),(3265,'Merlo',6),
-(3266,'Rio Tercero',7),(3267,'San Fernardo del valle de catamarcar',8),(3268,'San Juan',9),
-(3269,'Tilcara',10),(3270,'Salta',11),(3271,'Rawson',12),
-(3272,'San Miguel de Tucuman',13),(3273,'Neuquen',14),(3274,'Rio Gallegos',15);
+VALUES('3260','Concepcion del Uruguay',1), ('2854', "Larroque", 1), ('3261','Posadas',2),('3262','Corrientes', 3),
+('3263','Caba',4),('3264','Rosario',5),('3265','Merlo',6),
+('3266','Rio Tercero',7),(3267,'San Fernardo del valle de catamarcar',8),('3268','San Juan',9),
+('3269','Tilcara',10),('3270','Salta',11),('3271','Rawson',12),
+('3272','San Miguel de Tucuman',13),('3273','Neuquen',14),('3274','Rio Gallegos',15);
 
 INSERT INTO autor(id_autor, nombre)
 VALUES(43267890,'Carlos Maire'),(43267891,'Carlos Miguel'),(43267892,'Florencia Sanchez'),
