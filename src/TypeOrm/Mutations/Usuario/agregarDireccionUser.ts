@@ -1,9 +1,11 @@
 import { Ciudad } from '../../../Entities/Ciudad';
 import { Direccion } from '../../../Entities/Direccion_user';
 import { Users } from '../../../Entities/Users';
+import { InsertCiudad } from '../../../schema/Mutations/Ciudad/insertCiudad';
+import { insertCiudad } from '../Ciudad/insertCiudad';
 
 
-export async function agregarDireccionUser(id: number, nombre:string,  dni: string, direccion: string, informacion: string, telefono: string, cod_postal: string) {
+export async function agregarDireccionUser(id: number, nombre:string,  dni: string, nombre_ciudad: string, nombre_prov: string, direccion: string, informacion: string, telefono: string, cod_postal: string) {
 
     let usuario = await Users.find({
         relations: {
@@ -28,6 +30,41 @@ export async function agregarDireccionUser(id: number, nombre:string,  dni: stri
         }
     })
     console.log(ciudad[0])
+
+    if(!ciudad[0]){
+        await insertCiudad(nombre_ciudad, nombre_prov, cod_postal)
+
+        const ciudad = await Ciudad.find({
+            where: {
+                cod_postal: cod_postal
+            }
+        })
+
+        let Direcciones = new Direccion();
+
+        if (!Direc[0] && ciudad[0]){
+            Direcciones.nombre = nombre;
+            Direcciones.dni = dni;
+            Direcciones.direccion = direccion;
+            Direcciones.AgregarInfo = informacion;
+            Direcciones.telefono = telefono;
+            Direcciones.ciudad = ciudad[0];
+            Direcciones.users = usuario[0];
+
+            await Direcciones.save()
+
+        }else if(usuario[0].direccion && ciudad[0]){
+
+            Direcciones = Direc[0]
+            Direcciones.dni = dni;
+            Direcciones.direccion = direccion;
+            Direcciones.AgregarInfo = informacion;
+            Direcciones.telefono = telefono;
+            Direcciones.ciudad = ciudad[0];
+
+            await Direcciones.save()
+        }
+    }
 
     let Direcciones = new Direccion();
 
@@ -68,8 +105,4 @@ export async function agregarDireccionUser(id: number, nombre:string,  dni: stri
     })
 
     return usuario
-
-
-
-    
 }

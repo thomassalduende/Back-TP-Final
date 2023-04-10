@@ -76,9 +76,9 @@ export class UserResolver {
     }
 
     @Mutation(() => SendUser)
-    async agregarDireccionUser(@Args() {tokenUser,nombre, dni,  direccion, AgregarInfo, telefono, cod_postal }:ArgsAgregarDireccion){
+    async agregarDireccionUser(@Args() {tokenUser,nombre, dni, nombre_ciudad, nombre_prov,direccion, AgregarInfo, telefono, cod_postal }:ArgsAgregarDireccion){
 
-        return await AgregarDireccion(tokenUser, nombre, dni, direccion, AgregarInfo, telefono, cod_postal)
+        return await AgregarDireccion(tokenUser, nombre, dni, nombre_ciudad, nombre_prov, direccion, AgregarInfo, telefono, cod_postal)
     }
 
     

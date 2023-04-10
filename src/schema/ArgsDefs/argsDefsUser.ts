@@ -86,6 +86,12 @@ export class ArgsAgregarDireccion {
     direccion: string;
 
     @Field()
+    nombre_ciudad: string;
+
+    @Field()
+    nombre_prov: string;
+
+    @Field()
     AgregarInfo!: string;
 
     @Field()
