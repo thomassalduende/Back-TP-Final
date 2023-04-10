@@ -5,7 +5,10 @@ export async function getFavoritos(id: number) {
     const users = await Users.find({
         relations: {
             favoritos: {
-                books: true
+                books: {
+                    genero: true,
+                    editorial: true
+                }
             }
         },
         where: {

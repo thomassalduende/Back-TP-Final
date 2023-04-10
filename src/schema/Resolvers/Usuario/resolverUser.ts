@@ -4,7 +4,7 @@ import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
 import { registrarse } from "../../Mutations/User/registrarse";
-import { userAdmin } from "../../Mutations/User/UserAdmin";
+import { userAdmin } from "../../Mutations/User/userAdmin";
 import { DeleteUser } from "../../Mutations/User/DeleteUser";
 import { agregarItem } from "../../Mutations/User/agregarItem";
 import { DeleteItem } from "../../Mutations/User/DeleteItem";
@@ -24,6 +24,7 @@ import { AgregarFav } from "../../Mutations/User/agregarFavoritoUser";
 import { DeleteFavorito } from "../../Mutations/User/deleteFavoritoUser";
 import { SendFavoritos } from "../../../TypesDefs/SendFavoritos";
 import { GetFavoritos } from "../../Querys/User/getFavoritos";
+import { existFav } from "../../Querys/User/existFav";
 
 
 
@@ -116,6 +117,11 @@ export class UserResolver {
 
         return await DeleteFavorito(tokenUser, isbn)
 
+    }
+    @Query(() => SendFavoritos)
+    async ExistFavorito(@Args() {tokenUser, isbn}: ArgsAgregarFav){
+
+        return await existFav(tokenUser, isbn)
     }
     
     @Query(() => SendUser)
