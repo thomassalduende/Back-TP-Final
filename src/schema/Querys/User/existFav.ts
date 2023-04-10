@@ -15,11 +15,11 @@ export async function existFav(tokenUser: string, isbn: string){
 
         if(faveado) {
             message.message = 'Book en favoritos'
+            message.success = true;
         }else{
             message.message = 'No se encuentra en favoritos'
+            message.success = false;
         }
-
-        message.success = true;
 
         return message;
     }catch(error: any){
