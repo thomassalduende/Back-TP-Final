@@ -12,7 +12,7 @@ import { Factura_detalle } from "./Factura_detalllada";
 @Entity()
 export class Books extends BaseEntity {
     
-    @Field(type => ID, {nullable: true})
+    @Field({nullable: true})
     @PrimaryColumn()
     isbn!: string;
 
@@ -63,6 +63,7 @@ export class Books extends BaseEntity {
     @Field(type => [Genero], {nullable: true})
     @ManyToMany((type) => Genero, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinTable({
         name: "genero_book",
@@ -78,6 +79,7 @@ export class Books extends BaseEntity {
     @Field(type => [Autor], {nullable: true})
     @ManyToMany((type) => Autor, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinTable({
         name: "autor_book",
@@ -103,6 +105,7 @@ export class Books extends BaseEntity {
     @Field(type => Editorial, {nullable: true})
     @ManyToOne(() => Editorial, (editorial) => editorial.id_editorial, {
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_editoral'})
     editorial!: Editorial;

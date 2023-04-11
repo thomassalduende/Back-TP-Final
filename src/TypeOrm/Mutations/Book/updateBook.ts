@@ -6,6 +6,7 @@ import { formatoFecha } from "../Utilities/formatoFecha";
 import { getElementByNombre } from "../Utilities/getElementByNombre";
 import { existsBook } from "./existsLibro";
 import { getBookIsbn } from "../../Querys/Book/getBookIsbn";
+import { insertBook } from "./insertBook";
 
 export async function updateBook(   isbn_orig: string,
                                     isbn: string, 
@@ -24,30 +25,27 @@ export async function updateBook(   isbn_orig: string,
    const existBook = await existsBook(isbn_orig) 
 
    if (!existBook){
-    throw `ERROR, LIBRO CON ISBN ${isbn} NO EXISTE`
+    throw `ERROR, LIBRO CON ISBN ${isbn_orig} NO EXISTE`
    }
 
-   if (!isbn_orig){
-    isbn_orig = isbn;
-   }
+   if(isbn_orig != isbn){
 
-   console.log(isbn_orig)
-   const book = await getBookIsbn(isbn_orig)
-   const exsBook = book[0];
-   console.log(exsBook.isbn)
+    const book = await getBookIsbn(isbn_orig)
+    await book[0].remove()
 
-   if (!(exsBook.isbn == isbn) && (isbn_orig && !(isbn_orig == isbn))){
+    await insertBook(isbn, imagen, nombre, precio, stock, descripcion, fecha_ingreso, editorial, descuento, generos, autors);
 
-    exsBook.isbn = isbn;
-    
-   }
+   }else {
 
-   exsBook.url_imagen = imagen;
-   exsBook.nombre = nombre;
-   exsBook.precio = precio;
-   exsBook.stock = stock;
-   exsBook.descripcion = descripcion;
-   exsBook.descuento = descuento;
+    const book = await getBookIsbn(isbn_orig)
+    const exsBook = book[0];
+
+    exsBook.url_imagen = imagen;
+    exsBook.nombre = nombre;
+    exsBook.precio = precio;
+    exsBook.stock = stock;
+    exsBook.descripcion = descripcion;
+    exsBook.descuento = descuento;
 
     if (fecha_ingreso){
         exsBook.fecha_ingreso = fecha_ingreso
@@ -82,5 +80,7 @@ export async function updateBook(   isbn_orig: string,
 
 
     await exsBook.save();
+
+   }
 
 }
