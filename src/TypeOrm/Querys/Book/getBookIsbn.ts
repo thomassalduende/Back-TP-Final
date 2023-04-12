@@ -6,7 +6,10 @@ export async function getBookIsbn(isbn: string) {
         relations: {
             editorial: true,
             genero: true,
-            autor: true
+            autor: true,
+            opiniones: {
+                users: true
+            }
         },
         where: {
             isbn: isbn
