@@ -5,9 +5,12 @@ export async function getAllBooks() {
         relations: {
             editorial: true,
             genero: true,
-            autor: true
+            autor: true,
+            opiniones: true
         }
     })
+
+    console.log(books)
 
     return books;
 }

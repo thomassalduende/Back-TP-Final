@@ -26,6 +26,7 @@ import { SendFavoritos } from "../../../TypesDefs/SendFavoritos";
 import { GetFavoritos } from "../../Querys/User/getFavoritos";
 import { existFav } from "../../Querys/User/existFav";
 import { GetAdminUsers } from "../../Querys/User/GetUsersAdmin";
+import { esAdmin } from "../../Mutations/User/esAdmin";
 
 
 
@@ -119,6 +120,13 @@ export class UserResolver {
         return await DeleteFavorito(tokenUser, isbn)
 
     }
+
+    @Query(() => SendUsers)
+    async EsAdmin(@Arg('tokenUser') tokenUser: string){
+
+        return await esAdmin(tokenUser)
+    }
+    
     @Query(() => SendFavoritos)
     async ExistFavorito(@Args() {tokenUser, isbn}: ArgsAgregarFav){
 
