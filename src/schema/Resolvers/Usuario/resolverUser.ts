@@ -53,9 +53,9 @@ export class UserResolver {
     }
 
     @Mutation(() => Send)
-    async deleteUsuario(@Arg('tokenUser') tokenUser: string){
+    async deleteUsuario(@Arg('email') email: string){
 
-        return await DeleteUser(tokenUser)
+        return await DeleteUser(email)
     }
 
     @Mutation(() => Send)
