@@ -11,13 +11,13 @@ export async function userAdmin(nombre: string, email: string, password: string)
 
         const user = await UserAdmin(nombre, email, password)
 
-        const id: string = user[0].id.toString()
+        const id: string = user.id.toString()
 
 
         message.message = 'User Admin registrado'
         message.success = true;
         message.accessToken = sign(id, 'secret-key');
-        message.user = user[0];
+        message.user = user;
 
         return message;
     }catch(error: any){

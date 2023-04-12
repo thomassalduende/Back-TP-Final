@@ -1,17 +1,13 @@
 import { Users } from "../../../Entities/Users";
-import { Carrito } from "../../../Entities/Carrito";
-import { ILike } from "typeorm";
+import { existEmail } from "./existEmail";
 
 
 export async function UserAdmin(nombre: string, email: string, password: string) {
 
-    let user = await Users.find({
-        where: {
-            email: ILike(`${email}`)
-        }
-    })
+    const existUser = await existEmail(email)
+    console.log(existUser)
 
-    if(user[0]){
+    if(existUser){
         throw "ERROR, ESTE CORREO YA ES ADMIN DE BOOKSHOP"
     }
 
@@ -23,7 +19,5 @@ export async function UserAdmin(nombre: string, email: string, password: string)
 
     await usuario.save();
 
-    return user;
-
-
+    return usuario;
 }

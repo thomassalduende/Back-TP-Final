@@ -1,8 +1,8 @@
 import { Send } from "./Send";
 import { Users } from "../Entities/Users";
-import { Field } from "type-graphql";
+import { Field, ObjectType } from "type-graphql";
 
-
+@ObjectType()
 export class SendUsers extends Send {
 
     @Field(type => [Users])

@@ -25,6 +25,7 @@ import { DeleteFavorito } from "../../Mutations/User/deleteFavoritoUser";
 import { SendFavoritos } from "../../../TypesDefs/SendFavoritos";
 import { GetFavoritos } from "../../Querys/User/getFavoritos";
 import { existFav } from "../../Querys/User/existFav";
+import { GetAdminUsers } from "../../Querys/User/GetUsersAdmin";
 
 
 
@@ -134,6 +135,12 @@ export class UserResolver {
     async getFavoritos(@Arg('tokenUser') tokenUser: string){
 
         return await GetFavoritos(tokenUser)
+    }
+
+    @Query(() => SendUsers)
+    async getUsersAdmin() {
+
+        return await GetAdminUsers()
     }
 
 }

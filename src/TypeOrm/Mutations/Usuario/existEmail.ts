@@ -1,13 +1,14 @@
 import { Users } from "../../../Entities/Users";
+import { ILike } from "typeorm";
 
 
 export async function existEmail(email: string) {
 
     const user = await Users.find({
         where: {
-            email: email
+            email: ILike(`${email}`)
         }
     })
     
-    return email[0]? true : false;
+    return user[0]? true : false;
 }

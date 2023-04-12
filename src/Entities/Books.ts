@@ -12,19 +12,19 @@ import { Factura_detalle } from "./Factura_detalllada";
 @Entity()
 export class Books extends BaseEntity {
     
-    @Field({nullable: true})
-    @PrimaryColumn()
+    @Field({nullable: false})
+    @PrimaryColumn({nullable: false})
     isbn!: string;
 
-    @Field({nullable: true})
-    @Column('text')
+    @Field({nullable: false})
+    @Column('text', {nullable: false})
     url_imagen!: string;
 
-    @Field({nullable: true})
-    @Column()
+    @Field({nullable: false})
+    @Column({nullable: false})
     nombre!:string;
 
-    @Field(type => Float)
+    @Field(type => Float, {nullable: false})
     @Column({
         type: 'decimal',
         precision: 10,
@@ -32,12 +32,12 @@ export class Books extends BaseEntity {
     })
     precio!: number;
 
-    @Field(type => Int)
-    @Column()
+    @Field(type => Int, {nullable: false})
+    @Column({nullable: false})
     stock!:number;
 
-    @Field(type => String)
-    @Column()
+    @Field(type => String, {nullable: false})
+    @Column({nullable: false})
     descripcion!: string;
 
     @Field(type => String, {nullable: true})
@@ -60,7 +60,7 @@ export class Books extends BaseEntity {
     // @JoinColumn({name: 'id_genero'})
     // genero!: Genero[];
 
-    @Field(type => [Genero], {nullable: true})
+    @Field(type => [Genero], {nullable: false})
     @ManyToMany((type) => Genero, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
@@ -76,7 +76,7 @@ export class Books extends BaseEntity {
     })
     genero!: Genero[];
 
-    @Field(type => [Autor], {nullable: true})
+    @Field(type => [Autor], {nullable: false})
     @ManyToMany((type) => Autor, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
@@ -102,7 +102,7 @@ export class Books extends BaseEntity {
     public valoracion!: Valoracion[];
 
     
-    @Field(type => Editorial, {nullable: true})
+    @Field(type => Editorial, {nullable: false})
     @ManyToOne(() => Editorial, (editorial) => editorial.id_editorial, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
@@ -125,7 +125,7 @@ export class Books extends BaseEntity {
     })
     public factura_detalle: Factura_detalle[];
 
-    @Field(type => [Opiniones])
+    @Field(type => [Opiniones], {nullable: false})
     @OneToMany((type) => Opiniones, (opiniones) => opiniones.book, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
