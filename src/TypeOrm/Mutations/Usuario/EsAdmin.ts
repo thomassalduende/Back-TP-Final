@@ -5,7 +5,8 @@ export async function EsAdmin(id: number) {
 
     const user = await Users.find({
         where: {
-            id: id
+            id: id,
+            es_admin: true
         }
     })
 

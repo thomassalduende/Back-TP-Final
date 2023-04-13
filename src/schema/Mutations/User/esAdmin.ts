@@ -11,12 +11,19 @@ export async function esAdmin(tokenUser: string) {
 
         const id: number = parseInt(<string>verify(tokenUser,  'secret-key'))
 
-        await EsAdmin(id)
+        const usuarioAdmin = await EsAdmin(id)
 
-        message.message = 'User es admin'
-        message.success = true;
-        message.accessToken = tokenUser;
-    
+        if(usuarioAdmin){
+            message.message = 'User es admin'
+            message.success = true;
+            message.accessToken = tokenUser;
+
+        } else {
+            message.message = 'Este user no es admin'
+            message.success = false;
+            message.accessToken = tokenUser;
+        }
+
         return message;
 
     }catch(error: any){
