@@ -13,15 +13,36 @@ import { Factura_detalle } from "./Factura_detalllada";
 export class Books extends BaseEntity {
     
     @Field({nullable: false})
-    @PrimaryColumn({nullable: false})
+    @PrimaryColumn({nullable: false, default: '', transformer: { 
+        to(value: string): string {
+            return value.trim();
+        }, 
+        from(value: string): string {
+            return value;
+        }
+    }})
     isbn!: string;
 
     @Field({nullable: false})
-    @Column('text', {nullable: false})
+    @Column('text', {nullable: false, default: '', transformer: { 
+        to(value: string): string {
+            return value.trim();
+        }, 
+        from(value: string): string {
+            return value;
+        }
+    }})
     url_imagen!: string;
 
     @Field({nullable: false})
-    @Column({nullable: false})
+    @Column({nullable: false, default: '', transformer: { 
+        to(value: string): string {
+            return value.trim();
+        }, 
+        from(value: string): string {
+            return value;
+        }
+    }})
     nombre!:string;
 
     @Field(type => Float, {nullable: false})
@@ -37,7 +58,14 @@ export class Books extends BaseEntity {
     stock!:number;
 
     @Field(type => String, {nullable: false})
-    @Column({nullable: false})
+    @Column({nullable: false,  default: '', transformer: { 
+        to(value: string): string {
+            return value.trim();
+        }, 
+        from(value: string): string {
+            return value;
+        }
+    }})
     descripcion!: string;
 
     @Field(type => String, {nullable: true})

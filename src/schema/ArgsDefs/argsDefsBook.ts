@@ -15,6 +15,17 @@ export class ArgsGetBook {
     autor: string = '';
 }
 
+
+@ArgsType()
+export class ArgsComprado {
+
+    @Field()
+    isbn: string;
+
+    @Field()
+    tokenUser: string;
+}
+
 @ArgsType()
 export class ArgsInsertBook {
 

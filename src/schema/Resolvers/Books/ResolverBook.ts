@@ -4,8 +4,9 @@ import { UpdateBook } from "../../Mutations/Book/updateBook";
 import { DeleteBook } from "../../Mutations/Book/deleteBook";
 import { GetBooks } from "../../Querys/Book/getBooks";
 import { SendBook } from "../../../TypesDefs/SendBook";
-import { ArgsGetBook, ArgsInsertBook, ArgsUpdateBook } from "../../ArgsDefs/argsDefsBook";
+import { ArgsComprado, ArgsGetBook, ArgsInsertBook, ArgsUpdateBook } from "../../ArgsDefs/argsDefsBook";
 import { Send } from "../../../TypesDefs/Send";
+import { LibroComprado } from "../../Querys/User/LibroComprado";
 
 
 
@@ -35,6 +36,12 @@ export class ResolverBook {
     async getBook(@Args() args: ArgsGetBook){
         
         return await GetBooks(args)
+    }
+
+    @Query(() => Send)
+    async libroComprado(@Args() {isbn, tokenUser} : ArgsComprado){
+
+        return await LibroComprado(isbn, tokenUser)
     }
 
 

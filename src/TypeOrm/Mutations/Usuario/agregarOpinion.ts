@@ -18,8 +18,9 @@ export async function agregarOpinion(coment: string, isbn: string, id: number) {
             isbn: isbn
         }
     });
+    
 
-    opinion.nombre_user = id.toString();
+    opinion.nombre_user = user[0].nombre;
     opinion.opinion = coment;
     opinion.users = user[0];
     opinion.book = book[0];
