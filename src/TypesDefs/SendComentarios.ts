@@ -8,4 +8,7 @@ export class SendComentarios extends Send {
 
     @Field()
     comprado: boolean;
+
+    @Field()
+    id_user: number;
 }

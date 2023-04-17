@@ -22,7 +22,8 @@ export async function existComentario(isbn: string, tokenUser: string){
             message.success = false;
         }
         message.comentario = comentarios;
-        message.comprado = comprado
+        message.comprado = comprado;
+        message.id_user = id;
 
         return message;
         
