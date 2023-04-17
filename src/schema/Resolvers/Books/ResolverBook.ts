@@ -41,7 +41,7 @@ export class ResolverBook {
     @Query(() => Send)
     async libroComprado(@Args() {isbn, tokenUser} : ArgsComprado){
 
-        return await LibroComprado(isbn, tokenUser)
+        return await LibroComprado(tokenUser, isbn)
     }
 
 
