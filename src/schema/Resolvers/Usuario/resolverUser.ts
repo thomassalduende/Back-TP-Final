@@ -27,6 +27,9 @@ import { GetFavoritos } from "../../Querys/User/getFavoritos";
 import { existFav } from "../../Querys/User/existFav";
 import { GetAdminUsers } from "../../Querys/User/GetUsersAdmin";
 import { esAdmin } from "../../Mutations/User/esAdmin";
+import { SendComentarios } from "../../../TypesDefs/SendComentarios";
+import { ArgsComprado } from "../../ArgsDefs/argsDefsBook";
+import { existComentario } from "../../Mutations/User/existComentario";
 
 
 
@@ -150,5 +153,12 @@ export class UserResolver {
 
         return await GetAdminUsers()
     }
+
+    @Query(() => SendComentarios) 
+    async ExistComentario(@Args() {isbn, tokenUser}: ArgsComprado){
+
+        return await existComentario(isbn, tokenUser)
+    }
+    
 
 }

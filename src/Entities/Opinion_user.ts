@@ -16,6 +16,10 @@ export class Opiniones extends BaseEntity {
     @Column('text')
     opinion!: string
 
+    @Field()
+    @Column()
+    user_book: string;
+
     @Field(type => Users)
     @ManyToOne((type) => Users, (users) => users.id, {
         onUpdate: 'CASCADE',

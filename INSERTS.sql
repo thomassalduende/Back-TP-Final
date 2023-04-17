@@ -93,3 +93,14 @@ VALUES
         ('136', 4),
         ('137', 2),
         ('138', 5)
+
+
+insert into envio(id, nombre, direccion, "AgregarInfo", id_user, telefono, cod_postal)
+values (1, 'Enzo', '9 de Julio', 'Al lado de la police', 23, '3446476809', '2854')
+
+INSERT INTO public.factura(
+	id, fecha, monto, "paymentID_MP", id_envio, id_user, cod_postal, isbn)
+	VALUES (1,'12/10/2023',1500.00, '12345', 1, 23, '2854', '130');
+	
+insert into factura_detalle(id, cantidad, precio, id_factura, isbn)
+values (1, 1, 1500.00, 1, '130')
