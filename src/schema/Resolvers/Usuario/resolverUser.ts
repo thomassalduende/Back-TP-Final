@@ -1,5 +1,5 @@
 import { Resolver, Args, Arg, Query, Mutation } from "type-graphql";
-import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser, ArgsGetUser, ArgsAgregarFav } from "../../ArgsDefs/argsDefsUser";
+import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser, ArgsGetUser, ArgsAgregarFav, ArgsAgregarValoracion } from "../../ArgsDefs/argsDefsUser";
 import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
@@ -28,8 +28,12 @@ import { existFav } from "../../Querys/User/existFav";
 import { GetAdminUsers } from "../../Querys/User/GetUsersAdmin";
 import { esAdmin } from "../../Mutations/User/esAdmin";
 import { SendComentarios } from "../../../TypesDefs/SendComentarios";
-import { ArgsComprado } from "../../ArgsDefs/argsDefsBook";
+import { ArgsComprado, ArgsValorado } from "../../ArgsDefs/argsDefsBook";
 import { existComentario } from "../../Mutations/User/existComentario";
+import { AgregarValoracion } from "../../Mutations/User/AgregarValoracion";
+import { DeleteValoracion } from "../../Mutations/User/DeleteValoracion";
+import { SendValoracion } from "../../../TypesDefs/SendValoracion";
+import { ExistValoracion } from "../../Mutations/User/ExistValoracion";
 
 
 
@@ -123,6 +127,20 @@ export class UserResolver {
         return await DeleteFavorito(tokenUser, isbn)
 
     }
+    @Mutation(() => Send)
+    async agregarValoracion(@Args() {tokenUser, isbn, cant_estrellas}: ArgsAgregarValoracion){
+
+        return await AgregarValoracion(cant_estrellas, isbn, tokenUser)
+
+    }
+
+    @Mutation(() => Send)
+    async deleteValoracion(@Args() {tokenUser, isbn}: ArgsAgregarValoracion){
+
+        return await DeleteValoracion(isbn, tokenUser)
+
+    }
+    
 
     @Query(() => SendUsers)
     async EsAdmin(@Arg('tokenUser') tokenUser: string){
@@ -159,6 +177,11 @@ export class UserResolver {
 
         return await existComentario(isbn, tokenUser)
     }
-    
 
+    @Query(() => SendValoracion) 
+    async existValoracion(@Args() {isbn, tokenUser}: ArgsValorado){
+
+        return await ExistValoracion(isbn, tokenUser)
+    }
+    
 }

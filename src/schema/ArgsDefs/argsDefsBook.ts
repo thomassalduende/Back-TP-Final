@@ -27,6 +27,16 @@ export class ArgsComprado {
 }
 
 @ArgsType()
+export class ArgsValorado {
+
+    @Field()
+    isbn: string;
+
+    @Field()
+    tokenUser: string;
+}
+
+@ArgsType()
 export class ArgsInsertBook {
 
     @Field()

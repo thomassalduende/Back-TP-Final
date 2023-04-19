@@ -9,6 +9,9 @@ export async function getBookIsbn(isbn: string) {
             autor: true,
             opiniones: {
                 users: true
+            },
+            valoracion: {
+                users: true
             }
         },
         where: {

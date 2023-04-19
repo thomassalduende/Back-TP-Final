@@ -40,11 +40,11 @@ export class Users extends BaseEntity{
     // @JoinColumn({name:'cod_postal'})
     // ciudad!: Ciudad;
 
-    @OneToOne((type) => Valoracion, (valoracion) => valoracion.users, {
+    @OneToMany((type) => Valoracion, (valoracion) => valoracion.users, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
-    valoracion!: Valoracion;
+    public valoracion!: Valoracion[];
 
     @OneToMany(() => Favoritos, (favorito) => favorito.users ,{
         onUpdate: 'CASCADE',

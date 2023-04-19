@@ -165,3 +165,15 @@ export class ArgsAgregarFav {
     @Field()
     isbn: string;
 }
+
+@ArgsType()
+export class ArgsAgregarValoracion {
+    @Field()
+    tokenUser: string;
+
+    @Field()
+    isbn: string;
+
+    @Field()
+    cant_estrellas: number;
+}
