@@ -20,9 +20,7 @@ export class CuponDeDescuento extends BaseEntity{
     cantidad_descuento!: number;
 
     @Field()
-    @Column({
-        default: false
-    })
+    @Column({default: false})
     cupon_utilizado!: boolean;
 
     @Field(type => Factura)

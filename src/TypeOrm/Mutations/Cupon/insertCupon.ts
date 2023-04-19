@@ -14,7 +14,6 @@ export async function insertCupon(codigo: string, descuento: number) {
     cupon.cantidad_descuento = descuento
 
     await cupon.save()
-    
 }
 
 

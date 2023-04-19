@@ -7,6 +7,7 @@ export async function getBookIsbn(isbn: string) {
             editorial: true,
             genero: true,
             autor: true,
+            factura_detalle: true,
             opiniones: {
                 users: true
             },

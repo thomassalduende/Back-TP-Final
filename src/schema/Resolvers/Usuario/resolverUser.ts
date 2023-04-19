@@ -34,6 +34,8 @@ import { AgregarValoracion } from "../../Mutations/User/AgregarValoracion";
 import { DeleteValoracion } from "../../Mutations/User/DeleteValoracion";
 import { SendValoracion } from "../../../TypesDefs/SendValoracion";
 import { ExistValoracion } from "../../Mutations/User/ExistValoracion";
+import { SendComprados } from "../../../TypesDefs/SendComprados";
+import { GetLibrosComprados } from "../../Querys/User/GetLibrosComprados";
 
 
 
@@ -182,6 +184,12 @@ export class UserResolver {
     async existValoracion(@Args() {isbn, tokenUser}: ArgsValorado){
 
         return await ExistValoracion(isbn, tokenUser)
+    }
+
+    @Query(() => SendComprados)
+    async getBooksComprados(@Arg('tokenUser') tokenUser: string){
+
+        return await GetLibrosComprados(tokenUser)
     }
     
 }
