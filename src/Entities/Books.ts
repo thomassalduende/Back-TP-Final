@@ -123,6 +123,7 @@ export class Books extends BaseEntity {
     })
     autor!: Autor[];
 
+    @Field(type => [Valoracion], {nullable: false})
     @OneToMany(() => Valoracion, (valoracion) => valoracion.books, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
