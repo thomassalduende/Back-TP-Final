@@ -10,16 +10,17 @@ export async function AgregarCupon(codigo: string, tokenUser: string) {
     const message = new SendCupones()
 
     try {
-        const id_user: number = parseInt(<string>verify(tokenUser,  'secret-key'))
+        const id: number = parseInt(<string>verify(tokenUser,  'secret-key'))
 
-        const cupon = await agregarCuponDesc(codigo, id_user)
+        const cupon = await agregarCuponDesc(codigo, id)
 
         const exisCupon = await existsCupon(codigo)
+        console.log(exisCupon)
         if(exisCupon){
             message.message = 'Cupon agregado'
             message.success = true;
             message.cupon = cupon;
-        }else {
+        } else {
             message.message = 'No existe el cupon'
             message.success = false;
         }

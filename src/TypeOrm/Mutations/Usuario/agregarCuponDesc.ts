@@ -18,14 +18,12 @@ export async function agregarCuponDesc(codigo: string, id: number) {
         }
     })
 
-    if(usuario[0].carrito && (cuponDesc[0] && (!cuponDesc[0].cupon_utilizado))){
+    if(cuponDesc[0]){
 
         usuario[0].carrito.cupon = cuponDesc[0]
-    }
 
-    await usuario[0].carrito.save()
-    cuponDesc[0].cupon_utilizado = true
-    await cuponDesc[0].save()
+        await usuario[0].carrito.save()
+    }
 
     return cuponDesc;
     
