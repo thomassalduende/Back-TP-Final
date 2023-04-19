@@ -18,11 +18,12 @@ export async function AgregarCupon(codigo: string, tokenUser: string) {
         if(exisCupon){
             message.message = 'Cupon agregado'
             message.success = true;
+            message.cupon = cupon;
         }else {
             message.message = 'No existe el cupon'
             message.success = false;
         }
-        message.cupon = cupon;
+        
 
         return message;
     }catch(error: any){
