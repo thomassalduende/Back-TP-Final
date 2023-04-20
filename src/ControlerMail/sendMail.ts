@@ -7,7 +7,7 @@ const config = {
     secure: true,
     auth: {
         user:'BookShopETN@gmail.com',
-        pass: 'bprsjtctkpszqwsm'
+        pass: 'bqfkokatvmudfxva'
     }
 }
 

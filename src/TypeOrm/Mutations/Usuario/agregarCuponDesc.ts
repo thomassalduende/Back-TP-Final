@@ -3,7 +3,7 @@ import { Users } from "../../../Entities/Users";
 
 export async function agregarCuponDesc(codigo: string, id: number) {
 
-    let usuario = await Users.find({
+    const usuario = await Users.find({
         relations: {
             carrito: true
         },
@@ -12,7 +12,7 @@ export async function agregarCuponDesc(codigo: string, id: number) {
         }
     })
 
-    let cuponDesc = await CuponDeDescuento.find({
+    const cuponDesc = await CuponDeDescuento.find({
         where: {
             codigo: codigo
         }
