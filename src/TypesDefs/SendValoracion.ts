@@ -6,4 +6,7 @@ export class SendValoracion extends Send {
 
     @Field()
     id_user: number;
+
+    @Field()
+    cantidad_estrellas: number;
 }

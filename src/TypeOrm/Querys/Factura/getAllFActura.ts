@@ -4,7 +4,9 @@ export async function getAllFactura() {
 
     const factura = await Factura.find({
         relations: {
-            book: true
+            factura_detalle: {
+                book: true
+            }
         }
     })
 

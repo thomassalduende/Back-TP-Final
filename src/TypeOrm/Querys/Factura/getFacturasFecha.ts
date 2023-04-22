@@ -5,7 +5,10 @@ export async function getFacturasFecha(fechaMenor: string, fechaMayor: string) {
 
     const factura = await Factura.find({
         relations: {
-            book: true
+            cupon: true,
+            factura_detalle: {
+                book: true
+            }
         },
         where: {
             fecha: Between(fechaMenor, fechaMayor)

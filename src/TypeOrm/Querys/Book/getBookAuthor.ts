@@ -7,7 +7,13 @@ export async function getBookAuthor(autor: string) {
         relations: {
             editorial: true,
             genero: true,
-            autor: true
+            autor: true,
+            opiniones: {
+                users: true
+            },
+            valoracion: {
+                users: true
+            }
         },
         where: {
             autor: {

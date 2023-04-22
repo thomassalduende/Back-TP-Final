@@ -3,8 +3,7 @@ import { ILike } from "typeorm";
 export async function existsNombre(nombre: any, entitie: any) {
 
     const resultado = await entitie.find({
-        where:
-        {
+        where: {
             nombre: ILike(nombre)
         }
     })

@@ -10,6 +10,7 @@ import { GeneroResolver } from './schema/Resolvers/Genero/resolverGenero'
 import { ProvinciaResolver } from './schema/Resolvers/Provincia/resolverProvincia'
 import { UserResolver } from './schema/Resolvers/Usuario/resolverUser'
 import { ResolverBook } from './schema/Resolvers/Books/ResolverBook'
+import { ResolverFactura } from './schema/Resolvers/Factura/resolverFacturas'
 
 
 
@@ -23,7 +24,7 @@ export async function StartServer() {
 
     const server = new ApolloServer({
         schema: await buildSchema({
-            resolvers:[CuponResolver, CiudadResolver, GeneroResolver, ProvinciaResolver, UserResolver, ResolverBook],
+            resolvers:[CuponResolver, CiudadResolver, GeneroResolver, ProvinciaResolver, UserResolver, ResolverBook, ResolverFactura],
             validate: false
         }),
         context: ({req, res}) => ({req, res})

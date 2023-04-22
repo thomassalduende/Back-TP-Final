@@ -1,4 +1,5 @@
 import { Books } from "../../../Entities/Books";
+import { ILike } from "typeorm";
 
 export async function getBookGenero(genero: string) {
 
@@ -6,11 +7,17 @@ export async function getBookGenero(genero: string) {
         relations: {
             editorial: true,
             genero: true,
-            autor: true
+            autor: true,
+            opiniones: {
+                users: true
+            },
+            valoracion: {
+                users: true
+            }
         },
         where: {
             genero:{
-                nombre: genero
+                nombre: ILike(`${genero}%`)
             }
         }
     })

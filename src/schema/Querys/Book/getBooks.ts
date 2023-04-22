@@ -8,22 +8,40 @@ import { getAllBooks } from "../../../TypeOrm/Querys/Book/getAllBooks";
 
 
 async function FuncionGetLibros(args: any) {
+    console.log(args)
+    console.log(args.nombre)
 
-    if(args.autor && args.autor != ''){
-        return await getBookAuthor(args.autor)
+    if(args){
+        const autor = await getBookAuthor(args.autor)
 
-    }else if(args.genero && args.genero != ''){
-        return await getBookGenero(args.genero)
+        if(autor.length == 0){
+            const genero = await getBookGenero(args.genero)
 
-    }else if(args.isbn && args.isbn != ''){
-        return await getBookIsbn(args.isbn)
+            if(genero.length == 0){
+                const isbn = await getBookIsbn(args.isbn)
 
-    }else if(args.nombre && args.nobre != ''){
-        return await getBookNombre(args.nombre)
+                if(isbn.length == 0){
+                    console.log(isbn.length)
+                    // return await getAllBooks()
+                    const nombre = await getBookNombre(args.nombre)
+                    console.log(nombre)
+                    if(nombre.length == 0){
+                        return await getAllBooks()
+                    }else{
+                        return await getBookNombre(args.nombre)
+                    }
+                }else{
+                    return await getBookIsbn(args.isbn)
+                }
+            }else {
+                return await getBookGenero(args.genero)
+            }
+        }else{
+            return await getBookAuthor(args.autor)
+        }
+    }else{
+        return await getAllBooks()
     }
-
-    return getAllBooks() 
-
 }
 
 export async function GetBooks(args: any){
@@ -36,9 +54,9 @@ export async function GetBooks(args: any){
 
         message.message = 'Books Obtenidos'
         message.success = true;
-        message.book = book
+        message.book = book;
 
-        return message
+        return message;
 
     }catch(error: any){
         message.message = error;
