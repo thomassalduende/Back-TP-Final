@@ -4,6 +4,7 @@ import { insertCuponDescuento } from "../../Mutations/CuponDescuento/insertCupon
 import { deleteCupon } from "../../Mutations/CuponDescuento/deleteCupon";
 import { ArgsInsertCupon } from "../../ArgsDefs/argsDefsCupones";
 import { getCupones } from "../../Querys/CuponDescuento/getCupones";
+import { SendCupones } from "../../../TypesDefs/SendCupones";
 
 @Resolver()
 export class CuponResolver {
@@ -20,7 +21,7 @@ export class CuponResolver {
         return await deleteCupon(codigo)
     }
 
-    @Query(() => Send)
+    @Query(() => SendCupones)
     async getCupones(){
 
         return await getCupones()
