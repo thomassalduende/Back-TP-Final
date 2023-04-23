@@ -31,7 +31,8 @@ export async function agregarDireccionUser(id: number, nombre:string,  dni: stri
     })
     console.log(ciudad[0])
 
-    if(!ciudad[0]){
+    console.log(ciudad.length)
+    if(ciudad.length == 0){
         await insertCiudad(nombre_ciudad, nombre_prov, cod_postal)
 
         const ciudad = await Ciudad.find({
@@ -82,12 +83,16 @@ export async function agregarDireccionUser(id: number, nombre:string,  dni: stri
     }else if(usuario[0].direccion && ciudad[0]){
 
         Direcciones = Direc[0]
+        Direcciones.nombre = nombre;
         Direcciones.dni = dni;
         Direcciones.direccion = direccion;
         Direcciones.AgregarInfo = informacion;
         Direcciones.telefono = telefono;
         Direcciones.ciudad = ciudad[0];
 
+        usuario[0].nombre = nombre;
+
+        await usuario[0].save();
         await Direcciones.save()
     }
 

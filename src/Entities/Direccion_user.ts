@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int} from "type-graphql";
-import { Entity ,BaseEntity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne} from "typeorm";
+import { Entity ,BaseEntity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, OneToOne} from "typeorm";
 import { Ciudad } from "./Ciudad";
 import { Users } from "./Users";
 
@@ -31,7 +31,7 @@ export class Direccion extends BaseEntity{
     @Column()
     telefono!: string;
 
-    @ManyToOne((type) => Users, (user) => user.id, {
+    @OneToOne((type) => Users, (user) => user.id, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
