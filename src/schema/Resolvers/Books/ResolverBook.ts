@@ -7,6 +7,7 @@ import { SendBook } from "../../../TypesDefs/SendBook";
 import { ArgsComprado, ArgsGetBook, ArgsInsertBook, ArgsUpdateBook } from "../../ArgsDefs/argsDefsBook";
 import { Send } from "../../../TypesDefs/Send";
 import { LibroComprado } from "../../Querys/User/LibroComprado";
+import { BusquedaBooks } from "../../Querys/Book/BusquedaLibros";
 
 
 
@@ -44,5 +45,9 @@ export class ResolverBook {
         return await LibroComprado(tokenUser, isbn)
     }
 
+    @Query(() => SendBook)
+    async busquedaLibros(@Args() args: ArgsGetBook){
 
+        return await BusquedaBooks(args)
+    }
 }

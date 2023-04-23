@@ -35,14 +35,7 @@ export class Books extends BaseEntity {
     url_imagen!: string;
 
     @Field({nullable: false})
-    @Column({nullable: false, default: '', transformer: { 
-        to(value: string): string {
-            return value.trim();
-        }, 
-        from(value: string): string {
-            return value;
-        }
-    }})
+    @Column({nullable: false})
     nombre!:string;
 
     @Field(type => Float, {nullable: false})
