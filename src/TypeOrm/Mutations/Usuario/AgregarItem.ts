@@ -23,9 +23,9 @@ export async function AgregarItem( isbn: string, cantidad: number, id: number) {
         }
     });
 
-    
-
     let cantidadItem = 0;
+
+    console.log(user[0].carrito.items)
 
     if (user[0].carrito.items) {
 

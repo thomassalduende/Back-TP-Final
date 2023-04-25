@@ -4,9 +4,10 @@ import { getElementByNombre } from "../Utilities/getElementByNombre";
 
 export async function insertAutor(nombreAutor: string) : Promise<Autor>{
 
-    const existeAutor = existsNombre(nombreAutor, Autor)
+    const existeAutor = await existsNombre(nombreAutor, Autor)
     const autor = new Autor()
 
+    console.log(existeAutor)
     if (!existeAutor){
         
         autor.nombre = nombreAutor;

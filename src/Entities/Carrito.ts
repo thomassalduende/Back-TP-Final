@@ -17,7 +17,7 @@ export class Carrito extends BaseEntity{
         onUpdate: 'CASCADE', 
         onDelete: 'CASCADE'
     })
-    @JoinColumn({name: 'id'})
+    @JoinColumn({name: 'id_user'})
     users: Users;
 
     @Field(type => [LineaCarrito])
