@@ -1,11 +1,18 @@
 import { existsNombre } from "../Utilities/Exists";
 import { getElementByNombre } from "../Utilities/getElementByNombre";
 import { Genero } from "../../../Entities/Genero";
+import { ILike } from "typeorm";
 
 
 export async function deleteGenero(nombreGenero: string) {
 
-    const genero = await getElementByNombre(nombreGenero, Genero)
+    const genero = await Genero.find({
+        where: {
+            nombre:  ILike(`${nombreGenero}`)
+        }
+    })
+
+    console.log(genero)
 
     if (!genero){
 
