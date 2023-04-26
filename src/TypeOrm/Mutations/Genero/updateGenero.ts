@@ -1,19 +1,23 @@
 import { Genero } from "../../../Entities/Genero";
-import { getElementByNombre } from "../Utilities/getElementByNombre";
+import { ILike } from "typeorm";
 
 export async function updateGenero(nombre_orig: string, nombre: string, url_imagen: string) {
 
-    const genero = await getElementByNombre(nombre_orig, Genero)
+    const genero = await Genero.find({
+        where: {
+            nombre:  ILike(`${nombre_orig}`)
+        }
+    })
 
     if (nombre && nombre.length > 0){
-        genero.nombre = nombre;
+        genero[0].nombre = nombre;
     }
 
     if (url_imagen && url_imagen.length > 0){
-        genero.url_imagen = url_imagen;
+        genero[0].url_imagen = url_imagen;
     }
 
-    await genero.save()
+    await genero[0].save()
     
 }
 
