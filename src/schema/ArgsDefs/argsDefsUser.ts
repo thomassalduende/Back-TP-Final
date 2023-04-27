@@ -148,9 +148,6 @@ export class ArgsUpdateUser {
     nombre: string;
 
     @Field()
-    email_orig: string;
-
-    @Field()
     email: string;
 
     @Field()

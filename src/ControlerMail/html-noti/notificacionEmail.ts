@@ -81,7 +81,7 @@ export const EmailPagoAprobado = (message: string, usuario: string, envio: strin
 }
 
 
-export const RecoveryPassword = (link: string) =>{
+export const RecoveryPassword = (code: string) =>{
     return (
         `
         <!DOCTYPE html>
@@ -102,7 +102,8 @@ export const RecoveryPassword = (link: string) =>{
                         <hr />
                         <div class="row fact-info mt-3">
                             <h2>Solicitud de cambio de contraseña en BookShop</h2>
-                            <p>Para el siguiente cambio solicitado debera ingresar al siguiente link: ${link}</p>
+                            <p>Su contraseña para poder acceder es: ${code}</p>
+                            <h3>Continua comprando en Book Shop</h3>
                         </div>
                     </div>
                 </body>

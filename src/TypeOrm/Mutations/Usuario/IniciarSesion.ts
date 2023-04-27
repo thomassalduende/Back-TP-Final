@@ -10,11 +10,14 @@ export async function IniciarSesion(email: string, password: string) {
             carrito: true,
         },
         
-       where:{
+        where:[{
             email: ILike(`${email}`),
             password: password
         },
-
+        {
+            email: ILike(`${email}`),
+            resetPassword: password
+        }],
         order: {
             notificacion: {
                 id: "DESC"

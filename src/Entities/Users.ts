@@ -33,6 +33,10 @@ export class Users extends BaseEntity{
     @Column({default: false})
     es_admin!:boolean;
 
+    @Column({default: null})
+    resetPassword: string;
+
+
     // @OneToMany(() => Ciudad, (ciudad)=> ciudad.cod_postal, {
     //     onUpdate: 'CASCADE',
     //     onDelete: 'CASCADE'

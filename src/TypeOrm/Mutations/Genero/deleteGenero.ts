@@ -1,5 +1,3 @@
-import { existsNombre } from "../Utilities/Exists";
-import { getElementByNombre } from "../Utilities/getElementByNombre";
 import { Genero } from "../../../Entities/Genero";
 import { ILike } from "typeorm";
 

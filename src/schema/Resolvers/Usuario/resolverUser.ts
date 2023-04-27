@@ -36,6 +36,7 @@ import { SendValoracion } from "../../../TypesDefs/SendValoracion";
 import { ExistValoracion } from "../../Mutations/User/ExistValoracion";
 import { SendComprados } from "../../../TypesDefs/SendComprados";
 import { GetLibrosComprados } from "../../Querys/User/GetLibrosComprados";
+import { ResetPassword } from "../../Mutations/User/ResetPassword";
 
 
 
@@ -57,9 +58,9 @@ export class UserResolver {
     }
 
     @Mutation(() => Send)
-    async updateUser(@Args() args: ArgsUpdateUser){
+    async updateUser(@Args() {email, nombre, password, tokenUser} : ArgsUpdateUser){
 
-        return await UpdateUser(args)
+        return await UpdateUser(tokenUser, nombre, email, password)
     }
 
     @Mutation(() => Send)
@@ -142,7 +143,11 @@ export class UserResolver {
         return await DeleteValoracion(isbn, tokenUser)
 
     }
-    
+    @Mutation(() => Send)
+    async RecoveryPassword(@Arg('email') email: string){
+
+        return await ResetPassword(email)
+    }
 
     @Query(() => SendUsers)
     async EsAdmin(@Arg('tokenUser') tokenUser: string){
