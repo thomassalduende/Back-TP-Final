@@ -31,7 +31,7 @@ export async function insertBook(isbn: string,
     book.descripcion = descripcion;
     book.descuento = descuento;
 
-    if (fecha_ingreso != 'null'){
+    if (fecha_ingreso != ''){
         book.fecha_ingreso = fecha_ingreso
     } else {
         book.fecha_ingreso = (formatoFecha(new Date())).toString()
