@@ -12,12 +12,23 @@ function Items(user: Users): Array<any> {
 
         user.carrito.items.forEach(item => {
 
+            const descuento_libro = item.book.descuento
+
             const PrecioTotal = item.book.precio
             let precio = PrecioTotal
+
+            console.log(user.carrito.cupon)
 
             if (user.carrito.cupon != null){
 
                 precio = precio -(+PrecioTotal * (user.carrito.cupon.cantidad_descuento/100))
+                console.log("precio con cupon: ", precio)
+            }
+
+            if(descuento_libro != 0.00){
+
+                precio = precio  -(+PrecioTotal * (descuento_libro/100))
+                console.log("precio con descuento: ", precio)
             }
 
             items.push({
