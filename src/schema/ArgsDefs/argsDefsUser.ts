@@ -145,12 +145,6 @@ export class ArgsUpdateUser {
     tokenUser: string;
 
     @Field()
-    nombre: string;
-
-    @Field()
-    email: string;
-
-    @Field()
     password: string;
 }
 
