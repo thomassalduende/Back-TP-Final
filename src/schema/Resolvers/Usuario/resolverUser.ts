@@ -198,7 +198,7 @@ export class UserResolver {
         return await GetLibrosComprados(tokenUser)
     }
 
-    @Query(() => SendUser)
+    @Mutation(() => SendUser)
     async LoginGoogle(@Args() {nombre, email, password} : ArgsLogin){
 
         return await loginGoogle(nombre, email, password)
