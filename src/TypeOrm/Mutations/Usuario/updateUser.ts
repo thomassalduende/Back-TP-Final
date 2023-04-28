@@ -1,25 +1,14 @@
 import { Users } from "../../../Entities/Users";
-import { getUsuarioMail } from "../../Querys/Usuario/getUsuarioMail";
 
-export async function updateUser(nombre: string, email: string, password: string, user: Users) {
+export async function updateUser(id: number, password: string) {
 
-    if (nombre != null){
-        user.nombre = nombre;
-    }
-
-    if((email != null) && (user.email != email)){
-        const existsEmail = await getUsuarioMail(email)
-
-        if(existsEmail){
-            throw (`ERROR, EL CORREO ${email} YA EXISTE`)
+    const user = await Users.find({
+        where: {
+            id: id
         }
-        user.email = email;
-    }
+    })
+    user[0].password = password;
 
-    if(password != null){
-        user.password = password;
-    }
-
-    await user.save()
+    await user[0].save()
     
 }

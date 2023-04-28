@@ -59,9 +59,9 @@ export class UserResolver {
     }
 
     @Mutation(() => Send)
-    async updateUser(@Args() {email, nombre, password, tokenUser} : ArgsUpdateUser){
+    async updateUser(@Args() {password, tokenUser} : ArgsUpdateUser){
 
-        return await UpdateUser(tokenUser, nombre, email, password)
+        return await UpdateUser(tokenUser, password)
     }
 
     @Mutation(() => Send)
