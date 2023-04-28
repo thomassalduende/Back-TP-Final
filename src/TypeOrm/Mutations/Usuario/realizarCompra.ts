@@ -19,16 +19,19 @@ function Items(user: Users): Array<any> {
 
             console.log(user.carrito.cupon)
 
-            if (user.carrito.cupon != null){
-
-                precio = precio -(+PrecioTotal * (user.carrito.cupon.cantidad_descuento/100))
-                console.log("precio con cupon: ", precio)
-            }
-
             if(descuento_libro != 0.00){
 
                 precio = precio  -(+PrecioTotal * (descuento_libro/100))
                 console.log("precio con descuento: ", precio)
+            }
+
+            if (user.carrito.cupon != null){
+
+                precio = precio -(+PrecioTotal * (user.carrito.cupon.cantidad_descuento/100))
+                console.log("precio con cupon: ", precio)
+
+                // user.carrito.cupon.remove()
+                // user.carrito.cupon.save()
             }
 
             items.push({
@@ -47,7 +50,7 @@ function Items(user: Users): Array<any> {
 
 async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
 
-    const linkFront = ''
+    const linkFront = 'http://localhost:5173'
     mercadopago.configure({access_token: 'TEST-2852943679564217-013020-ad2b8c721723039500da72ea560d9926-159107565'});
 
     const preference = {
@@ -60,9 +63,11 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
             success: `${linkFront}/checkout/success`,
             failure: `${linkFront}/checkout/failure`,
             pending: `${linkFront}/checkout/pending`,
+            return: `${linkFront}/checkout/return`
         },
         auto_return: 'approved',
-        notification_url: 'https://32e8-190-17-64-57.sa.ngrok.io/pagos/notificacion'
+        notification_url: 'http://localhost:3000/pagos/notificacion'
+        
     };
 
     const link = mercadopago.preferences.create(preference)

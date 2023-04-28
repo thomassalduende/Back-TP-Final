@@ -37,6 +37,7 @@ import { ExistValoracion } from "../../Mutations/User/ExistValoracion";
 import { SendComprados } from "../../../TypesDefs/SendComprados";
 import { GetLibrosComprados } from "../../Querys/User/GetLibrosComprados";
 import { ResetPassword } from "../../Mutations/User/ResetPassword";
+import { loginGoogle } from "../../Querys/User/loginGoogle";
 
 
 
@@ -195,6 +196,12 @@ export class UserResolver {
     async getBooksComprados(@Arg('tokenUser') tokenUser: string){
 
         return await GetLibrosComprados(tokenUser)
+    }
+
+    @Query(() => SendUser)
+    async LoginGoogle(@Args() {nombre, email, password} : ArgsLogin){
+
+        return await loginGoogle(nombre, email, password)
     }
     
 }

@@ -11,9 +11,7 @@ export async function IniciarSesionRedSocial(nombre: string, email: string, pass
             direccion:{
                 ciudad: true
             },
-            notificacion: true,
-            carrito: true,
-            factura: true
+            carrito: true
         },
         where: {
             email: ILike(`${email}`),
@@ -27,11 +25,12 @@ export async function IniciarSesionRedSocial(nombre: string, email: string, pass
         }
     })
 
-
-    if(!user[0]){
+    console.log(user.length)
+    if(user.length == 0){
 
         const usuario = new Users();
         usuario.nombre = nombre;
+        usuario.email = email;
         usuario.password = password;
 
         await usuario.save()
