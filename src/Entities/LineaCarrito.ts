@@ -22,7 +22,7 @@ export class LineaCarrito extends BaseEntity{
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_carrito'})
-    carrito: number;
+    carrito: Carrito;
 
     @Field(type => Books)
     @ManyToOne(() => Books, (book) => book.isbn,{

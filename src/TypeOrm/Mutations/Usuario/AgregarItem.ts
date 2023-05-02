@@ -23,7 +23,7 @@ export async function AgregarItem( isbn: string, cantidad: number, id: number) {
         }
     });
 
-    let cantidadItem = 0;
+    // let cantidadItem = 0;
 
     console.log(user[0].carrito.items)
 
@@ -33,28 +33,29 @@ export async function AgregarItem( isbn: string, cantidad: number, id: number) {
 
         if (pos == -1){
 
-            if (+cantidad > +book[0].stock){
+            if (cantidad > book[0].stock){
 
-                throw 'ERROR, STOCK NO DISPONIBLE'
+                throw new Error (`ERROR, STOCK NO DISPONIBLE`)
             }
 
             const item = new LineaCarrito()
             item.cantidad = cantidad;
             item.book = book[0];
-            item.carrito = user[0].carrito.id_carrito;
+            item.carrito = user[0].carrito;
 
             await item.save()
 
         }else{
 
-            cantidadItem = user[0].carrito.items[pos].cantidad + (+ cantidad)
+            // cantidadItem = user[0].carrito.items[pos].cantidad + (+ cantidad)
+        
 
-            if(cantidadItem > book[0].stock){
+            if(cantidad > book[0].stock){
 
-                throw 'ERROR, LA CANTIDAD A GREGAR ES MAYOR QUE EL STOCK DISPONIBLE'
+                throw  new Error('ERROR, LA CANTIDAD A AGREGAR ES MAYOR QUE EL STOCK DISPONIBLE')
             }
 
-            user[0].carrito.items[pos].cantidad = cantidadItem
+            user[0].carrito.items[pos].cantidad = cantidad;
 
             await user[0].carrito.items[pos].save()
         }
