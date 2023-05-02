@@ -21,13 +21,13 @@ function Items(user: Users): Array<any> {
 
             if(descuento_libro != 0.00){
 
-                precio = precio  -(+PrecioTotal * (descuento_libro/100))
+                precio = precio - ( precio * descuento_libro / 100)
                 console.log("precio con descuento: ", precio)
             }
 
             if (user.carrito.cupon != null){
 
-                precio = precio -(+PrecioTotal * (user.carrito.cupon.cantidad_descuento/100))
+                precio = precio - ( precio * user.carrito.cupon.cantidad_descuento / 100)
                 console.log("precio con cupon: ", precio)
 
                 // user.carrito.cupon.remove()
