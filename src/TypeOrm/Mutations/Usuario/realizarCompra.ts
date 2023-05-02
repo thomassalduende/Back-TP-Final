@@ -63,7 +63,7 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
             success: `${linkFront}/checkout/success`,
             failure: `${linkFront}/checkout/failure`,
             pending: `${linkFront}/checkout/pending`,
-            return: `${linkFront}/checkout/return`
+            return: `${linkFront}`
         },
         auto_return: 'approved',
         notification_url: 'http://localhost:3000/pagos/notificacion'

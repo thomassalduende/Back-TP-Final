@@ -41,7 +41,7 @@ export async function AgregarItem( isbn: string, cantidad: number, id: number) {
             const item = new LineaCarrito()
             item.cantidad = cantidad;
             item.book = book[0];
-            item.carrito = user[0].carrito;
+            item.carrito = user[0].carrito.id_carrito;
 
             await item.save()
 
