@@ -1,5 +1,5 @@
 import { Resolver, Args, Arg, Query, Mutation } from "type-graphql";
-import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsOpinion, ArgsValorar, ArgsUpdateUser, ArgsGetUser, ArgsAgregarFav, ArgsAgregarValoracion } from "../../ArgsDefs/argsDefsUser";
+import { ArgsRegistrarse, ArgsAgregarItem, ArgsDeleteItem, ArgsLogin, IniciarSesion, ArgsAgregarCupon, ArgsAgregarDireccion, ArgsValorar, ArgsUpdateUser, ArgsGetUser, ArgsAgregarFav, ArgsAgregarValoracion, ArgsComentario, ArgsDeleteComentario } from "../../ArgsDefs/argsDefsUser";
 import { SendUser } from "../../../TypesDefs/SendUser";
 import { Send } from "../../../TypesDefs/Send";
 
@@ -108,13 +108,13 @@ export class UserResolver {
     }
 
     @Mutation(() => Send)
-    async agregarOpinion(@Args() {coment, isbn, tokenUser}: ArgsOpinion){
+    async agregarOpinion(@Args() {coment, isbn, tokenUser}: ArgsComentario){
 
         return await AgregarOpinion(coment, isbn, tokenUser)
     }
 
     @Mutation(() => Send)
-    async deleteOpinion(@Args() {isbn, tokenUser}: ArgsOpinion){
+    async deleteOpinion(@Args() {isbn, tokenUser}: ArgsDeleteComentario){
 
         return await DeleteOpinion(isbn, tokenUser)
     }

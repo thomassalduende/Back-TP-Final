@@ -102,7 +102,7 @@ export class ArgsAgregarDireccion {
 }
 
 @ArgsType()
-export class ArgsOpinion {
+export class ArgsComentario {
 
     @Field()
     coment: string;
@@ -112,6 +112,16 @@ export class ArgsOpinion {
 
     @Field()
     tokenUser: string
+}
+
+@ArgsType()
+export class ArgsDeleteComentario {
+
+    @Field()
+    isbn: string;
+
+    @Field()
+    tokenUser: string;
 }
 
 @ArgsType()
