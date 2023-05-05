@@ -27,10 +27,6 @@ export async function resetPassword(email: string) {
         }
     })
 
-    if (!user) {
-        throw new Error('No existe una cuenta asociada a ese correo electrónico.');
-    }
-
     const crypto = require('crypto');
     const code = crypto.randomInt(1, 100000).toString()
     console.log(code)
