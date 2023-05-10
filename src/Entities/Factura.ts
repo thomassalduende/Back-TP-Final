@@ -40,7 +40,7 @@ export class Factura extends BaseEntity{
     cupon!: CuponDeDescuento;
 
 
-    @OneToOne((type) => Ciudad, {
+    @ManyToOne((type) => Ciudad, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })

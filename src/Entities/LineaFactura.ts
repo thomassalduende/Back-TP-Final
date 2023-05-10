@@ -1,6 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToOne} from "typeorm";
 import { ObjectType, Field, ID, Float, Int } from "type-graphql";
-import { LineaCarrito } from "./LineaCarrito";
 import { Books } from "./Books";
 import { Carrito } from "./Carrito";
 
@@ -32,12 +31,12 @@ export class LineaFactura extends BaseEntity{
     @JoinColumn({name: 'isbn'})
     isbn!: Books;
 
-    @Field(type => [Carrito])
-    @OneToMany((type) => Carrito, (carrito) =>carrito.id_carrito, {
+    @Field(type => Carrito)
+    @ManyToOne(() => Carrito, (carrito) => carrito.id_carrito, {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
     })
     @JoinColumn({name: 'id_carrito'})
-    carrito!: Carrito[];
+    carrito: Carrito;
     
 }
