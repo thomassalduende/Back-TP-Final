@@ -60,13 +60,13 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
         },
         items: items,
         back_urls:{
-            success: `${linkFront}/checkout/success`,
-            failure: `${linkFront}/checkout/failure`,
-            pending: `${linkFront}/checkout/pending`,
-            return: `${linkFront}`
+            success: `${linkFront}/success`,
+            failure: `${linkFront}/failure`,
+            pending: `${linkFront}/pending`,
+            return: `${linkFront}/`
         },
         auto_return: 'approved',
-        notification_url: ' https://00ea-190-138-66-163.ngrok-free.app/pagos/notificacion'
+        notification_url: 'https://00ea-190-138-66-163.ngrok-free.app/pagos/notificacion'
         
     };
 
