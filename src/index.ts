@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 // import app from './app'
-import {ConnectionBD} from './db'
+import { ConnectionBD } from './db'
 import { StartServer } from './app'
 
 async function main() {
