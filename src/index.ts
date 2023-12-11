@@ -7,13 +7,13 @@ async function main() {
     try {
         await ConnectionBD.initialize()
         const app = await StartServer()
-        app.listen(3000)
-        console.log(`Server initialize on http://localhost:${3000}/graphql`)
-        
-    } catch (error) {  
+        app.listen(4000)
+        console.log(`Server initialize on http://localhost:${4000}/graphql`)
 
-        console.log(error)      
-    }   
+    } catch (error) {
+
+        console.log(error)
+    }
 }
 main()
 

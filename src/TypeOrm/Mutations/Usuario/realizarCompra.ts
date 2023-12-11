@@ -8,7 +8,7 @@ function Items(user: Users): Array<any> {
 
     let items: Array<any> = []
 
-    if(user.carrito.items){
+    if (user.carrito.items) {
 
         user.carrito.items.forEach(item => {
 
@@ -19,15 +19,15 @@ function Items(user: Users): Array<any> {
 
             console.log(user.carrito.cupon)
 
-            if(descuento_libro != 0.00){
+            if (descuento_libro != 0.00) {
 
-                precio = precio - ( precio * descuento_libro / 100)
+                precio = precio - (precio * descuento_libro / 100)
                 console.log("precio con descuento: ", precio)
             }
 
-            if (user.carrito.cupon != null){
+            if (user.carrito.cupon != null) {
 
-                precio = precio - ( precio * user.carrito.cupon.cantidad_descuento / 100)
+                precio = precio - (precio * user.carrito.cupon.cantidad_descuento / 100)
                 console.log("precio con cupon: ", precio)
 
                 // user.carrito.cupon.remove()
@@ -51,15 +51,15 @@ function Items(user: Users): Array<any> {
 async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
 
     const linkFront = 'http://localhost:5173'
-    mercadopago.configure({access_token: 'TEST-2852943679564217-013020-ad2b8c721723039500da72ea560d9926-159107565'});
+    mercadopago.configure({ access_token: 'TEST-2852943679564217-013020-ad2b8c721723039500da72ea560d9926-159107565' });
 
     const preference = {
-        payer:{
+        payer: {
             name: user.nombre,
             email: user.email
         },
         items: items,
-        back_urls:{
+        back_urls: {
             success: `${linkFront}/success`,
             failure: `${linkFront}/failure`,
             pending: `${linkFront}/pending`,
@@ -67,31 +67,32 @@ async function CrearLinkMercadoPago(user: Users, items: any): Promise<string> {
         },
         auto_return: 'approved',
         notification_url: 'https://00ea-190-138-66-163.ngrok-free.app/pagos/notificacion'
-        
+
     };
 
     const link = mercadopago.preferences.create(preference)
-    .then(function (response: any){
-        return response.body.sandbox_init_point;
-        // return response.redirect(response.body.init_point)
-    })
-    .catch(function (error: any){
-        //console.log(preference);
-        console.log(error);
-        return null;
-    });
+        .then(function (response: any) {
+            return response.body.sandbox_init_point;
+            // return response.redirect(response.body.init_point)
+        })
+        .catch(function (error: any) {
+            //console.log(preference);
+            console.log(error);
+            return null;
+        });
 
     return link
-    
+
 }
 
-export async function realizarCompra(id: number): Promise<string>{
+export async function realizarCompra(id: number): Promise<string> {
 
     let res = ""
 
     const user = await getCarrito(id)
+    console.log(user)
 
-    if(user){
+    if (user) {
 
         const items = Items(user[0])
 

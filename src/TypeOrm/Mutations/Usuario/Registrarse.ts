@@ -11,8 +11,8 @@ export async function Registrarse(nombre: string, email: string, password: strin
         }
     })
 
-    if(user[0]){
-        throw "ERROR, CORREO YA REGISTRADO"
+    if (user[0]) {
+        throw new Error("ERROR, CORREO YA REGISTRADO")
     }
 
     const usuario = new Users();
@@ -23,7 +23,7 @@ export async function Registrarse(nombre: string, email: string, password: strin
     await usuario.save();
 
     user = await Users.find({
-        where:{
+        where: {
             email: email
         }
     })
@@ -34,5 +34,5 @@ export async function Registrarse(nombre: string, email: string, password: strin
     await carrito.save();
 
     return user
-    
+
 }
